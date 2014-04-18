@@ -7,14 +7,27 @@
 //
 
 #import "AppDelegate.h"
+#import "CBAMainViewController.h"
+
+#import <GoogleMaps/GoogleMaps.h>
 
 @implementation AppDelegate
+
+@synthesize mainViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    // Google Maps setup
+    [GMSServices provideAPIKey:@"AIzaSyDVnyXmX168uYG4XdVFb1VWnGPQQ-UudSQ"];
+    
+    // root view controller
+    self.mainViewController = [[CBAMainViewController alloc] initWithNibName:@"CBAMainViewController" bundle:nil];
+    self.window.rootViewController = self.mainViewController;
+    
     [self.window makeKeyAndVisible];
     return YES;
 }

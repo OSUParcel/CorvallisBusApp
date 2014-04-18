@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CBAMainViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+@property (strong, nonatomic) CBAMainViewController *mainViewController;
 
 @end
