@@ -34,6 +34,7 @@
     
     // map view setup
     self.isFullScreen = NO;
+    self.mapView.indoorEnabled = NO;
     self.mapView.myLocationEnabled = YES;
     self.mapView.settings.scrollGestures = NO;
     self.mapView.settings.zoomGestures = NO;
@@ -133,6 +134,11 @@
                 GMSCameraUpdate *zoomIn = [GMSCameraUpdate zoomBy:ZOOM_AMOUNT];
                 [self.mapView animateWithCameraUpdate:zoomIn];
                 [self.mapView animateToViewingAngle:FULL_SCREEN_VIEWING_ANGLE];
+                CLLocationDegrees latitude = [[self.data objectForKey:@"Lat"] doubleValue];
+                CLLocationDegrees longitude = [[self.data objectForKey:@"Long"] doubleValue];
+                CGFloat x = latitude - self.mapView.myLocation.coordinate.latitude;
+                CGFloat y = longitude - self.mapView.myLocation.coordinate.longitude;
+                [self.mapView animateToBearing:(atan2(x, y) * 180.0/M_PI)];
                 
                 // set up panel
                 [self setupPanelViewController];
@@ -160,6 +166,7 @@
     [self.mapView animateToZoom:DEFAULT_ZOOM_LEVEL];
     [self.mapView animateToViewingAngle:DEFAULT_VIEWING_ANGLE];
     [self.mapView animateToLocation:position];
+    [self.mapView animateToBearing:0.0f];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [UIView animateWithDuration:ANIMATION_TIME animations:^{
