@@ -27,7 +27,6 @@
     }
     // Chop off the last comma
     [requesturl deleteCharactersInRange:NSMakeRange([requesturl length]-1, 1)];
-    NSLog(@"Request URL: %@", requesturl);//debug
     NSDictionary *arrivals = nil;
     
     NSURL *url = [NSURL URLWithString:requesturl];

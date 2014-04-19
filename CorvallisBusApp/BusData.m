@@ -21,7 +21,7 @@
 {
     NSArray *stops = [Stops getStopsWithRadius:500 lat:lat lon:lon];
     NSDictionary *arrivals = [Arrivals getArrivalsForStops:stops];
-    NSLog(@"Arrivals: %@", arrivals);
+    NSArray *routes = [Routes getRoutes];
     NSMutableArray *sortedStops = [[NSMutableArray alloc] init];
     
     // For each stop, add the lat & long for the corresponding ID key
@@ -35,6 +35,16 @@
         NSNumber *distance = [NSNumber numberWithFloat: [[[stops objectAtIndex:i] objectForKey:@"Distance"] floatValue]];
         NSNumber *latitude = [NSNumber numberWithFloat: [[[stops objectAtIndex:i] objectForKey:@"Lat"] floatValue]];
         NSNumber *longitude = [NSNumber numberWithFloat: [[[stops objectAtIndex:i] objectForKey:@"Long"] floatValue]];
+        
+        // Find out the route name and color
+        NSString *route = [[[arrivals objectForKey:stopid] objectAtIndex:0] objectForKey:@"Route"];
+        int j = 0;
+        for (j = 0; j < [routes count]; j++) {
+            NSString *route2 = [[routes objectAtIndex:j] objectForKey:@"Name"];
+            if ([route isEqualToString:route2])
+                break;
+        }
+        NSString *color = [[routes objectAtIndex:j] objectForKey:@"Color"];
         
         // Convert the string to an NSDate
         NSDateFormatter *dateFromServerFormatter;
@@ -51,28 +61,13 @@
         dateString = [[[arrivals objectForKey:stopid] objectAtIndex:0] objectForKey:@"Expected"];
         dateOfLocation = [dateFromServerFormatter dateFromString:dateString];
         
-        // Convert the NSDate to a user-visible date string.
-        /*
-        dateOfLocationFormatter = [[NSDateFormatter alloc] init];
-        assert(dateOfLocationFormatter != nil);
-        
-        [dateOfLocationFormatter setDateStyle:NSDateFormatterMediumStyle];
-        [dateOfLocationFormatter setTimeStyle:NSDateFormatterNoStyle];
-        
-        locationDate = [dateOfLocationFormatter stringFromDate:dateOfLocation];
-        
-        [dateOfLocationFormatter setDateStyle:NSDateFormatterNoStyle];
-        [dateOfLocationFormatter setTimeStyle:NSDateFormatterShortStyle];
-        
-        locationTime = [dateOfLocationFormatter stringFromDate:dateOfLocation];
-        //NSLog(@"Formatted date: %@", locationTime);
-         */
-        
+        // Add this information to a new element in the list
         NSDictionary *stop = [NSDictionary dictionaryWithObjectsAndKeys:
                               stopid, @"ID",
                               distance, @"Distance",
                               dateOfLocation, @"Arrival",
-                              //color, @"Color",
+                              route, @"Route",
+                              color, @"Color",
                               latitude, @"Lat",
                               longitude, @"Long",
                               nil];
