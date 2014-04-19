@@ -68,7 +68,7 @@
     // background color
     NSString *hexColor = [data objectForKey:@"Color"];
     UIColor *routeColor = [UIColor colorWithHexValue:hexColor];
-    self.backgroundColor = [UIColor darkerColorForColor:routeColor];
+    self.backgroundColor = routeColor;
 
     // marker
     GMSMarker *marker = [GMSMarker markerWithPosition:position];
