@@ -45,6 +45,7 @@
                 break;
         }
         NSString *color = [[routes objectAtIndex:j] objectForKey:@"Color"];
+        NSString *polyline = [[routes objectAtIndex:j] objectForKey:@"Polyline"];
         
         // Convert the string to an NSDate
         NSDateFormatter *dateFromServerFormatter;
@@ -54,7 +55,7 @@
         dateFromServerFormatter = [[NSDateFormatter alloc] init];
         assert(dateFromServerFormatter != nil);
         
-        //"15 Apr 14 16:57 -0700"
+        // Format: "15 Apr 14 16:57 -0700"
         [dateFromServerFormatter setDateFormat:@"dd MMM yy HH:mm z"];
         [dateFromServerFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:-(3600*7)]];
         
@@ -68,14 +69,15 @@
                               dateOfLocation, @"Arrival",
                               route, @"Route",
                               color, @"Color",
+                              polyline, @"Polyline",
                               latitude, @"Lat",
                               longitude, @"Long",
                               nil];
         
         [sortedStops addObject:stop];
     }
-    
-    return [NSArray arrayWithArray:sortedStops];
+    self.data = [NSArray arrayWithArray:sortedStops];
+    return self.data;
 }
 
 @end
