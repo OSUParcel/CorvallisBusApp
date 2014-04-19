@@ -13,6 +13,7 @@
 #define FULL_SCREEN_VIEWING_ANGLE 45.0f
 
 #import "CBAStopTableViewCell.h"
+#import "AppDelegate.h"
 
 @implementation CBAStopTableViewCell
 
@@ -127,6 +128,10 @@
                                                              self.panelViewController.view.frame.size.width, self.panelViewController.view.frame.size.height);
         } completion:^(BOOL finished) {
             self.fullScreenWindow = nil;
+            AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+            NSIndexPath* rowToReload = [NSIndexPath indexPathForRow:self.rowIndex inSection:0];
+            NSArray* rowsToReload = [NSArray arrayWithObjects:rowToReload, nil];
+            [delegate.mainViewController.stopsTableView reloadRowsAtIndexPaths:rowsToReload withRowAnimation:UITableViewRowAnimationNone];
         }];
     });
 }

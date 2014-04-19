@@ -20,6 +20,7 @@
 @property (nonatomic) CGRect defaultViewFrame;
 @property (nonatomic) CGRect defaultMapViewFrame;
 @property (nonatomic) BOOL isFullScreen;
+@property (nonatomic) NSInteger rowIndex;
 
 @property (weak, nonatomic) IBOutlet UILabel *arrivalTimeLabel;
 @property (weak, nonatomic) IBOutlet GMSMapView *mapView;

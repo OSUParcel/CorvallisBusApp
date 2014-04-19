@@ -59,6 +59,7 @@
     {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CBAStopTableViewCell" owner:self options:nil];
         cell = (CBAStopTableViewCell *)[nib objectAtIndex:0];
+        cell.rowIndex = indexPath.row;
     }
     return cell;
 }
