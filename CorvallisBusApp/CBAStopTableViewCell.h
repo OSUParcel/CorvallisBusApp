@@ -17,6 +17,8 @@
 @property (strong, nonatomic) UIWindow *fullScreenWindow;
 @property (strong, nonatomic) CBAFullMapPanelViewController *panelViewController;
 
+@property (nonatomic) CGRect defaultViewFrame;
+@property (nonatomic) CGRect defaultMapViewFrame;
 @property (nonatomic) BOOL isFullScreen;
 
 @property (weak, nonatomic) IBOutlet UILabel *arrivalTimeLabel;

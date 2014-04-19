@@ -8,7 +8,9 @@
 
 #define ANIMATION_TIME 0.5f
 #define DEFAULT_ZOOM_LEVEL 15.0f
+#define DEFAULT_VIEWING_ANGLE 90.0f
 #define ZOOM_AMOUNT 3.0f
+#define FULL_SCREEN_VIEWING_ANGLE 45.0f
 
 #import "CBAStopTableViewCell.h"
 
@@ -35,6 +37,7 @@
     self.mapView.settings.scrollGestures = NO;
     self.mapView.settings.zoomGestures = NO;
     [self.mapView animateToZoom:DEFAULT_ZOOM_LEVEL];
+    [self.mapView animateToViewingAngle:DEFAULT_VIEWING_ANGLE];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -46,7 +49,7 @@
 
 - (void)setupFullScreenWindow
 {
-    self.fullScreenWindow = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.fullScreenWindow = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
     self.fullScreenWindow.backgroundColor = [UIColor clearColor];
     self.fullScreenWindow.userInteractionEnabled = YES;
     self.fullScreenWindow.windowLevel = UIWindowLevelStatusBar;
@@ -70,6 +73,10 @@
 {
     if (!self.isFullScreen) {
         self.isFullScreen = YES;
+        
+        // save previous frames
+        self.defaultViewFrame = self.frame;
+        self.defaultMapViewFrame = self.mapView.frame;
 
         // set up window
         [self setupFullScreenWindow];
@@ -82,12 +89,13 @@
         [self.superview.superview bringSubviewToFront:self];
         dispatch_async(dispatch_get_main_queue(), ^{
             [UIView animateWithDuration:ANIMATION_TIME animations:^{
+                self.fullScreenWindow.frame = [[UIScreen mainScreen] bounds];
                 self.frame = [[UIScreen mainScreen] bounds];
                 self.mapView.frame = [[UIScreen mainScreen] bounds];
             } completion:^(BOOL finished) {
                 // zoom in
                 [self.mapView animateWithCameraUpdate:zoomIn];
-                [self.mapView animateToViewingAngle:45.0f];
+                [self.mapView animateToViewingAngle:FULL_SCREEN_VIEWING_ANGLE];
                 
                 // animate panel in
                 [self animatePanelIn];
@@ -102,13 +110,39 @@
 
 - (void)animateFromFullScreen
 {
-    NSLog(@"woo!");
+    // disable user interaction
+    self.mapView.settings.scrollGestures = NO;
+    self.mapView.settings.zoomGestures = NO;
+    
+    // reset zoom and viewing angle
+    [self.mapView animateToZoom:DEFAULT_ZOOM_LEVEL];
+    [self.mapView animateToViewingAngle:DEFAULT_VIEWING_ANGLE];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [UIView animateWithDuration:ANIMATION_TIME animations:^{
+            self.fullScreenWindow.frame = [[UIScreen mainScreen] applicationFrame];
+            self.frame = self.defaultViewFrame;
+            self.mapView.frame = self.defaultMapViewFrame;
+            self.panelViewController.view.frame = CGRectMake(0, [[UIScreen mainScreen] bounds].size.height,
+                                                             self.panelViewController.view.frame.size.width, self.panelViewController.view.frame.size.height);
+        } completion:^(BOOL finished) {
+            self.fullScreenWindow = nil;
+        }];
+    });
 }
 
 - (void)animatePanelIn
 {
     [UIView animateWithDuration:ANIMATION_TIME animations:^{
         self.panelViewController.view.frame = CGRectMake(0, [[UIScreen mainScreen] bounds].size.height - self.panelViewController.view.frame.size.height,
+                                                         self.panelViewController.view.frame.size.width, self.panelViewController.view.frame.size.height);
+    }];
+}
+
+- (void)animatePanelOut
+{
+    [UIView animateWithDuration:ANIMATION_TIME animations:^{
+        self.panelViewController.view.frame = CGRectMake(0, [[UIScreen mainScreen] bounds].size.height,
                                                          self.panelViewController.view.frame.size.width, self.panelViewController.view.frame.size.height);
     }];
 }
