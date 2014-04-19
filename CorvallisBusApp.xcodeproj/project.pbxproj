@@ -23,6 +23,8 @@
 		5ECD7EA31900DB81002AE274 /* CorvallisBusAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ECD7EA21900DB81002AE274 /* CorvallisBusAppTests.m */; };
 		5ED32E641900E0D200692D18 /* CBAMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ED32E621900E0D200692D18 /* CBAMainViewController.m */; };
 		5ED32E651900E0D200692D18 /* CBAMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5ED32E631900E0D200692D18 /* CBAMainViewController.xib */; };
+		5EEABBF31902FBF10031A884 /* CBAFullMapPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EEABBF11902FBF10031A884 /* CBAFullMapPanelViewController.m */; };
+		5EEABBF41902FBF10031A884 /* CBAFullMapPanelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EEABBF21902FBF10031A884 /* CBAFullMapPanelViewController.xib */; };
 		915FACC6B33147158C4AFFA4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1CC1EEF6CCB4FD0A586EECB /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +61,9 @@
 		5ED32E611900E0D200692D18 /* CBAMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAMainViewController.h; sourceTree = "<group>"; };
 		5ED32E621900E0D200692D18 /* CBAMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAMainViewController.m; sourceTree = "<group>"; };
 		5ED32E631900E0D200692D18 /* CBAMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBAMainViewController.xib; sourceTree = "<group>"; };
+		5EEABBF01902FBF10031A884 /* CBAFullMapPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAFullMapPanelViewController.h; sourceTree = "<group>"; };
+		5EEABBF11902FBF10031A884 /* CBAFullMapPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAFullMapPanelViewController.m; sourceTree = "<group>"; };
+		5EEABBF21902FBF10031A884 /* CBAFullMapPanelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBAFullMapPanelViewController.xib; sourceTree = "<group>"; };
 		6FEED512C52541DFA46262C5 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		B1CC1EEF6CCB4FD0A586EECB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -184,6 +189,7 @@
 		5ED32E5F1900E0B000692D18 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5EEABBEF1902FBD40031A884 /* Full Map Panel View Controller */,
 				5ED32E601900E0C400692D18 /* Main View Controller */,
 			);
 			name = "View Controllers";
@@ -204,6 +210,16 @@
 			children = (
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		5EEABBEF1902FBD40031A884 /* Full Map Panel View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5EEABBF01902FBF10031A884 /* CBAFullMapPanelViewController.h */,
+				5EEABBF11902FBF10031A884 /* CBAFullMapPanelViewController.m */,
+				5EEABBF21902FBF10031A884 /* CBAFullMapPanelViewController.xib */,
+			);
+			name = "Full Map Panel View Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,6 +301,7 @@
 			files = (
 				5E2C19EE1902ED4600199075 /* CBAStopTableViewCell.xib in Resources */,
 				5ECD7E881900DB81002AE274 /* InfoPlist.strings in Resources */,
+				5EEABBF41902FBF10031A884 /* CBAFullMapPanelViewController.xib in Resources */,
 				5ECD7E901900DB81002AE274 /* Images.xcassets in Resources */,
 				5ED32E651900E0D200692D18 /* CBAMainViewController.xib in Resources */,
 			);
@@ -339,6 +356,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E2C19ED1902ED4600199075 /* CBAStopTableViewCell.m in Sources */,
+				5EEABBF31902FBF10031A884 /* CBAFullMapPanelViewController.m in Sources */,
 				5ED32E641900E0D200692D18 /* CBAMainViewController.m in Sources */,
 				5ECD7E8E1900DB81002AE274 /* AppDelegate.m in Sources */,
 				5ECD7E8A1900DB81002AE274 /* main.m in Sources */,

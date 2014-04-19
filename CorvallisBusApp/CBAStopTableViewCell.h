@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <GoogleMaps/GoogleMaps.h>
 
+#import "CBAFullMapPanelViewController.h"
+
 @interface CBAStopTableViewCell : UITableViewCell
 
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
 @property (strong, nonatomic) UIWindow *fullScreenWindow;
+@property (strong, nonatomic) CBAFullMapPanelViewController *panelViewController;
 
 @property (nonatomic) BOOL isFullScreen;
 
