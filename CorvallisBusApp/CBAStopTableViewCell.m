@@ -39,6 +39,10 @@
     self.mapView.settings.zoomGestures = NO;
     [self.mapView animateToZoom:DEFAULT_ZOOM_LEVEL];
     [self.mapView animateToViewingAngle:DEFAULT_VIEWING_ANGLE];
+    
+    // shimmer setup
+    self.arrivalTimeView.contentView = self.arrivalTimeLabel;
+    self.arrivalTimeView.shimmering = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -53,7 +57,7 @@
     self.fullScreenWindow = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
     self.fullScreenWindow.backgroundColor = [UIColor clearColor];
     self.fullScreenWindow.userInteractionEnabled = YES;
-    self.fullScreenWindow.windowLevel = UIWindowLevelStatusBar;
+    self.fullScreenWindow.windowLevel = UIWindowLevelNormal;
     self.fullScreenWindow.rootViewController = [UIViewController new];
     [self.fullScreenWindow.rootViewController.view addSubview:self];
     [self.fullScreenWindow makeKeyAndVisible];
@@ -82,9 +86,6 @@
         // set up window
         [self setupFullScreenWindow];
         
-        // set up panel
-        [self setupPanelViewController];
-        
         // animate map to full screen
         GMSCameraUpdate *zoomIn = [GMSCameraUpdate zoomBy:ZOOM_AMOUNT];
         [self.superview.superview bringSubviewToFront:self];
@@ -98,6 +99,8 @@
                 [self.mapView animateWithCameraUpdate:zoomIn];
                 [self.mapView animateToViewingAngle:FULL_SCREEN_VIEWING_ANGLE];
                 
+                // set up panel
+                [self setupPanelViewController];
                 // animate panel in
                 [self animatePanelIn];
                 
@@ -126,6 +129,7 @@
             self.mapView.frame = self.defaultMapViewFrame;
             self.panelViewController.view.frame = CGRectMake(0, [[UIScreen mainScreen] bounds].size.height,
                                                              self.panelViewController.view.frame.size.width, self.panelViewController.view.frame.size.height);
+            self.panelViewController.view.alpha = 0.0f;
         } completion:^(BOOL finished) {
             self.fullScreenWindow = nil;
             AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];

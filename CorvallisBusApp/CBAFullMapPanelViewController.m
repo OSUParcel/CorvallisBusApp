@@ -7,6 +7,7 @@
 //
 
 #import "CBAFullMapPanelViewController.h"
+#import "AppDelegate.h"
 
 @interface CBAFullMapPanelViewController ()
 

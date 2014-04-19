@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <GoogleMaps/GoogleMaps.h>
+#import <FBShimmeringView.h>
 
 #import "CBAFullMapPanelViewController.h"
 
@@ -23,8 +24,9 @@
 @property (nonatomic) NSInteger rowIndex;
 
 @property (weak, nonatomic) IBOutlet UIView *streetView;
-@property (weak, nonatomic) IBOutlet UILabel *arrivalTimeLabel;
 @property (weak, nonatomic) IBOutlet GMSMapView *mapView;
+@property (weak, nonatomic) IBOutlet FBShimmeringView *arrivalTimeView;
+@property (weak, nonatomic) IBOutlet UILabel *arrivalTimeLabel;
 
 - (void)animateToFullScreen:(UITapGestureRecognizer*)sender;
 
