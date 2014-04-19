@@ -13,6 +13,7 @@
 		5E9D882B19032A5300C41F1A /* Routes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9D882A19032A5300C41F1A /* Routes.m */; };
 		5E9D882F19032A5B00C41F1A /* Stops.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9D882E19032A5B00C41F1A /* Stops.m */; };
 		5E9D883319032A6800C41F1A /* Arrivals.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9D883219032A6800C41F1A /* Arrivals.m */; };
+		5E9D88381903379F00C41F1A /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9D88371903379F00C41F1A /* UIColor+Hex.m */; };
 		5ECD7E7E1900DB81002AE274 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ECD7E7D1900DB81002AE274 /* Foundation.framework */; };
 		5ECD7E801900DB81002AE274 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ECD7E7F1900DB81002AE274 /* CoreGraphics.framework */; };
 		5ECD7E821900DB81002AE274 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ECD7E811900DB81002AE274 /* UIKit.framework */; };
@@ -54,6 +55,8 @@
 		5E9D882E19032A5B00C41F1A /* Stops.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stops.m; sourceTree = "<group>"; };
 		5E9D883119032A6800C41F1A /* Arrivals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Arrivals.h; sourceTree = "<group>"; };
 		5E9D883219032A6800C41F1A /* Arrivals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Arrivals.m; sourceTree = "<group>"; };
+		5E9D88361903379F00C41F1A /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		5E9D88371903379F00C41F1A /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		5ECD7E7A1900DB81002AE274 /* CorvallisBusApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CorvallisBusApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ECD7E7D1900DB81002AE274 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5ECD7E7F1900DB81002AE274 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -159,6 +162,23 @@
 			name = Arrivals;
 			sourceTree = "<group>";
 		};
+		5E9D88341903378C00C41F1A /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				5E9D88351903379200C41F1A /* UIColor+Hex */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		5E9D88351903379200C41F1A /* UIColor+Hex */ = {
+			isa = PBXGroup;
+			children = (
+				5E9D88361903379F00C41F1A /* UIColor+Hex.h */,
+				5E9D88371903379F00C41F1A /* UIColor+Hex.m */,
+			);
+			name = "UIColor+Hex";
+			sourceTree = "<group>";
+		};
 		5ECD7E711900DB81002AE274 = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +217,7 @@
 				5ECD7E8F1900DB81002AE274 /* Images.xcassets */,
 				5ECD7E8C1900DB81002AE274 /* AppDelegate.h */,
 				5ECD7E8D1900DB81002AE274 /* AppDelegate.m */,
+				5E9D88341903378C00C41F1A /* Categories */,
 				5ED32E661900E26A00692D18 /* Models */,
 				5E2C19E81902ED1F00199075 /* Views */,
 				5ED32E5F1900E0B000692D18 /* View Controllers */,
@@ -408,6 +429,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E9D882719032A4400C41F1A /* BusData.m in Sources */,
+				5E9D88381903379F00C41F1A /* UIColor+Hex.m in Sources */,
 				5E2C19ED1902ED4600199075 /* CBAStopTableViewCell.m in Sources */,
 				5EEABBF31902FBF10031A884 /* CBAFullMapPanelViewController.m in Sources */,
 				5E9D882F19032A5B00C41F1A /* Stops.m in Sources */,

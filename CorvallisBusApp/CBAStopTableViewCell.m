@@ -13,6 +13,7 @@
 #define FULL_SCREEN_VIEWING_ANGLE 45.0f
 
 #import "CBAStopTableViewCell.h"
+#import "UIColor+Hex.h"
 #import "AppDelegate.h"
 
 @implementation CBAStopTableViewCell
@@ -44,6 +45,20 @@
     // shimmer setup
     self.arrivalTimeView.contentView = self.arrivalTimeLabel;
     self.arrivalTimeView.shimmering = YES;
+    
+    // shadow
+    self.arrivalTimeLabel.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.arrivalTimeLabel.layer.shadowRadius = 4.0f;
+    self.arrivalTimeLabel.layer.shadowOpacity = 1.0f;
+    self.arrivalTimeLabel.layer.masksToBounds = NO;
+    self.routeLabel.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.routeLabel.layer.shadowRadius = 4.0f;
+    self.routeLabel.layer.shadowOpacity = 1.0f;
+    self.routeLabel.layer.masksToBounds = NO;
+    self.distanceLabel.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.distanceLabel.layer.shadowRadius = 4.0f;
+    self.distanceLabel.layer.shadowOpacity = 1.0f;
+    self.distanceLabel.layer.masksToBounds = NO;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -63,11 +78,18 @@
     CLLocationDegrees longitude = [[data objectForKey:@"Long"] doubleValue];
     CLLocationCoordinate2D position = CLLocationCoordinate2DMake(latitude, longitude);
     [self.mapView animateToLocation:position];
+    
+    // background color
+    NSString *hexColor = [data objectForKey:@"Color"];
+    UIColor *routeColor = [UIColor colorWithHexValue:hexColor];
+    self.backgroundColor = routeColor;
+    self.panelViewController.view.backgroundColor = routeColor;
 
     // marker
     GMSMarker *marker = [GMSMarker markerWithPosition:position];
     marker.title = @"Bus Stop";
     marker.map = self.mapView;
+    marker.icon = [GMSMarker markerImageWithColor:routeColor];
     
     // distance
     CGFloat distance = [[data objectForKey:@"Distance"] doubleValue] * 0.000621371;
@@ -78,6 +100,9 @@
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
     [dateFormatter setDateFormat:@"hh:mm a"];
     self.arrivalTimeLabel.text = [dateFormatter stringFromDate:date];
+    
+    // route
+    self.routeLabel.text = [NSString stringWithFormat:@"Route %@", [data objectForKey:@"Route"]];
 }
 
 # pragma mark - setup methods
@@ -100,6 +125,9 @@
                                                      self.panelViewController.view.frame.size.width, self.panelViewController.view.frame.size.height);
     [self.panelViewController.dismissButton addTarget:self action:@selector(animateFromFullScreen) forControlEvents:UIControlEventTouchUpInside];
     self.panelViewController.arrivalTimeLabel.text = self.arrivalTimeLabel.text;
+    NSString *hexColor = [self.data objectForKey:@"Color"];
+    UIColor *routeColor = [UIColor colorWithHexValue:hexColor];
+    self.panelViewController.view.backgroundColor = routeColor;
     [self.fullScreenWindow.rootViewController.view addSubview:self.panelViewController.view];
 }
 
