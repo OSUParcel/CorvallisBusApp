@@ -6,7 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CBAMainViewController">
             <connections>
-                <outlet property="mapView" destination="Vd0-xR-0YF" id="voy-Gg-ig6"/>
+                <outlet property="stopsTableView" destination="w2H-Cc-uCV" id="tZ3-91-Q7F"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -15,13 +15,19 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vd0-xR-0YF" customClass="GMSMapView">
-                    <rect key="frame" x="0.0" y="62" width="320" height="403"/>
+                <tableView opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="w2H-Cc-uCV">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                </view>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="w2H-Cc-uCV" secondAttribute="bottom" id="92L-Qz-sWh"/>
+                <constraint firstAttribute="trailing" secondItem="w2H-Cc-uCV" secondAttribute="trailing" id="AYD-Is-0l2"/>
+                <constraint firstItem="w2H-Cc-uCV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Pu9-zh-qaQ"/>
+                <constraint firstItem="w2H-Cc-uCV" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="tnp-R7-Mfc"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>

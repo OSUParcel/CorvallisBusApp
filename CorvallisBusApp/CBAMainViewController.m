@@ -7,6 +7,7 @@
 //
 
 #import "CBAMainViewController.h"
+#import "CBAStopTableViewCell.h"
 
 @interface CBAMainViewController ()
 
@@ -14,7 +15,7 @@
 
 @implementation CBAMainViewController
 
-@synthesize mapView;
+@synthesize stopsTableView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,12 +30,42 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    // set up data source and delegate
+    self.stopsTableView.dataSource = self;
+    self.stopsTableView.delegate = self;
+    
+    // set top inset
+    [self.stopsTableView setContentInset:UIEdgeInsetsMake(20, 0, 0, 0)];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+# pragma mark - table view delegate methods
+
+# pragma mark - table view data source methods
+
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    static NSString *CellIdentifier = @"CBAStopTableViewCellIdentifier";
+    
+    CBAStopTableViewCell *cell = (CBAStopTableViewCell*) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil)
+    {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CBAStopTableViewCell" owner:self options:nil];
+        cell = (CBAStopTableViewCell *)[nib objectAtIndex:0];
+    }
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
 }
 
 @end

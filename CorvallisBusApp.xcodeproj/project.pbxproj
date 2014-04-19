@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E2C19ED1902ED4600199075 /* CBAStopTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E2C19EB1902ED4600199075 /* CBAStopTableViewCell.m */; };
+		5E2C19EE1902ED4600199075 /* CBAStopTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E2C19EC1902ED4600199075 /* CBAStopTableViewCell.xib */; };
 		5ECD7E7E1900DB81002AE274 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ECD7E7D1900DB81002AE274 /* Foundation.framework */; };
 		5ECD7E801900DB81002AE274 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ECD7E7F1900DB81002AE274 /* CoreGraphics.framework */; };
 		5ECD7E821900DB81002AE274 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ECD7E811900DB81002AE274 /* UIKit.framework */; };
@@ -35,6 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5E2C19EA1902ED4600199075 /* CBAStopTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAStopTableViewCell.h; sourceTree = "<group>"; };
+		5E2C19EB1902ED4600199075 /* CBAStopTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAStopTableViewCell.m; sourceTree = "<group>"; };
+		5E2C19EC1902ED4600199075 /* CBAStopTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBAStopTableViewCell.xib; sourceTree = "<group>"; };
 		5ECD7E7A1900DB81002AE274 /* CorvallisBusApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CorvallisBusApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ECD7E7D1900DB81002AE274 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5ECD7E7F1900DB81002AE274 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -83,6 +88,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E2C19E81902ED1F00199075 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5E2C19E91902ED2500199075 /* Stop Table View Cell */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		5E2C19E91902ED2500199075 /* Stop Table View Cell */ = {
+			isa = PBXGroup;
+			children = (
+				5E2C19EA1902ED4600199075 /* CBAStopTableViewCell.h */,
+				5E2C19EB1902ED4600199075 /* CBAStopTableViewCell.m */,
+				5E2C19EC1902ED4600199075 /* CBAStopTableViewCell.xib */,
+			);
+			name = "Stop Table View Cell";
+			sourceTree = "<group>";
+		};
 		5ECD7E711900DB81002AE274 = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +145,7 @@
 				5ECD7E8C1900DB81002AE274 /* AppDelegate.h */,
 				5ECD7E8D1900DB81002AE274 /* AppDelegate.m */,
 				5ED32E661900E26A00692D18 /* Models */,
+				5E2C19E81902ED1F00199075 /* Views */,
 				5ED32E5F1900E0B000692D18 /* View Controllers */,
 				5ECD7E841900DB81002AE274 /* Supporting Files */,
 			);
@@ -259,6 +283,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E2C19EE1902ED4600199075 /* CBAStopTableViewCell.xib in Resources */,
 				5ECD7E881900DB81002AE274 /* InfoPlist.strings in Resources */,
 				5ECD7E901900DB81002AE274 /* Images.xcassets in Resources */,
 				5ED32E651900E0D200692D18 /* CBAMainViewController.xib in Resources */,
@@ -313,6 +338,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E2C19ED1902ED4600199075 /* CBAStopTableViewCell.m in Sources */,
 				5ED32E641900E0D200692D18 /* CBAMainViewController.m in Sources */,
 				5ECD7E8E1900DB81002AE274 /* AppDelegate.m in Sources */,
 				5ECD7E8A1900DB81002AE274 /* main.m in Sources */,
