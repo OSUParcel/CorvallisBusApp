@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		468A2F151902EC920005A2A3 /* Stops.m in Sources */ = {isa = PBXBuildFile; fileRef = 468A2F141902EC920005A2A3 /* Stops.m */; };
+		468A2F181902F9600005A2A3 /* Routes.m in Sources */ = {isa = PBXBuildFile; fileRef = 468A2F171902F9600005A2A3 /* Routes.m */; };
+		468A2F1B1902FA630005A2A3 /* Arrivals.m in Sources */ = {isa = PBXBuildFile; fileRef = 468A2F1A1902FA630005A2A3 /* Arrivals.m */; };
+		468A2F1F190307B00005A2A3 /* BusData.m in Sources */ = {isa = PBXBuildFile; fileRef = 468A2F1E190307B00005A2A3 /* BusData.m */; };
 		5ECD7E7E1900DB81002AE274 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ECD7E7D1900DB81002AE274 /* Foundation.framework */; };
 		5ECD7E801900DB81002AE274 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ECD7E7F1900DB81002AE274 /* CoreGraphics.framework */; };
 		5ECD7E821900DB81002AE274 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ECD7E811900DB81002AE274 /* UIKit.framework */; };
@@ -38,6 +41,12 @@
 /* Begin PBXFileReference section */
 		468A2F131902EC920005A2A3 /* Stops.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stops.h; sourceTree = "<group>"; };
 		468A2F141902EC920005A2A3 /* Stops.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stops.m; sourceTree = "<group>"; };
+		468A2F161902F9600005A2A3 /* Routes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Routes.h; sourceTree = "<group>"; };
+		468A2F171902F9600005A2A3 /* Routes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Routes.m; sourceTree = "<group>"; };
+		468A2F191902FA630005A2A3 /* Arrivals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Arrivals.h; sourceTree = "<group>"; };
+		468A2F1A1902FA630005A2A3 /* Arrivals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Arrivals.m; sourceTree = "<group>"; };
+		468A2F1D190307B00005A2A3 /* BusData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusData.h; sourceTree = "<group>"; };
+		468A2F1E190307B00005A2A3 /* BusData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusData.m; sourceTree = "<group>"; };
 		5ECD7E7A1900DB81002AE274 /* CorvallisBusApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CorvallisBusApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ECD7E7D1900DB81002AE274 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5ECD7E7F1900DB81002AE274 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -98,6 +107,8 @@
 		468A2F101902EC650005A2A3 /* Routes */ = {
 			isa = PBXGroup;
 			children = (
+				468A2F161902F9600005A2A3 /* Routes.h */,
+				468A2F171902F9600005A2A3 /* Routes.m */,
 			);
 			name = Routes;
 			sourceTree = "<group>";
@@ -105,8 +116,19 @@
 		468A2F121902EC6F0005A2A3 /* Arrivals */ = {
 			isa = PBXGroup;
 			children = (
+				468A2F191902FA630005A2A3 /* Arrivals.h */,
+				468A2F1A1902FA630005A2A3 /* Arrivals.m */,
 			);
 			name = Arrivals;
+			sourceTree = "<group>";
+		};
+		468A2F1C190306F50005A2A3 /* BusData */ = {
+			isa = PBXGroup;
+			children = (
+				468A2F1D190307B00005A2A3 /* BusData.h */,
+				468A2F1E190307B00005A2A3 /* BusData.m */,
+			);
+			name = BusData;
 			sourceTree = "<group>";
 		};
 		5ECD7E711900DB81002AE274 = {
@@ -204,6 +226,7 @@
 		5ED32E661900E26A00692D18 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				468A2F1C190306F50005A2A3 /* BusData */,
 				468A2F121902EC6F0005A2A3 /* Arrivals */,
 				468A2F101902EC650005A2A3 /* Routes */,
 				468A2F0F1902EC4A0005A2A3 /* Stops */,
@@ -344,8 +367,11 @@
 			files = (
 				5ED32E641900E0D200692D18 /* CBAMainViewController.m in Sources */,
 				5ECD7E8E1900DB81002AE274 /* AppDelegate.m in Sources */,
+				468A2F181902F9600005A2A3 /* Routes.m in Sources */,
 				5ECD7E8A1900DB81002AE274 /* main.m in Sources */,
+				468A2F1F190307B00005A2A3 /* BusData.m in Sources */,
 				468A2F151902EC920005A2A3 /* Stops.m in Sources */,
+				468A2F1B1902FA630005A2A3 /* Arrivals.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

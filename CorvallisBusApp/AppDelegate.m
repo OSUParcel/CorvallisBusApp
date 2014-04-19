@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "CBAMainViewController.h"
+#import "BusData.h"
 
 #import <GoogleMaps/GoogleMaps.h>
 
@@ -29,6 +30,7 @@
     self.window.rootViewController = self.mainViewController;
     
     [self.window makeKeyAndVisible];
+    NSLog(@"Arrivals: %@", [BusData getArrivalsForLatitude:44.57181000 Longitude:-123.2910000]);
     return YES;
 }
 

@@ -11,9 +11,9 @@
 @interface Stops : NSObject
 
 // Radii are in meters
--(NSArray *)getStops;
--(NSArray *)getStopsWithRadius:(int)radius;
--(NSArray *)getStopsWithRadius:(int)radius withLimit:(int)limit;
++(NSArray *)getStops;
++(NSArray *)getStopsWithRadius:(int)radius lat:(float)lat lon:(float)lon;
++(NSArray *)getStopsWithRadius:(int)radius lat:(float)lat lon:(float)lon withLimit:(int)limit;
 
 @end
 

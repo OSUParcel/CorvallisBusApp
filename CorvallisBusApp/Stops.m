@@ -10,17 +10,17 @@
 
 @implementation Stops
 
--(NSArray *)getStops
++(NSArray *)getStops
 {
-    return [self getStopsWithRadius:-1 withLimit:-1];
+    return [self getStopsWithRadius:-1 lat:(float)181 lon:(float)181 withLimit:-1];
 }
 
--(NSArray *)getStopsWithRadius:(int)radius
++(NSArray *)getStopsWithRadius:(int)radius lat:(float)lat lon:(float)lon
 {
-    return [self getStopsWithRadius:radius withLimit:-1];
+    return [self getStopsWithRadius:radius lat:(float)lat lon:(float)lon withLimit:-1];
 }
 
--(NSArray *)getStopsWithRadius:(int)radius withLimit:(int)limit
++(NSArray *)getStopsWithRadius:(int)radius lat:(float)lat lon:(float)lon withLimit:(int)limit
 {
     // --- Request bus stops from the server within this radius and limit ---
     // Default radius: 200m.  Default limit: none
@@ -28,10 +28,19 @@
         radius = 200;
     
     NSString *requesturl;
-    if (limit < 0) {
-        requesturl = [NSString stringWithFormat:@"http://www.corvallis-bus.appspot.com/stops?radius=%d", radius];
+    if (lat == 181 || lon == 181) {
+        // Location undefined
+        if (limit < 0) {
+            requesturl = [NSString stringWithFormat:@"http://www.corvallis-bus.appspot.com/stops"];
+        } else {
+            requesturl = [NSString stringWithFormat:@"http://www.corvallis-bus.appspot.com/stops&limit=%d", limit];
+        }
+    } else if (limit < 0) {
+        // Location defined, limit undefined
+        requesturl = [NSString stringWithFormat:@"http://www.corvallis-bus.appspot.com/stops?radius=%d&lat=%f&lng=%f", radius, lat, lon];
     } else {
-        requesturl = [NSString stringWithFormat:@"http://www.corvallis-bus.appspot.com/stops?radius=%d&limit=%d", radius, limit];
+        // Location and limit defined
+        requesturl = [NSString stringWithFormat:@"http://www.corvallis-bus.appspot.com/stops?radius=%d&lat=%f&lng=%f&limit=%d", radius, lat, lon, limit];
     }
     
     NSArray *stops = nil;
