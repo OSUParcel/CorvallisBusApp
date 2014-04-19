@@ -127,7 +127,7 @@
             self.fullScreenWindow.frame = [[UIScreen mainScreen] applicationFrame];
             self.frame = self.defaultViewFrame;
             self.mapView.frame = self.defaultMapViewFrame;
-            self.panelViewController.view.frame = CGRectMake(0, [[UIScreen mainScreen] bounds].size.height,
+            self.panelViewController.view.frame = CGRectMake(0, [[UIScreen mainScreen] bounds].size.height + 100,
                                                              self.panelViewController.view.frame.size.width, self.panelViewController.view.frame.size.height);
             self.panelViewController.view.alpha = 0.0f;
         } completion:^(BOOL finished) {
@@ -147,13 +147,4 @@
                                                          self.panelViewController.view.frame.size.width, self.panelViewController.view.frame.size.height);
     }];
 }
-
-- (void)animatePanelOut
-{
-    [UIView animateWithDuration:ANIMATION_TIME animations:^{
-        self.panelViewController.view.frame = CGRectMake(0, [[UIScreen mainScreen] bounds].size.height,
-                                                         self.panelViewController.view.frame.size.width, self.panelViewController.view.frame.size.height);
-    }];
-}
-
 @end

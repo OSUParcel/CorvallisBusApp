@@ -27,6 +27,8 @@
 @property (weak, nonatomic) IBOutlet GMSMapView *mapView;
 @property (weak, nonatomic) IBOutlet FBShimmeringView *arrivalTimeView;
 @property (weak, nonatomic) IBOutlet UILabel *arrivalTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *routeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 
 - (void)animateToFullScreen:(UITapGestureRecognizer*)sender;
 
