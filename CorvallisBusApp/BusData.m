@@ -35,6 +35,7 @@
         NSNumber *distance = [NSNumber numberWithFloat: [[[stops objectAtIndex:i] objectForKey:@"Distance"] floatValue]];
         NSNumber *latitude = [NSNumber numberWithFloat: [[[stops objectAtIndex:i] objectForKey:@"Lat"] floatValue]];
         NSNumber *longitude = [NSNumber numberWithFloat: [[[stops objectAtIndex:i] objectForKey:@"Long"] floatValue]];
+        NSNumber *bearing = [NSNumber numberWithFloat: [[[stops objectAtIndex:i] objectForKey:@"Bearing"] floatValue]];
         
         // Find out the route name and color
         NSString *route = [[[arrivals objectForKey:stopid] objectAtIndex:0] objectForKey:@"Route"];
@@ -69,6 +70,7 @@
                               dateOfLocation, @"Arrival",
                               route, @"Route",
                               color, @"Color",
+                              bearing, @"Bearing",
                               polyline, @"Polyline",
                               latitude, @"Lat",
                               longitude, @"Long",

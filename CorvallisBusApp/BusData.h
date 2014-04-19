@@ -19,6 +19,7 @@
  (
      {
          Arrival = NSDate
+         Bearing = NSNumber
          Color = NSString
          Distance = NSNumber
          ID = NSString
@@ -29,6 +30,7 @@
      },
      {
          Arrival = "2014-04-19 23:04:00 +0000";
+         Bearing = 181.3342;
          Color = F26521;
          Distance = "203.4869";
          ID = 10251;
