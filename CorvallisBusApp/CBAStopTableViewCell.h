@@ -22,6 +22,7 @@
 @property (nonatomic) BOOL isFullScreen;
 @property (nonatomic) NSInteger rowIndex;
 
+@property (weak, nonatomic) IBOutlet UIView *streetView;
 @property (weak, nonatomic) IBOutlet UILabel *arrivalTimeLabel;
 @property (weak, nonatomic) IBOutlet GMSMapView *mapView;
 

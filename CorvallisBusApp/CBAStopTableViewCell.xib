@@ -13,6 +13,11 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M29-e5-rmF">
+                        <rect key="frame" x="0.0" y="0.0" width="220" height="99"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7:09 P.M." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wqF-mV-CSe">
                         <rect key="frame" x="20" y="22" width="176" height="51"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -33,13 +38,18 @@
                 <constraints>
                     <constraint firstItem="wqF-mV-CSe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="9hW-d8-BPy"/>
                     <constraint firstAttribute="trailing" secondItem="xqq-6R-btf" secondAttribute="trailing" id="HVQ-mW-kAp"/>
+                    <constraint firstItem="M29-e5-rmF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="M0X-Db-QNz"/>
                     <constraint firstItem="xqq-6R-btf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Tuf-uh-4Zs"/>
                     <constraint firstItem="wqF-mV-CSe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="22" id="egu-pu-WIQ"/>
+                    <constraint firstItem="M29-e5-rmF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="iQy-bC-GyC"/>
+                    <constraint firstAttribute="bottom" secondItem="M29-e5-rmF" secondAttribute="bottom" id="iSx-Qe-gNa"/>
+                    <constraint firstItem="xqq-6R-btf" firstAttribute="leading" secondItem="M29-e5-rmF" secondAttribute="trailing" id="ucV-xx-5Wz"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="arrivalTimeLabel" destination="wqF-mV-CSe" id="5Mm-Ed-Uzg"/>
                 <outlet property="mapView" destination="xqq-6R-btf" id="2VV-6D-Fqk"/>
+                <outlet property="streetView" destination="M29-e5-rmF" id="zZZ-nd-UtV"/>
             </connections>
         </tableViewCell>
     </objects>

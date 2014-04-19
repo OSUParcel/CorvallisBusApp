@@ -19,7 +19,7 @@
 
 @synthesize tapGestureRecognizer, fullScreenWindow, panelViewController;
 
-@synthesize isFullScreen;
+@synthesize isFullScreen, defaultViewFrame, defaultMapViewFrame, rowIndex;
 
 - (void)awakeFromNib
 {

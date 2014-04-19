@@ -1,34 +1,16 @@
 PODS:
-  - AFNetworking (2.2.2):
-    - AFNetworking/NSURLConnection
-    - AFNetworking/NSURLSession
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-    - AFNetworking/UIKit
-  - AFNetworking/NSURLConnection (2.2.2):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.2.2):
-    - AFNetworking/NSURLConnection
-  - AFNetworking/Reachability (2.2.2)
-  - AFNetworking/Security (2.2.2)
-  - AFNetworking/Serialization (2.2.2)
-  - AFNetworking/UIKit (2.2.2):
-    - AFNetworking/NSURLConnection
-    - AFNetworking/NSURLSession
   - FXBlurView (1.6)
   - Google-Maps-iOS-SDK (1.7.2)
+  - Shimmer (1.0.1)
 
 DEPENDENCIES:
-  - AFNetworking (~> 2.0)
   - FXBlurView (~> 1.6)
   - Google-Maps-iOS-SDK (~> 1.7.2)
+  - Shimmer (~> 1.0.1)
 
 SPEC CHECKSUMS:
-  AFNetworking: dd8c1868e57451e3d17ebd3516f2a8c16f9646fe
   FXBlurView: 06f9f602d529c8e2d87648293d73a618621d3d81
   Google-Maps-iOS-SDK: 14de93ec6d63ac83655a5029e3e7788c5ba70900
+  Shimmer: a1b92685f04ae7363e655f636a41a276dbb1507e
 
 COCOAPODS: 0.32.1
