@@ -10,7 +10,10 @@
 
 @interface Stops : NSObject
 
--(NSArray *)getStops:(int) radius;
+// Radii are in meters
+-(NSArray *)getStops;
+-(NSArray *)getStopsWithRadius:(int)radius;
+-(NSArray *)getStopsWithRadius:(int)radius withLimit:(int)limit;
 
 @end
 
