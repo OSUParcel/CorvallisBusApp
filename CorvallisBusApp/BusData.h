@@ -14,6 +14,7 @@
  #include "BusData.h"
  BusData *bus = [[BusData alloc] init];
  NSArray *data = [bus loadArrivalsForLatitude:44.57181000 Longitude:-123.2910000];
+ // Array is also saved to bus.data
  
  Returns an NSArray of NSDictionaries:
  (
