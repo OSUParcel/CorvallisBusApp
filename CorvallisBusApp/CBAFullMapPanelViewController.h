@@ -11,6 +11,8 @@
 
 @interface CBAFullMapPanelViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *arrivalTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *routeLabel;
 @property (weak, nonatomic) IBOutlet UIButton *dismissButton;
 
 @end
