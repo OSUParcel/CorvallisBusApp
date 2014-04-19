@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		5E2C19ED1902ED4600199075 /* CBAStopTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E2C19EB1902ED4600199075 /* CBAStopTableViewCell.m */; };
 		5E2C19EE1902ED4600199075 /* CBAStopTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E2C19EC1902ED4600199075 /* CBAStopTableViewCell.xib */; };
+		5E9D882719032A4400C41F1A /* BusData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9D882619032A4400C41F1A /* BusData.m */; };
+		5E9D882B19032A5300C41F1A /* Routes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9D882A19032A5300C41F1A /* Routes.m */; };
+		5E9D882F19032A5B00C41F1A /* Stops.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9D882E19032A5B00C41F1A /* Stops.m */; };
+		5E9D883319032A6800C41F1A /* Arrivals.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9D883219032A6800C41F1A /* Arrivals.m */; };
 		5ECD7E7E1900DB81002AE274 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ECD7E7D1900DB81002AE274 /* Foundation.framework */; };
 		5ECD7E801900DB81002AE274 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ECD7E7F1900DB81002AE274 /* CoreGraphics.framework */; };
 		5ECD7E821900DB81002AE274 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ECD7E811900DB81002AE274 /* UIKit.framework */; };
@@ -42,6 +46,14 @@
 		5E2C19EA1902ED4600199075 /* CBAStopTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAStopTableViewCell.h; sourceTree = "<group>"; };
 		5E2C19EB1902ED4600199075 /* CBAStopTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAStopTableViewCell.m; sourceTree = "<group>"; };
 		5E2C19EC1902ED4600199075 /* CBAStopTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBAStopTableViewCell.xib; sourceTree = "<group>"; };
+		5E9D882519032A4400C41F1A /* BusData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusData.h; sourceTree = "<group>"; };
+		5E9D882619032A4400C41F1A /* BusData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusData.m; sourceTree = "<group>"; };
+		5E9D882919032A5300C41F1A /* Routes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Routes.h; sourceTree = "<group>"; };
+		5E9D882A19032A5300C41F1A /* Routes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Routes.m; sourceTree = "<group>"; };
+		5E9D882D19032A5B00C41F1A /* Stops.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stops.h; sourceTree = "<group>"; };
+		5E9D882E19032A5B00C41F1A /* Stops.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stops.m; sourceTree = "<group>"; };
+		5E9D883119032A6800C41F1A /* Arrivals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Arrivals.h; sourceTree = "<group>"; };
+		5E9D883219032A6800C41F1A /* Arrivals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Arrivals.m; sourceTree = "<group>"; };
 		5ECD7E7A1900DB81002AE274 /* CorvallisBusApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CorvallisBusApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ECD7E7D1900DB81002AE274 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5ECD7E7F1900DB81002AE274 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -109,6 +121,42 @@
 				5E2C19EC1902ED4600199075 /* CBAStopTableViewCell.xib */,
 			);
 			name = "Stop Table View Cell";
+			sourceTree = "<group>";
+		};
+		5E9D882419032A3A00C41F1A /* BusData */ = {
+			isa = PBXGroup;
+			children = (
+				5E9D882519032A4400C41F1A /* BusData.h */,
+				5E9D882619032A4400C41F1A /* BusData.m */,
+			);
+			name = BusData;
+			sourceTree = "<group>";
+		};
+		5E9D882819032A4700C41F1A /* Routes */ = {
+			isa = PBXGroup;
+			children = (
+				5E9D882919032A5300C41F1A /* Routes.h */,
+				5E9D882A19032A5300C41F1A /* Routes.m */,
+			);
+			name = Routes;
+			sourceTree = "<group>";
+		};
+		5E9D882C19032A5500C41F1A /* Stops */ = {
+			isa = PBXGroup;
+			children = (
+				5E9D882D19032A5B00C41F1A /* Stops.h */,
+				5E9D882E19032A5B00C41F1A /* Stops.m */,
+			);
+			name = Stops;
+			sourceTree = "<group>";
+		};
+		5E9D883019032A6000C41F1A /* Arrivals */ = {
+			isa = PBXGroup;
+			children = (
+				5E9D883119032A6800C41F1A /* Arrivals.h */,
+				5E9D883219032A6800C41F1A /* Arrivals.m */,
+			);
+			name = Arrivals;
 			sourceTree = "<group>";
 		};
 		5ECD7E711900DB81002AE274 = {
@@ -208,6 +256,10 @@
 		5ED32E661900E26A00692D18 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5E9D883019032A6000C41F1A /* Arrivals */,
+				5E9D882C19032A5500C41F1A /* Stops */,
+				5E9D882819032A4700C41F1A /* Routes */,
+				5E9D882419032A3A00C41F1A /* BusData */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -355,11 +407,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E9D882719032A4400C41F1A /* BusData.m in Sources */,
 				5E2C19ED1902ED4600199075 /* CBAStopTableViewCell.m in Sources */,
 				5EEABBF31902FBF10031A884 /* CBAFullMapPanelViewController.m in Sources */,
+				5E9D882F19032A5B00C41F1A /* Stops.m in Sources */,
 				5ED32E641900E0D200692D18 /* CBAMainViewController.m in Sources */,
+				5E9D882B19032A5300C41F1A /* Routes.m in Sources */,
 				5ECD7E8E1900DB81002AE274 /* AppDelegate.m in Sources */,
 				5ECD7E8A1900DB81002AE274 /* main.m in Sources */,
+				5E9D883319032A6800C41F1A /* Arrivals.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
