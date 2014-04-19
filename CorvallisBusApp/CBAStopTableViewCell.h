@@ -23,8 +23,8 @@
 @property (nonatomic) BOOL isFullScreen;
 @property (nonatomic) NSInteger rowIndex;
 
-@property (weak, nonatomic) IBOutlet UIView *streetView;
-@property (weak, nonatomic) IBOutlet GMSMapView *mapView;
+@property (strong, nonatomic) IBOutlet UIView *backgroundView;
+@property (strong, nonatomic) IBOutlet GMSMapView *mapView;
 @property (weak, nonatomic) IBOutlet FBShimmeringView *arrivalTimeView;
 @property (weak, nonatomic) IBOutlet UILabel *arrivalTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *routeLabel;

@@ -80,14 +80,18 @@
         self.isFullScreen = YES;
         
         // save previous frames
-        self.defaultViewFrame = self.frame;
+        self.defaultViewFrame = [self convertRect:self.bounds toView:nil];
         self.defaultMapViewFrame = self.mapView.frame;
 
         // set up window
         [self setupFullScreenWindow];
         
+        self.frame = CGRectMake(self.defaultViewFrame.origin.x, self.defaultViewFrame.origin.y - 20,
+                                self.defaultViewFrame.size.width, self.defaultViewFrame.size.height);
+        self.mapView.frame = CGRectMake(self.defaultMapViewFrame.origin.x, self.defaultMapViewFrame.origin.y - 20,
+                                        self.defaultMapViewFrame.size.width, self.defaultMapViewFrame.size.height);
+        
         // animate map to full screen
-        GMSCameraUpdate *zoomIn = [GMSCameraUpdate zoomBy:ZOOM_AMOUNT];
         [self.superview.superview bringSubviewToFront:self];
         dispatch_async(dispatch_get_main_queue(), ^{
             [UIView animateWithDuration:ANIMATION_TIME animations:^{
@@ -96,6 +100,7 @@
                 self.mapView.frame = [[UIScreen mainScreen] bounds];
             } completion:^(BOOL finished) {
                 // zoom in
+                GMSCameraUpdate *zoomIn = [GMSCameraUpdate zoomBy:ZOOM_AMOUNT];
                 [self.mapView animateWithCameraUpdate:zoomIn];
                 [self.mapView animateToViewingAngle:FULL_SCREEN_VIEWING_ANGLE];
                 
@@ -124,7 +129,7 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [UIView animateWithDuration:ANIMATION_TIME animations:^{
-            self.fullScreenWindow.frame = [[UIScreen mainScreen] applicationFrame];
+            self.fullScreenWindow.frame = [[UIScreen mainScreen] bounds];
             self.frame = self.defaultViewFrame;
             self.mapView.frame = self.defaultMapViewFrame;
             self.panelViewController.view.frame = CGRectMake(0, [[UIScreen mainScreen] bounds].size.height + 100,
