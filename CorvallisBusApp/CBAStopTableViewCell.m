@@ -7,7 +7,7 @@
 //
 
 #define ANIMATION_TIME 0.5f
-#define DEFAULT_ZOOM_LEVEL 15.0f
+#define DEFAULT_ZOOM_LEVEL 16.0f
 #define DEFAULT_VIEWING_ANGLE 90.0f
 #define ZOOM_AMOUNT 3.0f
 #define FULL_SCREEN_VIEWING_ANGLE 45.0f
@@ -48,6 +48,29 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
+}
+
+# pragma mark - load data
+
+
+- (void)loadData:(NSDictionary*)data
+{
+    self.data = data;
+    
+    // get position
+    CLLocationDegrees latitude = [[data objectForKey:@"Lat"] doubleValue];
+    CLLocationDegrees longitude = [[data objectForKey:@"Long"] doubleValue];
+    CLLocationCoordinate2D position = CLLocationCoordinate2DMake(latitude, longitude);
+    [self.mapView animateToLocation:position];
+
+    // marker
+    GMSMarker *marker = [GMSMarker markerWithPosition:position];
+    marker.title = @"Bus Stop";
+    marker.map = self.mapView;
+    
+    // distance
+    CGFloat distance = [[data objectForKey:@"Distance"] doubleValue] * 0.000621371;
+    self.distanceLabel.text = [NSString stringWithFormat:@"%.2f miles away", distance];
 }
 
 # pragma mark - setup methods
@@ -124,8 +147,12 @@
     self.mapView.settings.zoomGestures = NO;
     
     // reset zoom and viewing angle
+    CLLocationDegrees latitude = [[self.data objectForKey:@"Lat"] doubleValue];
+    CLLocationDegrees longitude = [[self.data objectForKey:@"Long"] doubleValue];
+    CLLocationCoordinate2D position = CLLocationCoordinate2DMake(latitude, longitude);
     [self.mapView animateToZoom:DEFAULT_ZOOM_LEVEL];
     [self.mapView animateToViewingAngle:DEFAULT_VIEWING_ANGLE];
+    [self.mapView animateToLocation:position];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [UIView animateWithDuration:ANIMATION_TIME animations:^{
