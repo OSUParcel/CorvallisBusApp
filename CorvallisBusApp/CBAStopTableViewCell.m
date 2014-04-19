@@ -71,6 +71,12 @@
     // distance
     CGFloat distance = [[data objectForKey:@"Distance"] doubleValue] * 0.000621371;
     self.distanceLabel.text = [NSString stringWithFormat:@"%.2f miles away", distance];
+    
+    // time
+    NSDate *date = [data objectForKey:@"Arrival"];
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    [dateFormatter setDateFormat:@"hh:mm a"];
+    self.arrivalTimeLabel.text = [dateFormatter stringFromDate:date];
 }
 
 # pragma mark - setup methods
@@ -92,6 +98,7 @@
     self.panelViewController.view.frame = CGRectMake(0, [[UIScreen mainScreen] bounds].size.height,
                                                      self.panelViewController.view.frame.size.width, self.panelViewController.view.frame.size.height);
     [self.panelViewController.dismissButton addTarget:self action:@selector(animateFromFullScreen) forControlEvents:UIControlEventTouchUpInside];
+    self.panelViewController.arrivalTimeLabel.text = self.arrivalTimeLabel.text;
     [self.fullScreenWindow.rootViewController.view addSubview:self.panelViewController.view];
 }
 
