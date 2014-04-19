@@ -20,19 +20,24 @@
 -(NSArray *)loadArrivalsForLatitude:(float)lat Longitude:(float)lon
 {
     NSArray *stops = [Stops getStopsWithRadius:500 lat:lat lon:lon];
-    NSMutableDictionary *arrivals = [NSMutableDictionary dictionaryWithDictionary:[Arrivals getArrivalsForStops:stops]];
+    NSDictionary *arrivals = [Arrivals getArrivalsForStops:stops];
+    NSLog(@"Arrivals: %@", arrivals);
     NSMutableArray *sortedStops = [[NSMutableArray alloc] init];
     
     // For each stop, add the lat & long for the corresponding ID key
     for (int i = 0; i < [stops count]; i++) {
         NSString *stopid = [NSString stringWithFormat:@"%@", [[stops objectAtIndex:i] objectForKey:@"ID"]];
         
+        // Skip if there are no upcoming arrivals
+        if ([[arrivals objectForKey:stopid] count] <= 0)
+            continue;
+        
         NSNumber *distance = [NSNumber numberWithFloat: [[[stops objectAtIndex:i] objectForKey:@"Distance"] floatValue]];
         NSNumber *latitude = [NSNumber numberWithFloat: [[[stops objectAtIndex:i] objectForKey:@"Lat"] floatValue]];
         NSNumber *longitude = [NSNumber numberWithFloat: [[[stops objectAtIndex:i] objectForKey:@"Long"] floatValue]];
         
         // Convert the string to an NSDate
-        /*NSDateFormatter *dateFromServerFormatter;
+        NSDateFormatter *dateFromServerFormatter;
         NSDate *dateOfLocation;
         NSString *dateString;
         
@@ -40,12 +45,11 @@
         assert(dateFromServerFormatter != nil);
         
         //"15 Apr 14 16:57 -0700"
-        [dateFromServerFormatter setDateFormat:@"dd' 'MM' 'dd' 'HH':'mm' 'SSSSS"];
-        [dateFromServerFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+        [dateFromServerFormatter setDateFormat:@"dd MMM yy HH:mm z"];
+        [dateFromServerFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:-(3600*7)]];
         
         dateString = [[[arrivals objectForKey:stopid] objectAtIndex:0] objectForKey:@"Expected"];
         dateOfLocation = [dateFromServerFormatter dateFromString:dateString];
-        NSLog(@"iOS date: %@ for string: %@", dateOfLocation, dateString);*/
         
         // Convert the NSDate to a user-visible date string.
         /*
@@ -67,7 +71,7 @@
         NSDictionary *stop = [NSDictionary dictionaryWithObjectsAndKeys:
                               stopid, @"ID",
                               distance, @"Distance",
-                              //dateOfLocation, @"Arrival",
+                              dateOfLocation, @"Arrival",
                               //color, @"Color",
                               latitude, @"Lat",
                               longitude, @"Long",
