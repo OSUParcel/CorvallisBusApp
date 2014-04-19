@@ -10,16 +10,43 @@
 
 @implementation CBAStopTableViewCell
 
+@synthesize tapGestureRecognizer;
+
+@synthesize isFullScreen;
+
 - (void)awakeFromNib
 {
-    // Initialization code
+    // dont clip
+    self.clipsToBounds = NO;
+    self.superview.clipsToBounds = NO;
+    
+    // init gesture recognizer
+    self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(animateToFullScreen:)];
+    self.tapGestureRecognizer.numberOfTapsRequired = 1;
+    [self addGestureRecognizer:self.tapGestureRecognizer];
+    
+    // map view setup
+    self.isFullScreen = NO;
+    [self.mapView setMyLocationEnabled:YES];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
+}
 
-    // Configure the view for the selected state
+- (void)animateToFullScreen:(UITapGestureRecognizer*)sender
+{
+    if (!self.isFullScreen) {
+        self.isFullScreen = YES;
+        // animate map to full screen
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [UIView animateWithDuration:1.0f animations:^{
+                self.mapView.frame = [[UIScreen mainScreen] applicationFrame];
+                self.mapView.bounds = [[UIScreen mainScreen] bounds];
+            }];
+        });
+    }
 }
 
 @end
