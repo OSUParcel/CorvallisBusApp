@@ -27,19 +27,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    self.dismissButton.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.dismissButton.layer.shadowRadius = 4.0f;
-    self.dismissButton.layer.shadowOpacity = 0.75f;
-    self.dismissButton.layer.masksToBounds = NO;
-    self.arrivalTimeLabel.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.arrivalTimeLabel.layer.shadowRadius = 4.0f;
-    self.arrivalTimeLabel.layer.shadowOpacity = 0.75f;
-    self.arrivalTimeLabel.layer.masksToBounds = NO;
-    self.routeLabel.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.routeLabel.layer.shadowRadius = 4.0f;
-    self.routeLabel.layer.shadowOpacity = 0.75f;
-    self.routeLabel.layer.masksToBounds = NO;
 }
 
 - (void)didReceiveMemoryWarning

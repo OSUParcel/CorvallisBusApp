@@ -11,5 +11,6 @@
 @interface UIColor (Hex)
 
 + (UIColor*)colorWithHexValue:(NSString*)hexValue;
++(UIColor *)darkerColorForColor:(UIColor *)c;
 
 @end

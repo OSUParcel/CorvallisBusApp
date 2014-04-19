@@ -45,20 +45,6 @@
     // shimmer setup
     self.arrivalTimeView.contentView = self.arrivalTimeLabel;
     self.arrivalTimeView.shimmering = YES;
-    
-    // shadow
-    self.arrivalTimeLabel.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.arrivalTimeLabel.layer.shadowRadius = 4.0f;
-    self.arrivalTimeLabel.layer.shadowOpacity = 1.0f;
-    self.arrivalTimeLabel.layer.masksToBounds = NO;
-    self.routeLabel.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.routeLabel.layer.shadowRadius = 4.0f;
-    self.routeLabel.layer.shadowOpacity = 1.0f;
-    self.routeLabel.layer.masksToBounds = NO;
-    self.distanceLabel.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.distanceLabel.layer.shadowRadius = 4.0f;
-    self.distanceLabel.layer.shadowOpacity = 1.0f;
-    self.distanceLabel.layer.masksToBounds = NO;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -82,8 +68,7 @@
     // background color
     NSString *hexColor = [data objectForKey:@"Color"];
     UIColor *routeColor = [UIColor colorWithHexValue:hexColor];
-    self.backgroundColor = routeColor;
-    self.panelViewController.view.backgroundColor = routeColor;
+    self.backgroundColor = [UIColor darkerColorForColor:routeColor];
 
     // marker
     GMSMarker *marker = [GMSMarker markerWithPosition:position];
