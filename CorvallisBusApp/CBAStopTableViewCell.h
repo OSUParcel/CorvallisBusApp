@@ -17,6 +17,7 @@
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
 @property (strong, nonatomic) UIWindow *fullScreenWindow;
 @property (strong, nonatomic) CBAFullMapPanelViewController *panelViewController;
+@property (strong, nonatomic) NSDictionary *data;
 
 @property (nonatomic) CGRect defaultViewFrame;
 @property (nonatomic) CGRect defaultMapViewFrame;
@@ -31,5 +32,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 
 - (void)animateToFullScreen:(UITapGestureRecognizer*)sender;
+- (void)loadData:(NSDictionary*)data;
 
 @end

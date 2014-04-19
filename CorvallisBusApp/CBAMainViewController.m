@@ -8,12 +8,15 @@
 
 #import "CBAMainViewController.h"
 #import "CBAStopTableViewCell.h"
+#import "BusData.h"
 
 @interface CBAMainViewController ()
 
 @end
 
 @implementation CBAMainViewController
+
+@synthesize arrivals;
 
 @synthesize stopsTableView;
 
@@ -40,6 +43,16 @@
     
     // status bar
     [self setNeedsStatusBarAppearanceUpdate];
+    
+    // location
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [locationManager startUpdatingLocation];
+    
+    // load data
+    [self loadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,6 +63,16 @@
 
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleDefault;
+}
+
+# pragma mark - load data methods
+
+- (void)loadData
+{
+    BusData *busData = [BusData new];
+    self.arrivals = (NSMutableArray*)[busData loadArrivalsForLatitude:locationManager.location.coordinate.latitude
+                                           Longitude:locationManager.location.coordinate.longitude];
+    [self.stopsTableView reloadData];
 }
 
 # pragma mark - table view delegate methods
@@ -67,13 +90,14 @@
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CBAStopTableViewCell" owner:self options:nil];
         cell = (CBAStopTableViewCell *)[nib objectAtIndex:0];
         cell.rowIndex = indexPath.row;
+        [cell loadData:[self.arrivals objectAtIndex:indexPath.row]];
     }
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 8;
+    return [self.arrivals count];
 }
 
 @end
