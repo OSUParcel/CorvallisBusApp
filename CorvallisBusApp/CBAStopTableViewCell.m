@@ -34,6 +34,7 @@
     
     // map view setup
     self.isFullScreen = NO;
+    self.mapView.indoorEnabled = NO;
     self.mapView.myLocationEnabled = YES;
     self.mapView.settings.scrollGestures = NO;
     self.mapView.settings.zoomGestures = NO;
@@ -71,6 +72,12 @@
     // distance
     CGFloat distance = [[data objectForKey:@"Distance"] doubleValue] * 0.000621371;
     self.distanceLabel.text = [NSString stringWithFormat:@"%.2f miles away", distance];
+    
+    // time
+    NSDate *date = [data objectForKey:@"Arrival"];
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    [dateFormatter setDateFormat:@"hh:mm a"];
+    self.arrivalTimeLabel.text = [dateFormatter stringFromDate:date];
 }
 
 # pragma mark - setup methods
@@ -92,6 +99,7 @@
     self.panelViewController.view.frame = CGRectMake(0, [[UIScreen mainScreen] bounds].size.height,
                                                      self.panelViewController.view.frame.size.width, self.panelViewController.view.frame.size.height);
     [self.panelViewController.dismissButton addTarget:self action:@selector(animateFromFullScreen) forControlEvents:UIControlEventTouchUpInside];
+    self.panelViewController.arrivalTimeLabel.text = self.arrivalTimeLabel.text;
     [self.fullScreenWindow.rootViewController.view addSubview:self.panelViewController.view];
 }
 
@@ -126,6 +134,11 @@
                 GMSCameraUpdate *zoomIn = [GMSCameraUpdate zoomBy:ZOOM_AMOUNT];
                 [self.mapView animateWithCameraUpdate:zoomIn];
                 [self.mapView animateToViewingAngle:FULL_SCREEN_VIEWING_ANGLE];
+                CLLocationDegrees latitude = [[self.data objectForKey:@"Lat"] doubleValue];
+                CLLocationDegrees longitude = [[self.data objectForKey:@"Long"] doubleValue];
+                CGFloat x = latitude - self.mapView.myLocation.coordinate.latitude;
+                CGFloat y = longitude - self.mapView.myLocation.coordinate.longitude;
+                [self.mapView animateToBearing:(atan2(x, y) * 180.0/M_PI)];
                 
                 // set up panel
                 [self setupPanelViewController];
@@ -153,6 +166,7 @@
     [self.mapView animateToZoom:DEFAULT_ZOOM_LEVEL];
     [self.mapView animateToViewingAngle:DEFAULT_VIEWING_ANGLE];
     [self.mapView animateToLocation:position];
+    [self.mapView animateToBearing:0.0f];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [UIView animateWithDuration:ANIMATION_TIME animations:^{
