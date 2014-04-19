@@ -20,13 +20,27 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <color key="sectionIndexBackgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                    <color key="sectionIndexTrackingBackgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Bg-lN-E0c">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="KGK-PG-BkN"/>
+                        <constraint firstAttribute="width" constant="320" id="fkl-fN-NTN"/>
+                    </constraints>
+                </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="w2H-Cc-uCV" secondAttribute="bottom" id="92L-Qz-sWh"/>
                 <constraint firstAttribute="trailing" secondItem="w2H-Cc-uCV" secondAttribute="trailing" id="AYD-Is-0l2"/>
+                <constraint firstItem="1Bg-lN-E0c" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="DqJ-h6-1f2"/>
                 <constraint firstItem="w2H-Cc-uCV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Pu9-zh-qaQ"/>
+                <constraint firstAttribute="trailing" secondItem="1Bg-lN-E0c" secondAttribute="trailing" id="aXA-71-aNT"/>
+                <constraint firstItem="1Bg-lN-E0c" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="kha-N5-Qwr"/>
                 <constraint firstItem="w2H-Cc-uCV" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="tnp-R7-Mfc"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

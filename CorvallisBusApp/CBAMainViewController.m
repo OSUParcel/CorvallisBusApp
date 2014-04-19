@@ -37,12 +37,19 @@
     
     // set top inset
     [self.stopsTableView setContentInset:UIEdgeInsetsMake(20, 0, 0, 0)];
+    
+    // status bar
+    [self setNeedsStatusBarAppearanceUpdate];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleDefault;
 }
 
 # pragma mark - table view delegate methods
