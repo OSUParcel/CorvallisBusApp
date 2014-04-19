@@ -88,6 +88,12 @@
     
     // route
     self.routeLabel.text = [NSString stringWithFormat:@"Route %@", [data objectForKey:@"Route"]];
+    
+    // polyline
+    GMSPolyline *route = [GMSPolyline polylineWithPath:[GMSPath pathFromEncodedPath:[data objectForKey:@"Polyline"]]];
+    route.strokeColor = routeColor;
+    route.strokeWidth = 5.0f;
+    route.map = self.mapView;
 }
 
 # pragma mark - setup methods
@@ -147,11 +153,7 @@
                 GMSCameraUpdate *zoomIn = [GMSCameraUpdate zoomBy:ZOOM_AMOUNT];
                 [self.mapView animateWithCameraUpdate:zoomIn];
                 [self.mapView animateToViewingAngle:FULL_SCREEN_VIEWING_ANGLE];
-                CLLocationDegrees latitude = [[self.data objectForKey:@"Lat"] doubleValue];
-                CLLocationDegrees longitude = [[self.data objectForKey:@"Long"] doubleValue];
-                CGFloat x = latitude - self.mapView.myLocation.coordinate.latitude;
-                CGFloat y = longitude - self.mapView.myLocation.coordinate.longitude;
-                [self.mapView animateToBearing:(atan2(x, y) * 180.0/M_PI)];
+                [self.mapView animateToBearing:[[self.data objectForKey:@"Bearing"] doubleValue]];
                 
                 // set up panel
                 [self setupPanelViewController];
