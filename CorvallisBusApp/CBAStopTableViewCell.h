@@ -12,6 +12,7 @@
 @interface CBAStopTableViewCell : UITableViewCell
 
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
+@property (strong, nonatomic) UIWindow *fullScreenWindow;
 
 @property (nonatomic) BOOL isFullScreen;
 

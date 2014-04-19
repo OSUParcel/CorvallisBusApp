@@ -31,10 +31,10 @@
                     </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="wqF-mV-CSe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="9hW-d8-BPy"/>
                     <constraint firstAttribute="trailing" secondItem="xqq-6R-btf" secondAttribute="trailing" id="HVQ-mW-kAp"/>
-                    <constraint firstItem="wqF-mV-CSe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Mtx-if-g5m"/>
                     <constraint firstItem="xqq-6R-btf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Tuf-uh-4Zs"/>
-                    <constraint firstAttribute="centerY" secondItem="wqF-mV-CSe" secondAttribute="centerY" constant="2" id="fSL-us-mex"/>
+                    <constraint firstItem="wqF-mV-CSe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="22" id="egu-pu-WIQ"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
