@@ -8,8 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+/*
+ Usage:
+ 
+ #include "BusData.h"
+ BusData *bus = [[BusData alloc] init];
+ NSLog(@"Arrivals: %@", [bus loadArrivalsForLatitude:44.57181000 Longitude:-123.2910000]);
+ 
+ */
+
 @interface BusData : NSObject
 
-+(NSDictionary *)getArrivalsForLatitude:(float)lat Longitude:(float)lon;
+-(NSArray *)loadArrivalsForLatitude:(float)lat Longitude:(float)lon;
 
 @end
