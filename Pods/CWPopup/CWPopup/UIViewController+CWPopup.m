@@ -179,7 +179,8 @@ NSString const *CWUseBlurForPopup = @"CWUseBlurForPopup";
     // get current context
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
     // draw current view
-    [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    
+    [[[UIScreen mainScreen] snapshotViewAfterScreenUpdates:YES].layer renderInContext:UIGraphicsGetCurrentContext()];
     // clip context to frame
     CGContextClipToRect(currentContext, frame);
     // get resulting cropped screenshot
