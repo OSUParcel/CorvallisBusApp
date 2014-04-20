@@ -63,9 +63,10 @@
 }
 
 
-+ (CAGradientLayer *)getGradientForColorOne:(UIColor*)colorOne andColorTwo:(UIColor*)colorTwo andFrame:(CGRect)frame
++ (CAGradientLayer *)getGradientForColor:(UIColor*)color andFrame:(CGRect)frame
 {
-    NSArray *colors = [NSArray arrayWithObjects:(id)colorOne.CGColor, colorTwo.CGColor, nil];
+    NSArray *colors = [NSArray arrayWithObjects:(id)color.CGColor,
+                       [UIColor darkerColorForColor:color].CGColor, nil];
     
     NSNumber *one = [NSNumber numberWithFloat:0.0f];
     NSNumber *two = [NSNumber numberWithFloat:0.9f];

@@ -19,12 +19,12 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="82R-di-TTA" customClass="FBShimmeringView">
-                        <rect key="frame" x="20" y="20" width="200" height="60"/>
+                        <rect key="frame" x="20" y="20" width="280" height="60"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="7:09 P.M." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Kg-5E-A4q">
-                        <rect key="frame" x="20" y="20" width="200" height="60"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="7:09 P.M." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Kg-5E-A4q">
+                        <rect key="frame" x="86" y="-59" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="40"/>
@@ -77,9 +77,9 @@
                     <constraint firstItem="xqq-6R-btf" firstAttribute="leading" secondItem="M29-e5-rmF" secondAttribute="trailing" id="Ukk-Ia-Kx4"/>
                     <constraint firstItem="82R-di-TTA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="WNi-Fb-o8i"/>
                     <constraint firstItem="Bro-zn-SOY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="70" id="bi0-3n-Zc0"/>
+                    <constraint firstAttribute="trailing" secondItem="82R-di-TTA" secondAttribute="trailing" constant="20" id="dqV-Uh-ri3"/>
                     <constraint firstItem="M29-e5-rmF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="iQy-bC-GyC"/>
                     <constraint firstAttribute="bottom" secondItem="M29-e5-rmF" secondAttribute="bottom" id="iSx-Qe-gNa"/>
-                    <constraint firstItem="xqq-6R-btf" firstAttribute="leading" secondItem="82R-di-TTA" secondAttribute="trailing" id="s5V-ve-UKM"/>
                     <constraint firstItem="xqq-6R-btf" firstAttribute="leading" secondItem="M29-e5-rmF" secondAttribute="trailing" id="ucV-xx-5Wz"/>
                 </constraints>
             </tableViewCellContentView>

@@ -68,13 +68,13 @@
     // background color
     NSString *hexColor = [data objectForKey:@"Color"];
     UIColor *routeColor = [UIColor colorWithHexValue:hexColor];
-//    CAGradientLayer *gradientLayer = [UIColor getGradientForColorOne:routeColor andColorTwo:[UIColor darkerColorForColor:routeColor] andFrame:self.frame];
+//    CAGradientLayer *gradientLayer = [UIColor getGradientForColor:routeColor andFrame:self.frame];
 //    [self.layer insertSublayer:gradientLayer atIndex:0];
     self.backgroundColor = routeColor;
 
     // marker
     GMSMarker *marker = [GMSMarker markerWithPosition:position];
-    marker.title = @"Bus Stop";
+    marker.title = [NSString stringWithFormat:@"Stop ID %@", [data objectForKey:@"ID"]];
     marker.map = self.mapView;
     marker.icon = [GMSMarker markerImageWithColor:routeColor];
     

@@ -87,6 +87,15 @@
         [self.stopsTableView reloadData];
         self.isRefreshing = NO;
         [self.refreshControl endRefreshing];
+        [self checkForEmptyData];
+    }
+}
+
+- (void)checkForEmptyData
+{
+    if ([self.arrivals count] == 0) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Oh no!" message:@"It looks like no bus routes near you were found." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
     }
 }
 
@@ -104,15 +113,27 @@
     {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CBAStopTableViewCell" owner:self options:nil];
         cell = (CBAStopTableViewCell *)[nib objectAtIndex:0];
-        cell.rowIndex = indexPath.row;
-        [cell loadData:[self.arrivals objectAtIndex:indexPath.row]];
+        if ([self.arrivals count] == 0) {
+            // no data recieved
+            cell.routeLabel.alpha = 0.0f;
+            cell.distanceLabel.alpha = 0.0f;
+            cell.arrivalTimeLabel.text = NSLocalizedString(@"No routes found.", @"bus routes");
+            cell.arrivalTimeLabel.frame = cell.frame;
+            cell.backgroundColor = [UIColor grayColor];
+            cell.userInteractionEnabled = NO;
+            [cell.mapView removeFromSuperview];
+        } else {
+            // data was fetched
+            cell.rowIndex = indexPath.row;
+            [cell loadData:[self.arrivals objectAtIndex:indexPath.row]];
+        }
     }
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.arrivals count];
+    return [self.arrivals count] == 0 ? 1 : [self.arrivals count];
 }
 
 @end
