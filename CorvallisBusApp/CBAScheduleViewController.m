@@ -73,6 +73,7 @@
     NSArray *schedule = [bus loadScheduleForStop:stop];
     self.schedule = schedule;
     self.name = name;
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
