@@ -8,6 +8,8 @@
 
 #import "CBAMainViewController.h"
 #import "CBAStopTableViewCell.h"
+#import "CBAAboutViewController.h"
+#import "AppDelegate.h"
 #import "BusData.h"
 
 @interface CBAMainViewController ()
@@ -15,6 +17,9 @@
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @property (nonatomic) BOOL isRefreshing;
+@property (strong, nonatomic) CBAAboutViewController *aboutViewController;
+
+@property (strong, nonatomic) CWDepthView *depthView;
 
 @end
 
@@ -22,7 +27,7 @@
 
 @synthesize arrivals;
 
-@synthesize stopsTableView;
+@synthesize stopsTableView, aboutViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -61,6 +66,11 @@
     [self.stopsTableView addSubview:self.refreshControl];
     self.isRefreshing = NO;
     
+    // setup depth view
+    self.depthView = [CWDepthView new];
+    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    self.depthView.windowForScreenshot = delegate.window;
+    
     // load data
     [self loadData];
 }
@@ -73,6 +83,27 @@
 
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleDefault;
+}
+
+# pragma mark - abous us view methods
+
+- (void)showAboutView
+{
+    self.aboutViewController = [[CBAAboutViewController alloc] initWithNibName:@"CBAAboutViewController" bundle:nil];
+    CGFloat width = DEPTH_VIEW_SCALE * [[UIScreen mainScreen] bounds].size.width;
+    CGFloat height = DEPTH_VIEW_SCALE * [[UIScreen mainScreen] bounds].size.height;
+    self.aboutViewController.view.frame = CGRectMake(([[UIScreen mainScreen] bounds].size.width - width)/2,
+                                                ([[UIScreen mainScreen] bounds].size.height - height)/2,
+                                                width, height);
+    [self.aboutViewController.backButton addTarget:self action:@selector(dismissAboutView) forControlEvents:UIControlEventTouchUpInside];
+    [self.depthView presentView:self.aboutViewController.view];
+}
+
+- (void)dismissAboutView
+{
+    [self.depthView dismissDepthViewWithCompletion:^{
+        self.aboutViewController = nil;
+    }];
 }
 
 # pragma mark - load data methods
@@ -119,6 +150,9 @@
         } else if (indexPath.row >= [self.arrivals count]) {
             // about cell
             [cell loadStaticViewWithMessage:@"About this App"];
+            cell.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showAboutView)];
+            cell.tapGestureRecognizer.numberOfTapsRequired = 1;
+            [cell addGestureRecognizer:cell.tapGestureRecognizer];
         } else {
             // data was fetched
             cell.rowIndex = indexPath.row;
