@@ -119,7 +119,6 @@
                               nil];
         [schedule addObject:dict];
     }
-    NSLog(@"Arr: %@", schedule);
     return [arrivals objectForKey:stop];
 }
 
