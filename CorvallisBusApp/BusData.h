@@ -26,6 +26,7 @@
          ID = NSString
          Lat = NSNumber
          Long = NSNumber
+         Name = NSString
          Polyline = NSString
          Route = NSString
      },
@@ -37,6 +38,7 @@
          ID = 10251;
          Lat = "44.56837";
          Long = "-123.2774";
+         Name = "Harrison & 23rd";
          Polyline = (long string);
          Route = 3;
      },

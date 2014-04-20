@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) NSArray *schedule;
+@property (nonatomic, strong) NSString *name;
 
 @end
 
@@ -62,14 +63,12 @@
     return [self.schedule count];
 }
 
-- (void)scheduleForStop:(NSString *)stop
+- (void)scheduleForStop:(NSString *)stop name:(NSString *)name
 {
     BusData *bus = [[BusData alloc] init];
     NSArray *schedule = [bus loadScheduleForStop:stop];
     self.schedule = schedule;
-    /*for (int i = 0; i < [schedule count]; i++) {
-        
-    }*/
+    self.name = name;
 }
 
 - (void)didReceiveMemoryWarning

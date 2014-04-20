@@ -36,6 +36,7 @@
         NSNumber *latitude = [NSNumber numberWithFloat: [[[stops objectAtIndex:i] objectForKey:@"Lat"] floatValue]];
         NSNumber *longitude = [NSNumber numberWithFloat: [[[stops objectAtIndex:i] objectForKey:@"Long"] floatValue]];
         NSNumber *bearing = [NSNumber numberWithFloat: [[[stops objectAtIndex:i] objectForKey:@"Bearing"] floatValue]];
+        NSString *name = [NSString stringWithFormat:@"%@", [[stops objectAtIndex:i] objectForKey:@"Name"]];;
         
         // Find out the route name and color
         NSString *route = [[[arrivals objectForKey:stopid] objectAtIndex:0] objectForKey:@"Route"];
@@ -66,6 +67,7 @@
         // Add this information to a new element in the list
         NSDictionary *stop = [NSDictionary dictionaryWithObjectsAndKeys:
                               stopid, @"ID",
+                              name, @"Name",
                               distance, @"Distance",
                               dateOfLocation, @"Arrival",
                               route, @"Route",
