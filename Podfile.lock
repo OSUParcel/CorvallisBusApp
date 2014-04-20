@@ -1,18 +1,12 @@
 PODS:
-  - CWPopup (1.2.5)
-  - FXBlurView (1.6)
   - Google-Maps-iOS-SDK (1.7.2)
   - Shimmer (1.0.1)
 
 DEPENDENCIES:
-  - CWPopup (~> 1.2.4)
-  - FXBlurView (~> 1.6)
   - Google-Maps-iOS-SDK (~> 1.7.2)
   - Shimmer (~> 1.0.1)
 
 SPEC CHECKSUMS:
-  CWPopup: 140b988b9e4e6418c8cda6588790c8327d61fd7d
-  FXBlurView: 06f9f602d529c8e2d87648293d73a618621d3d81
   Google-Maps-iOS-SDK: 14de93ec6d63ac83655a5029e3e7788c5ba70900
   Shimmer: a1b92685f04ae7363e655f636a41a276dbb1507e
 

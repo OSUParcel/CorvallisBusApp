@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CBALegalViewController : UIViewController
+@interface CBALegalViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (strong, nonatomic) NSMutableArray *legalItems;
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
