@@ -20,6 +20,7 @@
 @property (strong, nonatomic) CBAScheduleViewController *scheduleViewController;
 @property (strong, nonatomic) CWDepthView *depthView;
 @property (strong, nonatomic) NSString *stop;
+@property (strong, nonatomic) NSString *routeName;
 
 - (void)routeTapped:(UITapGestureRecognizer*)sender;
 

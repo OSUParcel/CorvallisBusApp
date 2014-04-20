@@ -16,7 +16,7 @@
 
 @implementation CBAFullMapPanelViewController
 
-@synthesize scheduleViewController, tapGestureRecognizer, depthView, stop;
+@synthesize scheduleViewController, tapGestureRecognizer, depthView, stop, routeName;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
