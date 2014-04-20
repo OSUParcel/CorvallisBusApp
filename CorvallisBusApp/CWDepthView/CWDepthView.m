@@ -152,7 +152,6 @@
 
 @interface CWDepthView ()
 
-@property (strong, nonatomic) UIView *screenshotView;
 @property (strong, nonatomic) UIView *blurredScreenshotView;
 @property (strong, nonatomic) UIView *fadeView;
 @property (strong, nonatomic) UIView *presentedView;

@@ -18,6 +18,7 @@
 
 @property (strong, nonatomic) UIWindow *depthViewWindow;
 @property (strong, nonatomic) UIView *view;
+@property (strong, nonatomic) UIView *screenshotView;
 
 - (void)startDepthViewWithCompletion:(void (^)(void)) completion;
 - (void)dismissDepthViewWithCompletion:(void (^)(void)) completion;

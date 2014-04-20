@@ -46,6 +46,8 @@
 - (void)routeTapped:(UITapGestureRecognizer*)sender
 {
     self.scheduleViewController = [[CBAScheduleViewController alloc] initWithNibName:@"CBAScheduleViewController" bundle:nil];
+    // TO BE TESTED ONCE THERE ARE BUS STOPS TO BE TESTED
+    // self.scheduleViewController.view.transform = CGAffineTransformMakeScale(DEPTH_VIEW_SCALE, DEPTH_VIEW_SCALE);
     self.depthView = [CWDepthView new];
     [self.depthView presentView:self.scheduleViewController.view];
     [self.scheduleViewController scheduleForStop:self.stop name:self.routeName];
