@@ -16,7 +16,7 @@
 
 @implementation CBAFullMapPanelViewController
 
-@synthesize scheduleViewController, tapGestureRecognizer, depthView;
+@synthesize scheduleViewController, tapGestureRecognizer, depthView, stop;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -48,9 +48,8 @@
     self.scheduleViewController = [[CBAScheduleViewController alloc] initWithNibName:@"CBAScheduleViewController" bundle:nil];
     self.depthView = [CWDepthView new];
     [self.depthView presentView:self.scheduleViewController.view];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self dismissScheduleView];
-    });
+    [self.scheduleViewController scheduleForStop:self.stop];
+    [self.scheduleViewController.dismissButton addTarget:self action:@selector(dismissScheduleView) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)dismissScheduleView

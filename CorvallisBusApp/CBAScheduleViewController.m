@@ -34,26 +34,30 @@
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    
+    self.tableView.backgroundColor = [UIColor clearColor];
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    static NSString *CellIdentifier = @"CBAStopTableViewCellIdentifier";
+    static NSString *CellIdentifier = @"ScheduleTableCellIdentifier";
     
     UITableViewCell *cell = (UITableViewCell*) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil)
     {
+        cell = [UITableViewCell new];
+        cell.backgroundColor = [UIColor clearColor];
         // time
         NSDate *date = [[self.schedule objectAtIndex:indexPath.row] objectForKey:@"Expected"];
         NSDateFormatter *dateFormatter = [NSDateFormatter new];
         [dateFormatter setDateFormat:@"hh:mm a"];
-        cell.textLabel.text = [dateFormatter stringFromDate:date];
-        
+        NSString *expected = [dateFormatter stringFromDate:date];
         NSDate *date2 = [[self.schedule objectAtIndex:indexPath.row] objectForKey:@"Scheduled"];
-        cell.detailTextLabel.text = [dateFormatter stringFromDate:date2];
+        NSString *scheduled = [dateFormatter stringFromDate:date2];
         
+        cell.textLabel.text = [NSString stringWithFormat:@"Scheduled: %@, Expected: %@", scheduled, expected];
+        cell.textLabel.textColor = [UIColor whiteColor];
+        cell.textLabel.font = [UIFont systemFontOfSize:12];
     }
     return cell;
 }

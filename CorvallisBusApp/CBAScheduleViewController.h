@@ -10,6 +10,8 @@
 
 @interface CBAScheduleViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UIButton *dismissButton;
+
 - (void)scheduleForStop:(NSString *)stop;
 
 @end
