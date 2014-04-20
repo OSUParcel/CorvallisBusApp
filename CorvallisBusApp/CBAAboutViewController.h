@@ -11,11 +11,11 @@
 @interface CBAAboutViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIButton *cezaryWojcikButton;
-@property (weak, nonatomic) IBOutlet UIButton *russelBarnesButton;
+@property (weak, nonatomic) IBOutlet UIButton *russellBarnesButton;
 @property (weak, nonatomic) IBOutlet UIButton *legalButton;
 
 - (IBAction)cezaryWojcikButtonPressed:(UIButton *)sender;
-- (IBAction)russelBarnesButtonPressed:(UIButton *)sender;
+- (IBAction)russellBarnesButtonPressed:(UIButton *)sender;
 - (IBAction)legalButtonPressed:(UIButton *)sender;
 
 @end

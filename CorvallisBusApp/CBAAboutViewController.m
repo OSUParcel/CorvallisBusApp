@@ -57,7 +57,7 @@
      openURL:[NSURL URLWithString:@"http://cezarywojcik.com"]];
 }
 
-- (IBAction)russelBarnesButtonPressed:(UIButton *)sender
+- (IBAction)russellBarnesButtonPressed:(UIButton *)sender
 {
 }
 
