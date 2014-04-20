@@ -18,7 +18,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="CpI-Cg-rUF">
-                    <rect key="frame" x="16" y="66" width="286" height="432"/>
+                    <rect key="frame" x="16" y="100" width="286" height="368"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <color key="sectionIndexColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -26,7 +26,7 @@
                     <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </tableView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upcoming Arrivals" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6r3-bb-s9U">
-                    <rect key="frame" x="18" y="36" width="282" height="21"/>
+                    <rect key="frame" x="18" y="59" width="282" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="282" id="3Lg-vJ-dVN"/>
@@ -36,7 +36,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9in-vf-911">
-                    <rect key="frame" x="132" y="506" width="54" height="30"/>
+                    <rect key="frame" x="132" y="488" width="54" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Dismiss">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -48,11 +48,11 @@
             <constraints>
                 <constraint firstItem="CpI-Cg-rUF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="50p-AH-xMh"/>
                 <constraint firstAttribute="centerX" secondItem="6r3-bb-s9U" secondAttribute="centerX" constant="1" id="7LB-ZR-Vsg"/>
-                <constraint firstAttribute="bottom" secondItem="CpI-Cg-rUF" secondAttribute="bottom" constant="70" id="QVO-PH-Ybh"/>
-                <constraint firstItem="CpI-Cg-rUF" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="66" id="g4u-om-1FT"/>
+                <constraint firstItem="9in-vf-911" firstAttribute="top" secondItem="CpI-Cg-rUF" secondAttribute="bottom" constant="20" id="Dx1-dh-MkT"/>
+                <constraint firstAttribute="bottom" secondItem="CpI-Cg-rUF" secondAttribute="bottom" constant="100" id="QVO-PH-Ybh"/>
+                <constraint firstItem="CpI-Cg-rUF" firstAttribute="top" secondItem="6r3-bb-s9U" secondAttribute="bottom" constant="20" id="SqN-RA-QBn"/>
+                <constraint firstItem="CpI-Cg-rUF" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="g4u-om-1FT"/>
                 <constraint firstAttribute="centerX" secondItem="9in-vf-911" secondAttribute="centerX" constant="1" id="gwL-dX-QlV"/>
-                <constraint firstAttribute="bottom" secondItem="9in-vf-911" secondAttribute="bottom" constant="32" id="lpM-GG-bge"/>
-                <constraint firstItem="6r3-bb-s9U" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="36" id="uh4-GH-EpI"/>
                 <constraint firstAttribute="trailing" secondItem="CpI-Cg-rUF" secondAttribute="trailing" constant="18" id="wgl-Xs-IPV"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
