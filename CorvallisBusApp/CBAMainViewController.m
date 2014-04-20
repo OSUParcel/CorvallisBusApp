@@ -12,6 +12,10 @@
 
 @interface CBAMainViewController ()
 
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
+
+@property (nonatomic) BOOL isRefreshing;
+
 @end
 
 @implementation CBAMainViewController
@@ -51,6 +55,12 @@
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [locationManager startUpdatingLocation];
     
+    // refresh control
+    self.refreshControl = [UIRefreshControl new];
+    [self.refreshControl addTarget:self action:@selector(loadData) forControlEvents:UIControlEventValueChanged];
+    [self.stopsTableView addSubview:self.refreshControl];
+    self.isRefreshing = NO;
+    
     // load data
     [self loadData];
 }
@@ -69,10 +79,15 @@
 
 - (void)loadData
 {
-    BusData *busData = [BusData new];
-    self.arrivals = (NSMutableArray*)[busData loadArrivalsForLatitude:locationManager.location.coordinate.latitude
-                                           Longitude:locationManager.location.coordinate.longitude];
-    [self.stopsTableView reloadData];
+    if (!self.isRefreshing) {
+        self.isRefreshing = YES;
+        BusData *busData = [BusData new];
+        self.arrivals = (NSMutableArray*)[busData loadArrivalsForLatitude:locationManager.location.coordinate.latitude
+                                                                Longitude:locationManager.location.coordinate.longitude];
+        [self.stopsTableView reloadData];
+        self.isRefreshing = NO;
+        [self.refreshControl endRefreshing];
+    }
 }
 
 # pragma mark - table view delegate methods

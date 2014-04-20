@@ -68,6 +68,8 @@
     // background color
     NSString *hexColor = [data objectForKey:@"Color"];
     UIColor *routeColor = [UIColor colorWithHexValue:hexColor];
+//    CAGradientLayer *gradientLayer = [UIColor getGradientForColorOne:routeColor andColorTwo:[UIColor darkerColorForColor:routeColor] andFrame:self.frame];
+//    [self.layer insertSublayer:gradientLayer atIndex:0];
     self.backgroundColor = routeColor;
 
     // marker

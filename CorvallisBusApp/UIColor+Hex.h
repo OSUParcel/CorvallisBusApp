@@ -11,6 +11,7 @@
 @interface UIColor (Hex)
 
 + (UIColor*)colorWithHexValue:(NSString*)hexValue;
-+(UIColor *)darkerColorForColor:(UIColor *)c;
++ (UIColor *)darkerColorForColor:(UIColor *)c;
++ (CAGradientLayer *)getGradientForColorOne:(UIColor*)colorOne andColorTwo:(UIColor*)colorTwo andFrame:(CGRect)frame;
 
 @end

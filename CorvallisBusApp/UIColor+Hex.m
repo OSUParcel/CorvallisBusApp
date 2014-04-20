@@ -63,4 +63,21 @@
 }
 
 
++ (CAGradientLayer *)getGradientForColorOne:(UIColor*)colorOne andColorTwo:(UIColor*)colorTwo andFrame:(CGRect)frame
+{
+    NSArray *colors = [NSArray arrayWithObjects:(id)colorOne.CGColor, colorTwo.CGColor, nil];
+    
+    NSNumber *one = [NSNumber numberWithFloat:0.0f];
+    NSNumber *two = [NSNumber numberWithFloat:0.9f];
+    
+    NSArray *locations = [NSArray arrayWithObjects:(id)one, two, nil];
+    
+    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+    gradientLayer.frame = frame;
+    gradientLayer.colors = colors;
+    gradientLayer.locations = locations;
+    
+    return gradientLayer;
+}
+
 @end
