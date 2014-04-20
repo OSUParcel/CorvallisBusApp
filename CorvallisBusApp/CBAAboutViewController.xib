@@ -43,11 +43,11 @@
                         <action selector="cezaryWojcikButtonPressed:" destination="-1" eventType="touchUpInside" id="gdH-n5-wft"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ex0-EM-vZJ">
-                    <rect key="frame" x="100" y="293" width="121" height="36"/>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ex0-EM-vZJ">
+                    <rect key="frame" x="98" y="293" width="125" height="36"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
-                    <state key="normal" title="Russel Barnes">
+                    <state key="normal" title="Russell Barnes">
                         <color key="titleColor" red="1" green="0.84346691689999997" blue="0.1068347038" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
