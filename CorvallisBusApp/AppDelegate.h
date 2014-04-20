@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (weak, nonatomic) UIWindow *mapWindow;
+@property (weak, nonatomic) UIWindow *depthViewWindow;
 
 @property (strong, nonatomic) CBAMainViewController *mainViewController;
 

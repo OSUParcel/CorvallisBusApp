@@ -19,5 +19,6 @@
 @property (strong, nonatomic) IBOutlet UITableView *stopsTableView;
 
 - (void)loadData;
+- (void)dismissAboutView;
 
 @end

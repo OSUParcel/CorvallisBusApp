@@ -13,7 +13,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *cezaryWojcikButton;
 @property (weak, nonatomic) IBOutlet UIButton *russelBarnesButton;
 @property (weak, nonatomic) IBOutlet UIButton *legalButton;
-@property (weak, nonatomic) IBOutlet UIButton *backButton;
 
 - (IBAction)cezaryWojcikButtonPressed:(UIButton *)sender;
 - (IBAction)russelBarnesButtonPressed:(UIButton *)sender;

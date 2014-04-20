@@ -9,17 +9,18 @@
 #import "CBAMainViewController.h"
 #import "CBAStopTableViewCell.h"
 #import "CBAAboutViewController.h"
+#import "CBAAboutNavigationViewController.h"
 #import "AppDelegate.h"
 #import "BusData.h"
 
 @interface CBAMainViewController ()
 
-@property (strong, nonatomic) UIRefreshControl *refreshControl;
-
 @property (nonatomic) BOOL isRefreshing;
-@property (strong, nonatomic) CBAAboutViewController *aboutViewController;
 
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
+@property (strong, nonatomic) CBAAboutViewController *aboutViewController;
 @property (strong, nonatomic) CWDepthView *depthView;
+@property (strong, nonatomic) CBAAboutNavigationViewController *aboutNavigationController;
 
 @end
 
@@ -27,7 +28,7 @@
 
 @synthesize arrivals;
 
-@synthesize stopsTableView, aboutViewController;
+@synthesize stopsTableView, aboutViewController, aboutNavigationController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -92,17 +93,18 @@
     self.aboutViewController = [[CBAAboutViewController alloc] initWithNibName:@"CBAAboutViewController" bundle:nil];
     CGFloat width = DEPTH_VIEW_SCALE * [[UIScreen mainScreen] bounds].size.width;
     CGFloat height = DEPTH_VIEW_SCALE * [[UIScreen mainScreen] bounds].size.height;
-    self.aboutViewController.view.frame = CGRectMake(([[UIScreen mainScreen] bounds].size.width - width)/2,
-                                                ([[UIScreen mainScreen] bounds].size.height - height)/2,
-                                                width, height);
-    [self.aboutViewController.backButton addTarget:self action:@selector(dismissAboutView) forControlEvents:UIControlEventTouchUpInside];
-    [self.depthView presentView:self.aboutViewController.view];
+    self.aboutNavigationController = [[CBAAboutNavigationViewController alloc] initWithRootViewController:self.aboutViewController];
+    self.aboutNavigationController.view.frame = CGRectMake(([[UIScreen mainScreen] bounds].size.width - width)/2,
+                                                           ([[UIScreen mainScreen] bounds].size.height - height)/2,
+                                                           width + 3, height);
+    [self.depthView presentView:self.aboutNavigationController.view];
 }
 
 - (void)dismissAboutView
 {
     [self.depthView dismissDepthViewWithCompletion:^{
         self.aboutViewController = nil;
+        self.aboutNavigationController = nil;
     }];
 }
 
@@ -125,7 +127,11 @@
 - (void)checkForEmptyData
 {
     if ([self.arrivals count] == 0) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Oh no!" message:@"It looks like no bus routes near you were found." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Oh no!"
+                                                            message:@"It looks like no bus routes near you were found."
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
         [alertView show];
     }
 }

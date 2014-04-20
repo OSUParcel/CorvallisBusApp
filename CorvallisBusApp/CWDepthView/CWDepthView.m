@@ -209,7 +209,10 @@
 # pragma mark - setup methods
 
 - (void)createScreenshotView
-{    UIImage *screenshot = [self getScreenImageFromView:self.windowForScreenshot.rootViewController.view];
+{
+    UIImage *screenshot = [self getScreenImageFromView:self.windowForScreenshot.rootViewController.view];
+    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    delegate.depthViewWindow = self.depthViewWindow;
     UIImage *blurredScreenshot = [screenshot applyBlurWithRadius:DEPTH_VIEW_BLUR_RADIUS tintColor:[UIColor clearColor] saturationDeltaFactor:1.0f maskImage:nil];
     self.screenshotView = [[UIImageView alloc] initWithImage:screenshot];
     self.screenshotView.alpha = 0.0f;

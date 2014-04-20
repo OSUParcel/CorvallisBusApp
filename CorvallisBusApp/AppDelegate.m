@@ -26,6 +26,10 @@
     
     // root view controller
     self.mainViewController = [[CBAMainViewController alloc] initWithNibName:@"CBAMainViewController" bundle:nil];
+    self.window.tintColor = [UIColor colorWithRed:252.0/255.0
+                                            green:194.0/255.0
+                                             blue:0
+                                            alpha:1.0];
     self.window.rootViewController = self.mainViewController;
     
     [self.window makeKeyAndVisible];
