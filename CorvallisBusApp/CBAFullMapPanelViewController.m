@@ -48,7 +48,7 @@
     self.scheduleViewController = [[CBAScheduleViewController alloc] initWithNibName:@"CBAScheduleViewController" bundle:nil];
     self.depthView = [CWDepthView new];
     [self.depthView presentView:self.scheduleViewController.view];
-    [self.scheduleViewController scheduleForStop:self.stop];
+    [self.scheduleViewController scheduleForStop:self.stop name:self.routeName];
     [self.scheduleViewController.dismissButton addTarget:self action:@selector(dismissScheduleView) forControlEvents:UIControlEventTouchUpInside];
 }
 

@@ -13,6 +13,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *dismissButton;
 @property (weak, nonatomic) IBOutlet UILabel *routeNameLabel;
 
-- (void)scheduleForStop:(NSString *)stop;
+- (void)scheduleForStop:(NSString *)stop name:(NSString *)name;
 
 @end

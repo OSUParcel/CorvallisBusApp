@@ -14,7 +14,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) NSArray *schedule;
-@property (nonatomic, strong) NSString *name;
 
 @end
 
@@ -72,7 +71,7 @@
     BusData *bus = [[BusData alloc] init];
     NSArray *schedule = [bus loadScheduleForStop:stop];
     self.schedule = schedule;
-    self.name = name;
+    self.routeNameLabel.text = name;
     [self.tableView reloadData];
 }
 

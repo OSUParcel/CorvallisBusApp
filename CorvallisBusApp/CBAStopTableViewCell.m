@@ -118,11 +118,12 @@
                                                      self.panelViewController.view.frame.size.width, self.panelViewController.view.frame.size.height);
     [self.panelViewController.dismissButton addTarget:self action:@selector(animateFromFullScreen) forControlEvents:UIControlEventTouchUpInside];
     self.panelViewController.arrivalTimeLabel.text = self.arrivalTimeLabel.text;
-    self.panelViewController.routeLabel.text = self.routeLabel.text;
+    self.panelViewController.routeLabel.text = @"Route Details";
     NSString *hexColor = [self.data objectForKey:@"Color"];
     UIColor *routeColor = [UIColor colorWithHexValue:hexColor];
     self.panelViewController.view.backgroundColor = routeColor;
     self.panelViewController.stop = [self.data objectForKey:@"ID"];
+    self.panelViewController.routeName = [self.data objectForKey:@"Name"];
     [self.fullScreenWindow.rootViewController.view addSubview:self.panelViewController.view];
 }
 
