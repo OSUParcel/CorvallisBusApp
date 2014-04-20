@@ -122,6 +122,7 @@
     NSString *hexColor = [self.data objectForKey:@"Color"];
     UIColor *routeColor = [UIColor colorWithHexValue:hexColor];
     self.panelViewController.view.backgroundColor = routeColor;
+    self.panelViewController.stop = [self.data objectForKey:@"ID"];
     [self.fullScreenWindow.rootViewController.view addSubview:self.panelViewController.view];
 }
 
