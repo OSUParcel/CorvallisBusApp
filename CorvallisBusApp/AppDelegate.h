@@ -12,6 +12,7 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (weak, nonatomic) UIWindow *mapWindow;
 
 @property (strong, nonatomic) CBAMainViewController *mainViewController;
 

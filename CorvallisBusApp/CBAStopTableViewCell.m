@@ -107,6 +107,8 @@
     self.fullScreenWindow.rootViewController = [UIViewController new];
     [self.fullScreenWindow.rootViewController.view addSubview:self];
     [self.fullScreenWindow makeKeyAndVisible];
+    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    delegate.mapWindow = self.fullScreenWindow;
 }
 
 - (void)setupPanelViewController
