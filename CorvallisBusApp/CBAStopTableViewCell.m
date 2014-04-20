@@ -116,6 +116,7 @@
                                                      self.panelViewController.view.frame.size.width, self.panelViewController.view.frame.size.height);
     [self.panelViewController.dismissButton addTarget:self action:@selector(animateFromFullScreen) forControlEvents:UIControlEventTouchUpInside];
     self.panelViewController.arrivalTimeLabel.text = self.arrivalTimeLabel.text;
+    self.panelViewController.routeLabel.text = self.routeLabel.text;
     NSString *hexColor = [self.data objectForKey:@"Color"];
     UIColor *routeColor = [UIColor colorWithHexValue:hexColor];
     self.panelViewController.view.backgroundColor = routeColor;
@@ -153,7 +154,7 @@
                 GMSCameraUpdate *zoomIn = [GMSCameraUpdate zoomBy:ZOOM_AMOUNT];
                 [self.mapView animateWithCameraUpdate:zoomIn];
                 [self.mapView animateToViewingAngle:FULL_SCREEN_VIEWING_ANGLE];
-                [self.mapView animateToBearing:[[self.data objectForKey:@"Bearing"] doubleValue]];
+                // [self.mapView animateToBearing:[[self.data objectForKey:@"Bearing"] doubleValue]];
                 
                 // set up panel
                 [self setupPanelViewController];

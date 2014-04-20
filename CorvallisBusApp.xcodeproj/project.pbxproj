@@ -14,6 +14,8 @@
 		5E9D882F19032A5B00C41F1A /* Stops.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9D882E19032A5B00C41F1A /* Stops.m */; };
 		5E9D883319032A6800C41F1A /* Arrivals.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9D883219032A6800C41F1A /* Arrivals.m */; };
 		5E9D88381903379F00C41F1A /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9D88371903379F00C41F1A /* UIColor+Hex.m */; };
+		5E9D8842190344B000C41F1A /* CBAScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9D8840190344B000C41F1A /* CBAScheduleViewController.m */; };
+		5E9D8843190344B000C41F1A /* CBAScheduleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E9D8841190344B000C41F1A /* CBAScheduleViewController.xib */; };
 		5ECD7E7E1900DB81002AE274 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ECD7E7D1900DB81002AE274 /* Foundation.framework */; };
 		5ECD7E801900DB81002AE274 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ECD7E7F1900DB81002AE274 /* CoreGraphics.framework */; };
 		5ECD7E821900DB81002AE274 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ECD7E811900DB81002AE274 /* UIKit.framework */; };
@@ -57,6 +59,9 @@
 		5E9D883219032A6800C41F1A /* Arrivals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Arrivals.m; sourceTree = "<group>"; };
 		5E9D88361903379F00C41F1A /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		5E9D88371903379F00C41F1A /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		5E9D883F190344B000C41F1A /* CBAScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAScheduleViewController.h; sourceTree = "<group>"; };
+		5E9D8840190344B000C41F1A /* CBAScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAScheduleViewController.m; sourceTree = "<group>"; };
+		5E9D8841190344B000C41F1A /* CBAScheduleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBAScheduleViewController.xib; sourceTree = "<group>"; };
 		5ECD7E7A1900DB81002AE274 /* CorvallisBusApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CorvallisBusApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ECD7E7D1900DB81002AE274 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5ECD7E7F1900DB81002AE274 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -179,6 +184,16 @@
 			name = "UIColor+Hex";
 			sourceTree = "<group>";
 		};
+		5E9D883E190344A000C41F1A /* Schedule View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5E9D883F190344B000C41F1A /* CBAScheduleViewController.h */,
+				5E9D8840190344B000C41F1A /* CBAScheduleViewController.m */,
+				5E9D8841190344B000C41F1A /* CBAScheduleViewController.xib */,
+			);
+			name = "Schedule View Controller";
+			sourceTree = "<group>";
+		};
 		5ECD7E711900DB81002AE274 = {
 			isa = PBXGroup;
 			children = (
@@ -258,6 +273,7 @@
 		5ED32E5F1900E0B000692D18 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5E9D883E190344A000C41F1A /* Schedule View Controller */,
 				5EEABBEF1902FBD40031A884 /* Full Map Panel View Controller */,
 				5ED32E601900E0C400692D18 /* Main View Controller */,
 			);
@@ -374,6 +390,7 @@
 			files = (
 				5E2C19EE1902ED4600199075 /* CBAStopTableViewCell.xib in Resources */,
 				5ECD7E881900DB81002AE274 /* InfoPlist.strings in Resources */,
+				5E9D8843190344B000C41F1A /* CBAScheduleViewController.xib in Resources */,
 				5EEABBF41902FBF10031A884 /* CBAFullMapPanelViewController.xib in Resources */,
 				5ECD7E901900DB81002AE274 /* Images.xcassets in Resources */,
 				5ED32E651900E0D200692D18 /* CBAMainViewController.xib in Resources */,
@@ -435,6 +452,7 @@
 				5E9D882F19032A5B00C41F1A /* Stops.m in Sources */,
 				5ED32E641900E0D200692D18 /* CBAMainViewController.m in Sources */,
 				5E9D882B19032A5300C41F1A /* Routes.m in Sources */,
+				5E9D8842190344B000C41F1A /* CBAScheduleViewController.m in Sources */,
 				5ECD7E8E1900DB81002AE274 /* AppDelegate.m in Sources */,
 				5ECD7E8A1900DB81002AE274 /* main.m in Sources */,
 				5E9D883319032A6800C41F1A /* Arrivals.m in Sources */,

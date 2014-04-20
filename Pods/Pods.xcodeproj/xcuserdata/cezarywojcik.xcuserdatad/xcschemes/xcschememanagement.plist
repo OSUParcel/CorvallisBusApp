@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-CWPopup.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-FXBlurView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,42 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0C65A4C1A4444C11BB3CDB0D</key>
+		<key>5A21AC7CD6BF45CBBCEACBC8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0E39C11DEF3E4AD2B641AA51</key>
+		<key>B0E009F5EBC441CD8F8D4D0D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>49CAF938F3E94CBCB498B781</key>
+		<key>D4279CC1B3CB4ADD8234A923</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4A972F9E68C645D58046901F</key>
+		<key>DE290C53BD2044D9BC0C5BE0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5E8DD569D47248A484D4843F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7244E1BFF04548E98C1DCE16</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D6C681FC1FF549058CBDAF8D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EE0DF49E08F3414999265F21</key>
+		<key>F32AC8BFAC97458DAEFFEECE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
