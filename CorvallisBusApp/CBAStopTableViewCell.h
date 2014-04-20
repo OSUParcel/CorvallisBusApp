@@ -32,6 +32,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 
 - (void)animateToFullScreen:(UITapGestureRecognizer*)sender;
+- (void)loadStaticViewWithMessage:(NSString*)message;
 - (void)loadData:(NSDictionary*)data;
 
 @end

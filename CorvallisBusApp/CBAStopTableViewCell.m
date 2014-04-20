@@ -28,11 +28,6 @@
     self.clipsToBounds = NO;
     self.superview.clipsToBounds = NO;
     
-    // init gesture recognizer
-    self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(animateToFullScreen:)];
-    self.tapGestureRecognizer.numberOfTapsRequired = 1;
-    [self addGestureRecognizer:self.tapGestureRecognizer];
-    
     // map view setup
     self.isFullScreen = NO;
     self.mapView.indoorEnabled = NO;
@@ -54,10 +49,26 @@
 
 # pragma mark - load data
 
+- (void)loadStaticViewWithMessage:(NSString*)message
+{
+    self.routeLabel.alpha = 0.0f;
+    self.distanceLabel.alpha = 0.0f;
+    self.arrivalTimeLabel.text = NSLocalizedString(message, nil);
+    self.arrivalTimeLabel.textAlignment = NSTextAlignmentCenter;
+    self.backgroundColor = [UIColor clearColor];
+    CAGradientLayer *gradientLayer = [UIColor getGradientForColor:[UIColor grayColor] andFrame:self.bounds];
+    [self.layer insertSublayer:gradientLayer atIndex:0];
+    [self.mapView removeFromSuperview];
+}
 
 - (void)loadData:(NSDictionary*)data
 {
     self.data = data;
+    
+    // init gesture recognizer
+    self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(animateToFullScreen:)];
+    self.tapGestureRecognizer.numberOfTapsRequired = 1;
+    [self addGestureRecognizer:self.tapGestureRecognizer];
     
     // get position
     CLLocationDegrees latitude = [[data objectForKey:@"Lat"] doubleValue];
@@ -68,9 +79,9 @@
     // background color
     NSString *hexColor = [data objectForKey:@"Color"];
     UIColor *routeColor = [UIColor colorWithHexValue:hexColor];
-//    CAGradientLayer *gradientLayer = [UIColor getGradientForColor:routeColor andFrame:self.frame];
-//    [self.layer insertSublayer:gradientLayer atIndex:0];
-    self.backgroundColor = routeColor;
+    self.backgroundColor = [UIColor clearColor];
+    CAGradientLayer *gradientLayer = [UIColor getGradientForColor:routeColor andFrame:self.frame];
+    [self.layer insertSublayer:gradientLayer atIndex:0];
 
     // marker
     GMSMarker *marker = [GMSMarker markerWithPosition:position];

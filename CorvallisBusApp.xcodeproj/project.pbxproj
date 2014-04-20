@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5E237E871903495E00D9C6CF /* CWDepthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E237E861903495E00D9C6CF /* CWDepthView.m */; };
+		5E237E891904413E00D9C6CF /* CBAMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E237E881904413E00D9C6CF /* CBAMainViewController.m */; };
 		5E2C19ED1902ED4600199075 /* CBAStopTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E2C19EB1902ED4600199075 /* CBAStopTableViewCell.m */; };
 		5E2C19EE1902ED4600199075 /* CBAStopTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E2C19EC1902ED4600199075 /* CBAStopTableViewCell.xib */; };
 		5E9D882719032A4400C41F1A /* BusData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9D882619032A4400C41F1A /* BusData.m */; };
@@ -29,7 +30,6 @@
 		5ECD7E991900DB81002AE274 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ECD7E811900DB81002AE274 /* UIKit.framework */; };
 		5ECD7EA11900DB81002AE274 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5ECD7E9F1900DB81002AE274 /* InfoPlist.strings */; };
 		5ECD7EA31900DB81002AE274 /* CorvallisBusAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ECD7EA21900DB81002AE274 /* CorvallisBusAppTests.m */; };
-		5ED32E641900E0D200692D18 /* CBAMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ED32E621900E0D200692D18 /* CBAMainViewController.m */; };
 		5ED32E651900E0D200692D18 /* CBAMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5ED32E631900E0D200692D18 /* CBAMainViewController.xib */; };
 		5EEABBF31902FBF10031A884 /* CBAFullMapPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EEABBF11902FBF10031A884 /* CBAFullMapPanelViewController.m */; };
 		5EEABBF41902FBF10031A884 /* CBAFullMapPanelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EEABBF21902FBF10031A884 /* CBAFullMapPanelViewController.xib */; };
@@ -49,6 +49,7 @@
 /* Begin PBXFileReference section */
 		5E237E851903495E00D9C6CF /* CWDepthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWDepthView.h; sourceTree = "<group>"; };
 		5E237E861903495E00D9C6CF /* CWDepthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWDepthView.m; sourceTree = "<group>"; };
+		5E237E881904413E00D9C6CF /* CBAMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAMainViewController.m; sourceTree = "<group>"; };
 		5E2C19EA1902ED4600199075 /* CBAStopTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAStopTableViewCell.h; sourceTree = "<group>"; };
 		5E2C19EB1902ED4600199075 /* CBAStopTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAStopTableViewCell.m; sourceTree = "<group>"; };
 		5E2C19EC1902ED4600199075 /* CBAStopTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBAStopTableViewCell.xib; sourceTree = "<group>"; };
@@ -82,7 +83,6 @@
 		5ECD7EA01900DB81002AE274 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5ECD7EA21900DB81002AE274 /* CorvallisBusAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CorvallisBusAppTests.m; sourceTree = "<group>"; };
 		5ED32E611900E0D200692D18 /* CBAMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAMainViewController.h; sourceTree = "<group>"; };
-		5ED32E621900E0D200692D18 /* CBAMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAMainViewController.m; sourceTree = "<group>"; };
 		5ED32E631900E0D200692D18 /* CBAMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBAMainViewController.xib; sourceTree = "<group>"; };
 		5EEABBF01902FBF10031A884 /* CBAFullMapPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAFullMapPanelViewController.h; sourceTree = "<group>"; };
 		5EEABBF11902FBF10031A884 /* CBAFullMapPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAFullMapPanelViewController.m; sourceTree = "<group>"; };
@@ -297,7 +297,7 @@
 			isa = PBXGroup;
 			children = (
 				5ED32E611900E0D200692D18 /* CBAMainViewController.h */,
-				5ED32E621900E0D200692D18 /* CBAMainViewController.m */,
+				5E237E881904413E00D9C6CF /* CBAMainViewController.m */,
 				5ED32E631900E0D200692D18 /* CBAMainViewController.xib */,
 			);
 			name = "Main View Controller";
@@ -458,13 +458,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E237E891904413E00D9C6CF /* CBAMainViewController.m in Sources */,
 				5E9D882719032A4400C41F1A /* BusData.m in Sources */,
 				5E9D88381903379F00C41F1A /* UIColor+Hex.m in Sources */,
 				5E237E871903495E00D9C6CF /* CWDepthView.m in Sources */,
 				5E2C19ED1902ED4600199075 /* CBAStopTableViewCell.m in Sources */,
 				5EEABBF31902FBF10031A884 /* CBAFullMapPanelViewController.m in Sources */,
 				5E9D882F19032A5B00C41F1A /* Stops.m in Sources */,
-				5ED32E641900E0D200692D18 /* CBAMainViewController.m in Sources */,
 				5E9D882B19032A5300C41F1A /* Routes.m in Sources */,
 				5E9D8842190344B000C41F1A /* CBAScheduleViewController.m in Sources */,
 				5ECD7E8E1900DB81002AE274 /* AppDelegate.m in Sources */,
