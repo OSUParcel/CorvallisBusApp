@@ -97,8 +97,6 @@
         
         // Convert the strings to NSDates
         NSDateFormatter *dateFromServerFormatter;
-        NSDate *dateOfLocation;
-        NSString *dateString;
         
         dateFromServerFormatter = [[NSDateFormatter alloc] init];
         assert(dateFromServerFormatter != nil);
@@ -107,15 +105,15 @@
         [dateFromServerFormatter setDateFormat:@"dd MMM yy HH:mm z"];
         [dateFromServerFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:-(3600*7)]];
         
-        NSDate *expected = [[[arrivals objectForKey:stop] objectAtIndex:0] objectForKey:@"Expected"];
-        dateOfLocation = [dateFromServerFormatter dateFromString:dateString];
+        NSString *expected = [[[arrivals objectForKey:stop] objectAtIndex:i] objectForKey:@"Expected"];
+        NSDate *dateOfExpected = [dateFromServerFormatter dateFromString:expected];
         
-        NSDate *scheduled = [[[arrivals objectForKey:stop] objectAtIndex:0] objectForKey:@"Scheduled"];
-        dateOfLocation = [dateFromServerFormatter dateFromString:dateString];
+        NSString *scheduled = [[[arrivals objectForKey:stop] objectAtIndex:i] objectForKey:@"Scheduled"];
+        NSDate *dateOfScheduled = [dateFromServerFormatter dateFromString:scheduled];
         
         NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:
-                              expected, @"Expected",
-                              scheduled, @"Scheduled",
+                              dateOfExpected, @"Expected",
+                              dateOfScheduled, @"Scheduled",
                               nil];
         [schedule addObject:dict];
     }
