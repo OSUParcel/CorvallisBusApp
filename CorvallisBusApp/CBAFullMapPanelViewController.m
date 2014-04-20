@@ -8,7 +8,6 @@
 
 #import "CBAFullMapPanelViewController.h"
 #import "CBAScheduleViewController.h"
-#import "UIViewController+CWPopup.h"
 #import "AppDelegate.h"
 
 @interface CBAFullMapPanelViewController ()
@@ -35,7 +34,6 @@
     self.tapGestureRecognizer.numberOfTapsRequired = 1;
     self.routeLabel.userInteractionEnabled = YES;
     [self.routeLabel addGestureRecognizer:self.tapGestureRecognizer];
-    self.useBlurForPopup = YES;
     self.view.clipsToBounds = NO;
 }
 
@@ -48,12 +46,10 @@
 - (void)routeTapped:(UITapGestureRecognizer*)sender
 {
     self.scheduleViewController = [[CBAScheduleViewController alloc] initWithNibName:@"CBAScheduleViewController" bundle:nil];
-    [self presentPopupViewController:self.scheduleViewController animated:YES completion:nil];
 }
 
 - (void)dismissScheduleView
 {
-    [self dismissPopupViewControllerAnimated:YES completion:nil];
 }
 
 @end
