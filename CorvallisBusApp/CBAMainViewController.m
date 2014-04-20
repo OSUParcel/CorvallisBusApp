@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Corvallis Bus App. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
+
 #import "CBAMainViewController.h"
 #import "CBAStopTableViewCell.h"
 #import "CBAAboutViewController.h"
@@ -117,7 +119,9 @@
         BusData *busData = [BusData new];
         self.arrivals = (NSMutableArray*)[busData loadArrivalsForLatitude:locationManager.location.coordinate.latitude
                                                                 Longitude:locationManager.location.coordinate.longitude];
-        [self.stopsTableView reloadData];
+        [UIView transitionWithView:self.stopsTableView duration:0.5f options:UIViewAnimationOptionTransitionFlipFromBottom animations:^{
+            [self.stopsTableView reloadData];
+        } completion:nil];
         self.isRefreshing = NO;
         [self.refreshControl endRefreshing];
         [self checkForEmptyData];
