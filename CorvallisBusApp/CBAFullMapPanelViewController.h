@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CBAScheduleViewController.h"
+#import "CWDepthView.h"
 
 @interface CBAFullMapPanelViewController : UIViewController
 
@@ -17,6 +18,7 @@
 
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
 @property (strong, nonatomic) CBAScheduleViewController *scheduleViewController;
+@property (strong, nonatomic) CWDepthView *depthView;
 
 - (void)routeTapped:(UITapGestureRecognizer*)sender;
 

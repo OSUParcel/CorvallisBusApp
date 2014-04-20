@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E237E871903495E00D9C6CF /* CWDepthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E237E861903495E00D9C6CF /* CWDepthView.m */; };
 		5E2C19ED1902ED4600199075 /* CBAStopTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E2C19EB1902ED4600199075 /* CBAStopTableViewCell.m */; };
 		5E2C19EE1902ED4600199075 /* CBAStopTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E2C19EC1902ED4600199075 /* CBAStopTableViewCell.xib */; };
 		5E9D882719032A4400C41F1A /* BusData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9D882619032A4400C41F1A /* BusData.m */; };
@@ -46,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5E237E851903495E00D9C6CF /* CWDepthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWDepthView.h; sourceTree = "<group>"; };
+		5E237E861903495E00D9C6CF /* CWDepthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWDepthView.m; sourceTree = "<group>"; };
 		5E2C19EA1902ED4600199075 /* CBAStopTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAStopTableViewCell.h; sourceTree = "<group>"; };
 		5E2C19EB1902ED4600199075 /* CBAStopTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAStopTableViewCell.m; sourceTree = "<group>"; };
 		5E2C19EC1902ED4600199075 /* CBAStopTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBAStopTableViewCell.xib; sourceTree = "<group>"; };
@@ -113,6 +116,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E237E841903495E00D9C6CF /* CWDepthView */ = {
+			isa = PBXGroup;
+			children = (
+				5E237E851903495E00D9C6CF /* CWDepthView.h */,
+				5E237E861903495E00D9C6CF /* CWDepthView.m */,
+			);
+			path = CWDepthView;
+			sourceTree = "<group>";
+		};
 		5E2C19E81902ED1F00199075 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,6 +256,7 @@
 		5ECD7E841900DB81002AE274 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5E237E841903495E00D9C6CF /* CWDepthView */,
 				5ECD7E851900DB81002AE274 /* CorvallisBusApp-Info.plist */,
 				5ECD7E861900DB81002AE274 /* InfoPlist.strings */,
 				5ECD7E891900DB81002AE274 /* main.m */,
@@ -447,6 +460,7 @@
 			files = (
 				5E9D882719032A4400C41F1A /* BusData.m in Sources */,
 				5E9D88381903379F00C41F1A /* UIColor+Hex.m in Sources */,
+				5E237E871903495E00D9C6CF /* CWDepthView.m in Sources */,
 				5E2C19ED1902ED4600199075 /* CBAStopTableViewCell.m in Sources */,
 				5EEABBF31902FBF10031A884 /* CBAFullMapPanelViewController.m in Sources */,
 				5E9D882F19032A5B00C41F1A /* Stops.m in Sources */,
