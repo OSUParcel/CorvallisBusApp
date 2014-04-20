@@ -48,6 +48,7 @@
 @interface BusData : NSObject
 
 -(NSArray *)loadArrivalsForLatitude:(float)lat Longitude:(float)lon;
+-(NSArray *)loadScheduleForStop:(NSString *)stop;
 
 @property (nonatomic, strong) NSArray *data;
 

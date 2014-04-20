@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CBAScheduleViewController : UIViewController
+@interface CBAScheduleViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+- (void)scheduleForStop:(NSString *)stop;
 
 @end

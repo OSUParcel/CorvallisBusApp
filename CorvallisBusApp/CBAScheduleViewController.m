@@ -7,8 +7,13 @@
 //
 
 #import "CBAScheduleViewController.h"
+#import "BusData.h"
 
 @interface CBAScheduleViewController ()
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (nonatomic, strong) NSArray *schedule;
 
 @end
 
@@ -26,7 +31,45 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
+}
+
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    static NSString *CellIdentifier = @"CBAStopTableViewCellIdentifier";
+    
+    UITableViewCell *cell = (UITableViewCell*) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil)
+    {
+        // time
+        NSDate *date = [[self.schedule objectAtIndex:indexPath.row] objectForKey:@"Expected"];
+        NSDateFormatter *dateFormatter = [NSDateFormatter new];
+        [dateFormatter setDateFormat:@"hh:mm a"];
+        cell.textLabel.text = [dateFormatter stringFromDate:date];
+        
+        NSDate *date2 = [[self.schedule objectAtIndex:indexPath.row] objectForKey:@"Scheduled"];
+        cell.detailTextLabel.text = [dateFormatter stringFromDate:date2];
+        
+    }
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.schedule count];
+}
+
+- (void)scheduleForStop:(NSString *)stop
+{
+    BusData *bus = [[BusData alloc] init];
+    NSArray *schedule = [bus loadScheduleForStop:stop];
+    self.schedule = schedule;
+    /*for (int i = 0; i < [schedule count]; i++) {
+        
+    }*/
 }
 
 - (void)didReceiveMemoryWarning
