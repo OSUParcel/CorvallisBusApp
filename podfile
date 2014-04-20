@@ -2,4 +2,4 @@ platform :ios, '7.0'
 pod 'Google-Maps-iOS-SDK', '~> 1.7.2'
 pod 'FXBlurView', '~> 1.6'
 pod 'Shimmer', '~> 1.0.1'
-
+pod 'CWPopup', '~> 1.2.4'

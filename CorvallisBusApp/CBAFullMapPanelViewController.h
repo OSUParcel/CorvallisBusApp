@@ -7,12 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FXBlurView.h"
+#import "CBAScheduleViewController.h"
 
 @interface CBAFullMapPanelViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *arrivalTimeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *routeLabel;
 @property (weak, nonatomic) IBOutlet UIButton *dismissButton;
+@property (weak, nonatomic) IBOutlet UILabel *routeLabel;
+
+@property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
+@property (strong, nonatomic) CBAScheduleViewController *scheduleViewController;
+
+- (void)routeTapped:(UITapGestureRecognizer*)sender;
 
 @end
