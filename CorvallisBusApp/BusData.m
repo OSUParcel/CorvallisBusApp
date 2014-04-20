@@ -82,4 +82,45 @@
     return self.data;
 }
 
+-(NSArray *)loadScheduleForStop:(NSString *)stop
+{
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:stop, @"ID", nil];
+    NSArray *stopArr = [NSArray arrayWithObjects:dict,nil];
+    
+    NSDictionary *arrivals = [Arrivals getArrivalsForStops:stopArr];
+    
+    //NSLog(@"Arrivals for stop: %@", [arrivals objectForKey:stop]);
+    
+    NSMutableArray *schedule = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i < [arrivals count]; i++) {
+        
+        // Convert the strings to NSDates
+        NSDateFormatter *dateFromServerFormatter;
+        NSDate *dateOfLocation;
+        NSString *dateString;
+        
+        dateFromServerFormatter = [[NSDateFormatter alloc] init];
+        assert(dateFromServerFormatter != nil);
+        
+        // Format: "15 Apr 14 16:57 -0700"
+        [dateFromServerFormatter setDateFormat:@"dd MMM yy HH:mm z"];
+        [dateFromServerFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:-(3600*7)]];
+        
+        NSDate *expected = [[[arrivals objectForKey:stop] objectAtIndex:0] objectForKey:@"Expected"];
+        dateOfLocation = [dateFromServerFormatter dateFromString:dateString];
+        
+        NSDate *scheduled = [[[arrivals objectForKey:stop] objectAtIndex:0] objectForKey:@"Scheduled"];
+        dateOfLocation = [dateFromServerFormatter dateFromString:dateString];
+        
+        NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:
+                              expected, @"Expected",
+                              scheduled, @"Scheduled",
+                              nil];
+        [schedule addObject:dict];
+    }
+    NSLog(@"Arr: %@", schedule);
+    return [arrivals objectForKey:stop];
+}
+
 @end
