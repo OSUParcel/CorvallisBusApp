@@ -117,7 +117,7 @@
                               nil];
         [schedule addObject:dict];
     }
-    return [arrivals objectForKey:stop];
+    return [NSArray arrayWithArray:schedule];
 }
 
 @end
