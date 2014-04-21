@@ -80,14 +80,15 @@
     NSString *hexColor = [data objectForKey:@"Color"];
     UIColor *routeColor = [UIColor colorWithHexValue:hexColor];
     self.backgroundColor = [UIColor clearColor];
-    CAGradientLayer *gradientLayer = [UIColor getGradientForColor:routeColor andFrame:self.frame];
-    [self.layer insertSublayer:gradientLayer atIndex:0];
+    CAGradientLayer *gradientLayer = [UIColor getGradientForColor:routeColor andFrame:self.backgroundView.frame];
+    [self.backgroundView.layer insertSublayer:gradientLayer atIndex:0];
 
     // marker
     GMSMarker *marker = [GMSMarker markerWithPosition:position];
-    marker.title = [NSString stringWithFormat:@"Stop ID %@", [data objectForKey:@"ID"]];
+    marker.title = [data objectForKey:@"ID"];
+    marker.snippet = [data objectForKey:@"Route"];
     marker.map = self.mapView;
-    marker.icon = [GMSMarker markerImageWithColor:routeColor];
+    marker.icon = [NSString stringWithFormat:@"Route %@", [data objectForKey:@"Route"]];
     
     // distance
     CGFloat distance = [[data objectForKey:@"Distance"] doubleValue] * 0.000621371;
