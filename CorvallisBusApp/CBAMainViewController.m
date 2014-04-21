@@ -122,6 +122,7 @@
         [UIView transitionWithView:self.stopsTableView duration:0.5f options:UIViewAnimationOptionTransitionFlipFromBottom animations:^{
             [self.stopsTableView reloadData];
         } completion:nil];
+        [self.stopsTableView reloadData];
         self.isRefreshing = NO;
         [self.refreshControl endRefreshing];
         [self checkForEmptyData];
