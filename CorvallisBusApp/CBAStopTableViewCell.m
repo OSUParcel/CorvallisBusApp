@@ -86,9 +86,9 @@
     // marker
     GMSMarker *marker = [GMSMarker markerWithPosition:position];
     marker.title = [data objectForKey:@"ID"];
-    marker.snippet = [data objectForKey:@"Route"];
+    marker.snippet = [NSString stringWithFormat:@"Route %@", [data objectForKey:@"Route"]];
     marker.map = self.mapView;
-    marker.icon = [NSString stringWithFormat:@"Route %@", [data objectForKey:@"Route"]];
+    marker.icon = [GMSMarker markerImageWithColor:routeColor];
     
     // distance
     CGFloat distance = [[data objectForKey:@"Distance"] doubleValue] * 0.000621371;

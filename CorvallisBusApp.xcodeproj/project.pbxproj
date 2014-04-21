@@ -81,7 +81,7 @@
 		5E9D883F190344B000C41F1A /* CBAScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAScheduleViewController.h; sourceTree = "<group>"; };
 		5E9D8840190344B000C41F1A /* CBAScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAScheduleViewController.m; sourceTree = "<group>"; };
 		5E9D8841190344B000C41F1A /* CBAScheduleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBAScheduleViewController.xib; sourceTree = "<group>"; };
-		5ECD7E7A1900DB81002AE274 /* CBA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CBA.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5ECD7E7A1900DB81002AE274 /* CorBus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CorBus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ECD7E7D1900DB81002AE274 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5ECD7E7F1900DB81002AE274 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		5ECD7E811900DB81002AE274 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -267,7 +267,7 @@
 		5ECD7E7B1900DB81002AE274 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5ECD7E7A1900DB81002AE274 /* CBA.app */,
+				5ECD7E7A1900DB81002AE274 /* CorBus.app */,
 				5ECD7E951900DB81002AE274 /* CorvallisBusAppTests.xctest */,
 			);
 			name = Products;
@@ -404,7 +404,7 @@
 			);
 			name = CorvallisBusApp;
 			productName = CorvallisBusApp;
-			productReference = 5ECD7E7A1900DB81002AE274 /* CBA.app */;
+			productReference = 5ECD7E7A1900DB81002AE274 /* CorBus.app */;
 			productType = "com.apple.product-type.application";
 		};
 		5ECD7E941900DB81002AE274 /* CorvallisBusAppTests */ = {
@@ -658,7 +658,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CorvallisBusApp/CorvallisBusApp-Prefix.pch";
 				INFOPLIST_FILE = "CorvallisBusApp/CorvallisBusApp-Info.plist";
-				PRODUCT_NAME = CBA;
+				PRODUCT_NAME = CorBus;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -672,7 +672,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CorvallisBusApp/CorvallisBusApp-Prefix.pch";
 				INFOPLIST_FILE = "CorvallisBusApp/CorvallisBusApp-Info.plist";
-				PRODUCT_NAME = CBA;
+				PRODUCT_NAME = CorBus;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
