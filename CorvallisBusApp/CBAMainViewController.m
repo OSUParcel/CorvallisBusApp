@@ -96,9 +96,7 @@
     CGFloat width = DEPTH_VIEW_SCALE * [[UIScreen mainScreen] bounds].size.width;
     CGFloat height = DEPTH_VIEW_SCALE * [[UIScreen mainScreen] bounds].size.height;
     self.aboutNavigationController = [[CBAAboutNavigationViewController alloc] initWithRootViewController:self.aboutViewController];
-    self.aboutNavigationController.view.frame = CGRectMake(([[UIScreen mainScreen] bounds].size.width - width)/2,
-                                                           ([[UIScreen mainScreen] bounds].size.height - height)/2,
-                                                           width + 3, height);
+    self.aboutNavigationController.view.frame = CGRectMake(0, 0, width, height);
     [self.depthView presentView:self.aboutNavigationController.view];
 }
 
