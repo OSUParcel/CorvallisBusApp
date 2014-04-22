@@ -89,8 +89,8 @@
 
     // marker
     GMSMarker *marker = [GMSMarker markerWithPosition:position];
-    marker.title = [data objectForKey:@"ID"];
-    marker.snippet = [NSString stringWithFormat:@"Route %@", [data objectForKey:@"Route"]];
+    marker.title = [data objectForKey:@"Name"];
+    marker.snippet = [NSString stringWithFormat:@"Route %@, Stop ID %@", [data objectForKey:@"Route"], [data objectForKey:@"ID"]];
     marker.map = self.mapView;
     marker.icon = [GMSMarker markerImageWithColor:routeColor];
     
@@ -105,7 +105,7 @@
     self.arrivalTimeLabel.text = [dateFormatter stringFromDate:date];
     
     // route
-    self.routeLabel.text = [NSString stringWithFormat:@"Route %@", [data objectForKey:@"Route"]];
+    self.routeLabel.text = [data objectForKey:@"Name"];
     
     // polyline
     GMSPolyline *route = [GMSPolyline polylineWithPath:[GMSPath pathFromEncodedPath:[data objectForKey:@"Polyline"]]];

@@ -67,6 +67,7 @@
     self.refreshControl = [UIRefreshControl new];
     [self.refreshControl addTarget:self action:@selector(loadData) forControlEvents:UIControlEventValueChanged];
     [self.stopsTableView addSubview:self.refreshControl];
+    [self.stopsTableView sendSubviewToBack:self.refreshControl];
     self.isRefreshing = NO;
     
     // setup depth view
