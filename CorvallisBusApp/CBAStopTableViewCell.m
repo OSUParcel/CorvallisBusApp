@@ -16,7 +16,9 @@
 #import "UIColor+Hex.h"
 #import "AppDelegate.h"
 
-@implementation CBAStopTableViewCell
+@implementation CBAStopTableViewCell {
+    CAGradientLayer *gradientLayer;
+}
 
 @synthesize tapGestureRecognizer, fullScreenWindow, panelViewController;
 
@@ -55,9 +57,10 @@
     self.distanceLabel.alpha = 0.0f;
     self.arrivalTimeLabel.text = NSLocalizedString(message, nil);
     self.arrivalTimeLabel.textAlignment = NSTextAlignmentCenter;
-    self.backgroundColor = [UIColor clearColor];
-    CAGradientLayer *gradientLayer = [UIColor getGradientForColor:[UIColor grayColor] andFrame:self.bounds];
-    [self.layer insertSublayer:gradientLayer atIndex:0];
+    self.backgroundColor = [UIColor grayColor];
+//    self.backgroundColor = [UIColor clearColor];
+//    gradientLayer = [UIColor getGradientForColor:[UIColor grayColor] andFrame:self.bounds];
+//    [self.layer insertSublayer:gradientLayer atIndex:0];
     [self.mapView removeFromSuperview];
 }
 
@@ -79,9 +82,10 @@
     // background color
     NSString *hexColor = [data objectForKey:@"Color"];
     UIColor *routeColor = [UIColor colorWithHexValue:hexColor];
-    self.backgroundColor = [UIColor clearColor];
-    CAGradientLayer *gradientLayer = [UIColor getGradientForColor:routeColor andFrame:self.backgroundView.frame];
-    [self.backgroundView.layer insertSublayer:gradientLayer atIndex:0];
+    self.backgroundColor = routeColor;
+//    self.backgroundColor = [UIColor clearColor];
+//    gradientLayer = [UIColor getGradientForColor:routeColor andFrame:self.frame];
+//    [self.layer insertSublayer:gradientLayer atIndex:0];
 
     // marker
     GMSMarker *marker = [GMSMarker markerWithPosition:position];

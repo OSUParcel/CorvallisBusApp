@@ -115,8 +115,10 @@
     if (!self.isRefreshing) {
         self.isRefreshing = YES;
         BusData *busData = [BusData new];
-        self.arrivals = (NSMutableArray*)[busData loadArrivalsForLatitude:locationManager.location.coordinate.latitude
-                                                                Longitude:locationManager.location.coordinate.longitude];
+//        self.arrivals = (NSMutableArray*)[busData loadArrivalsForLatitude:locationManager.location.coordinate.latitude
+//                                                                Longitude:locationManager.location.coordinate.longitude];
+        self.arrivals = (NSMutableArray*)[busData loadArrivalsForLatitude:44.5675577
+                                                                Longitude:-123.2797895];
         [UIView transitionWithView:self.stopsTableView duration:0.5f options:UIViewAnimationOptionTransitionFlipFromBottom animations:^{
             [self.stopsTableView reloadData];
         } completion:nil];
