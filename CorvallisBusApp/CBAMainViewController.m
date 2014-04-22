@@ -55,6 +55,9 @@
     
     // status bar
     [self setNeedsStatusBarAppearanceUpdate];
+    self.statusBarBackgroundView.layer.shadowOffset = CGSizeMake(0, 0);
+    self.statusBarBackgroundView.layer.shadowRadius = 3;
+    self.statusBarBackgroundView.layer.shadowOpacity = 0.5;
     
     // location
     locationManager = [[CLLocationManager alloc] init];
@@ -116,10 +119,10 @@
     if (!self.isRefreshing) {
         self.isRefreshing = YES;
         BusData *busData = [BusData new];
-//        self.arrivals = (NSMutableArray*)[busData loadArrivalsForLatitude:locationManager.location.coordinate.latitude
-//                                                                Longitude:locationManager.location.coordinate.longitude];
-        self.arrivals = (NSMutableArray*)[busData loadArrivalsForLatitude:44.5675577
-                                                                Longitude:-123.2797895];
+        self.arrivals = (NSMutableArray*)[busData loadArrivalsForLatitude:locationManager.location.coordinate.latitude
+                                                                Longitude:locationManager.location.coordinate.longitude];
+//        self.arrivals = (NSMutableArray*)[busData loadArrivalsForLatitude:44.5675577
+//                                                                Longitude:-123.2797895];
         [UIView transitionWithView:self.stopsTableView duration:0.5f options:UIViewAnimationOptionTransitionFlipFromBottom animations:^{
             [self.stopsTableView reloadData];
         } completion:nil];

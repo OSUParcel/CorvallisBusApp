@@ -35,6 +35,9 @@
     self.routeLabel.userInteractionEnabled = YES;
     [self.routeLabel addGestureRecognizer:self.tapGestureRecognizer];
     self.view.clipsToBounds = NO;
+    self.view.layer.shadowOffset = CGSizeMake(0, 0);
+    self.view.layer.shadowRadius = 2;
+    self.view.layer.shadowOpacity = 0.5;
 }
 
 - (void)didReceiveMemoryWarning

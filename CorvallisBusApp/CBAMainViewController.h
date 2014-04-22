@@ -17,6 +17,7 @@
 @property (strong, nonatomic) NSMutableArray *arrivals;
 
 @property (strong, nonatomic) IBOutlet UITableView *stopsTableView;
+@property (weak, nonatomic) IBOutlet UIView *statusBarBackgroundView;
 
 - (void)loadData;
 - (void)dismissAboutView;
