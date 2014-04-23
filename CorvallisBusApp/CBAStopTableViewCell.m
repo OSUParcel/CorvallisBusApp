@@ -53,20 +53,21 @@
 
 - (UIImage*)getMapImage
 {
-    // frame without status bar
+    // map view frame
     CGRect frame = self.mapView.frame;
     // begin image context
     UIGraphicsBeginImageContext(frame.size);
     // get current context
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
-    // draw current view
+    // draw  map view
     [self.mapView.layer renderInContext:UIGraphicsGetCurrentContext()];
-    // clip context to frame
+    // clip context to map view frame
     CGContextClipToRect(currentContext, frame);
     // get resulting cropped screenshot
     UIImage *screenshot = UIGraphicsGetImageFromCurrentImageContext();
     // end image context
     UIGraphicsEndImageContext();
+    // return image
     return screenshot;
 }
 
