@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5ECD7E791900DB81002AE274"
-               BuildableName = "CBA.app"
+               BuildableName = "CorBus.app"
                BlueprintName = "CorvallisBusApp"
                ReferencedContainer = "container:CorvallisBusApp.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5ECD7E791900DB81002AE274"
-            BuildableName = "CBA.app"
+            BuildableName = "CorBus.app"
             BlueprintName = "CorvallisBusApp"
             ReferencedContainer = "container:CorvallisBusApp.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5ECD7E791900DB81002AE274"
-            BuildableName = "CBA.app"
+            BuildableName = "CorBus.app"
             BlueprintName = "CorvallisBusApp"
             ReferencedContainer = "container:CorvallisBusApp.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5ECD7E791900DB81002AE274"
-            BuildableName = "CBA.app"
+            BuildableName = "CorBus.app"
             BlueprintName = "CorvallisBusApp"
             ReferencedContainer = "container:CorvallisBusApp.xcodeproj">
          </BuildableReference>

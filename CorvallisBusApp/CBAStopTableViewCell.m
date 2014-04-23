@@ -49,6 +49,27 @@
     [super setSelected:selected animated:animated];
 }
 
+# pragma mark - get map image
+
+- (UIImage*)getMapImage
+{
+    // frame without status bar
+    CGRect frame = self.mapView.frame;
+    // begin image context
+    UIGraphicsBeginImageContext(frame.size);
+    // get current context
+    CGContextRef currentContext = UIGraphicsGetCurrentContext();
+    // draw current view
+    [self.mapView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    // clip context to frame
+    CGContextClipToRect(currentContext, frame);
+    // get resulting cropped screenshot
+    UIImage *screenshot = UIGraphicsGetImageFromCurrentImageContext();
+    // end image context
+    UIGraphicsEndImageContext();
+    return screenshot;
+}
+
 # pragma mark - load data
 
 - (void)loadStaticViewWithMessage:(NSString*)message
