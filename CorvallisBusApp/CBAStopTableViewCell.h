@@ -12,7 +12,7 @@
 
 #import "CBAFullMapPanelViewController.h"
 
-@interface CBAStopTableViewCell : UITableViewCell
+@interface CBAStopTableViewCell : UITableViewCell <GMSMapViewDelegate>
 
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
 @property (strong, nonatomic) UIWindow *fullScreenWindow;

@@ -100,6 +100,7 @@
     CLLocationDegrees longitude = [[data objectForKey:@"Long"] doubleValue];
     CLLocationCoordinate2D position = CLLocationCoordinate2DMake(latitude, longitude);
     [self.mapView animateToLocation:position];
+    self.mapView.delegate = self;
     
     // background color
     NSString *hexColor = [data objectForKey:@"Color"];
@@ -252,5 +253,16 @@
         self.panelViewController.view.frame = CGRectMake(0, [[UIScreen mainScreen] bounds].size.height - self.panelViewController.view.frame.size.height,
                                                          self.panelViewController.view.frame.size.width, self.panelViewController.view.frame.size.height);
     }];
+}
+
+#pragma mark - GMSMapViewDelegate
+
+-(void)mapView:(GMSMapView *)mapView idleAtCameraPosition:(GMSCameraPosition *)position
+{
+    NSLog(@"Map view idle");
+    
+    UIImage *screenshot = [self getMapImage];
+    
+    NSLog(@"Success");
 }
 @end

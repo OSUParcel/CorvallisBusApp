@@ -181,5 +181,4 @@
 {
     return [self.arrivals count] == 0 ? 2 : [self.arrivals count] + 1;
 }
-
 @end
