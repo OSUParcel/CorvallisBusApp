@@ -56,7 +56,7 @@
     // map view frame
     CGRect frame = self.mapView.frame;
     // begin image context
-    UIGraphicsBeginImageContext(frame.size);
+    UIGraphicsBeginImageContextWithOptions(frame.size, YES, 0.0f);
     // get current context
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
     // draw  map view
