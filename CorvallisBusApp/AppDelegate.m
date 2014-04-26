@@ -21,6 +21,9 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     
+    // init map view cache manager
+    self.mapViewCacheManager = [CBAMapViewCacheManager new];
+    
     // Google Maps setup
     [GMSServices provideAPIKey:@"AIzaSyDVnyXmX168uYG4XdVFb1VWnGPQQ-UudSQ"];
     

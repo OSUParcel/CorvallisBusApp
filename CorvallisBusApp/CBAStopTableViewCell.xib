@@ -50,7 +50,7 @@
                         <nil key="highlightedColor"/>
                         <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </label>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xqq-6R-btf" customClass="GMSMapView">
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xqq-6R-btf" customClass="MKMapView">
                         <rect key="frame" x="220" y="0.0" width="100" height="100"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -63,7 +63,7 @@
                 <outlet property="arrivalTimeView" destination="82R-di-TTA" id="LPa-io-BiZ"/>
                 <outlet property="backgroundView" destination="M29-e5-rmF" id="Scj-ma-7Yp"/>
                 <outlet property="distanceLabel" destination="YKa-0d-0hk" id="tiL-J2-JLz"/>
-                <outlet property="mapView" destination="xqq-6R-btf" id="2VV-6D-Fqk"/>
+                <outlet property="mapView" destination="xqq-6R-btf" id="5h5-Uh-skl"/>
                 <outlet property="routeLabel" destination="Bro-zn-SOY" id="QbJ-H1-4EK"/>
             </connections>
         </tableViewCell>

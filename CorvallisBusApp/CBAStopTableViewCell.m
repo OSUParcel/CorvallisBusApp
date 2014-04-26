@@ -16,11 +16,72 @@
 #import "UIColor+Hex.h"
 #import "AppDelegate.h"
 
-@implementation CBAStopTableViewCell {
-    CAGradientLayer *gradientLayer;
+@implementation MKPolyline (MKPolyline_EncodedString)
+
++ (MKPolyline *)polylineWithEncodedString:(NSString *)encodedString {
+    const char *bytes = [encodedString UTF8String];
+    NSUInteger length = [encodedString lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
+    NSUInteger idx = 0;
+    
+    NSUInteger count = length / 4;
+    CLLocationCoordinate2D *coords = calloc(count, sizeof(CLLocationCoordinate2D));
+    NSUInteger coordIdx = 0;
+    
+    float latitude = 0;
+    float longitude = 0;
+    while (idx < length) {
+        char byte = 0;
+        int res = 0;
+        char shift = 0;
+        
+        do {
+            byte = bytes[idx++] - 63;
+            res |= (byte & 0x1F) << shift;
+            shift += 5;
+        } while (byte >= 0x20);
+        
+        float deltaLat = ((res & 1) ? ~(res >> 1) : (res >> 1));
+        latitude += deltaLat;
+        
+        shift = 0;
+        res = 0;
+        
+        do {
+            byte = bytes[idx++] - 0x3F;
+            res |= (byte & 0x1F) << shift;
+            shift += 5;
+        } while (byte >= 0x20);
+        
+        float deltaLon = ((res & 1) ? ~(res >> 1) : (res >> 1));
+        longitude += deltaLon;
+        
+        float finalLat = latitude * 1E-5;
+        float finalLon = longitude * 1E-5;
+        
+        CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(finalLat, finalLon);
+        coords[coordIdx++] = coord;
+        
+        if (coordIdx == count) {
+            NSUInteger newCount = count + 10;
+            coords = realloc(coords, newCount * sizeof(CLLocationCoordinate2D));
+            count = newCount;
+        }
+    }
+    
+    MKPolyline *polyline = [MKPolyline polylineWithCoordinates:coords count:coordIdx];
+    free(coords);
+    
+    return polyline;
 }
 
-@synthesize tapGestureRecognizer, fullScreenWindow, panelViewController;
+@end
+
+@implementation CBAStopTableViewCell {
+    CAGradientLayer *gradientLayer;
+    BOOL isMapViewCacheLoaded;
+}
+
+@synthesize tapGestureRecognizer, fullScreenWindow, panelViewController, mapViewImage;
 
 @synthesize isFullScreen, defaultViewFrame, defaultMapViewFrame, rowIndex;
 
@@ -32,16 +93,14 @@
     
     // map view setup
     self.isFullScreen = NO;
-    self.mapView.indoorEnabled = NO;
-    self.mapView.myLocationEnabled = YES;
-    self.mapView.settings.scrollGestures = NO;
-    self.mapView.settings.zoomGestures = NO;
-    [self.mapView animateToZoom:DEFAULT_ZOOM_LEVEL];
-    [self.mapView animateToViewingAngle:DEFAULT_VIEWING_ANGLE];
+    self.mapView.showsUserLocation = NO;
+    self.mapView.delegate = self;
     
     // shimmer setup
     self.arrivalTimeView.contentView = self.arrivalTimeLabel;
     self.arrivalTimeView.shimmering = YES;
+    
+    isMapViewCacheLoaded = NO;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -71,6 +130,19 @@
     return screenshot;
 }
 
+# pragma mark - map view delegate
+
+- (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView
+{
+    NSLog(@"finish");
+    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    CBAMapViewCacheManager *mapViewCacheManager = delegate.mapViewCacheManager;
+    if (![mapViewCacheManager cachedImageExistsForStopID:[self.data objectForKey:@"ID"]]) {
+        [mapViewCacheManager cacheImage:[self getMapImage] forStopID:[self.data objectForKey:@"ID"]];
+        [self loadCachedImage];
+    }
+}
+
 # pragma mark - load data
 
 - (void)loadStaticViewWithMessage:(NSString*)message
@@ -95,45 +167,93 @@
     self.tapGestureRecognizer.numberOfTapsRequired = 1;
     [self addGestureRecognizer:self.tapGestureRecognizer];
     
-    // get position
-    CLLocationDegrees latitude = [[data objectForKey:@"Lat"] doubleValue];
-    CLLocationDegrees longitude = [[data objectForKey:@"Long"] doubleValue];
-    CLLocationCoordinate2D position = CLLocationCoordinate2DMake(latitude, longitude);
-    [self.mapView animateToLocation:position];
+    NSString *stopID = [data objectForKey:@"ID"];
     
     // background color
-    NSString *hexColor = [data objectForKey:@"Color"];
+    NSString *hexColor = [self.data objectForKey:@"Color"];
     UIColor *routeColor = [UIColor colorWithHexValue:hexColor];
+    
+    // correct color if it is too bright
+    CGFloat hue;
+    CGFloat saturation;
+    CGFloat brightness;
+    CGFloat alpha;
+    [routeColor getHue:&hue saturation:&saturation brightness:&brightness alpha:&alpha];
+    if (brightness < 0.50f) {
+        brightness = 0.50f;
+    }
+    routeColor = [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:alpha];
+    
+    // set color
     self.backgroundColor = routeColor;
-//    self.backgroundColor = [UIColor clearColor];
-//    gradientLayer = [UIColor getGradientForColor:routeColor andFrame:self.frame];
-//    [self.layer insertSublayer:gradientLayer atIndex:0];
-
-    // marker
-    GMSMarker *marker = [GMSMarker markerWithPosition:position];
-    marker.title = [data objectForKey:@"Name"];
-    marker.snippet = [NSString stringWithFormat:@"Route %@, Stop ID %@", [data objectForKey:@"Route"], [data objectForKey:@"ID"]];
-    marker.map = self.mapView;
-    marker.icon = [GMSMarker markerImageWithColor:routeColor];
+    
+    // gradient
+    //    self.backgroundColor = [UIColor clearColor];
+    //    gradientLayer = [UIColor getGradientForColor:routeColor andFrame:self.frame];
+    //    [self.layer insertSublayer:gradientLayer atIndex:0];
     
     // distance
-    CGFloat distance = [[data objectForKey:@"Distance"] doubleValue] * 0.000621371;
+    CGFloat distance = [[self.data objectForKey:@"Distance"] doubleValue] * 0.000621371;
     self.distanceLabel.text = [NSString stringWithFormat:@"%.2f miles away", distance];
     
     // time
-    NSDate *date = [data objectForKey:@"Arrival"];
+    NSDate *date = [self.data objectForKey:@"Arrival"];
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
     [dateFormatter setDateFormat:@"hh:mm a"];
     self.arrivalTimeLabel.text = [dateFormatter stringFromDate:date];
     
     // route
-    self.routeLabel.text = [data objectForKey:@"Name"];
+    self.routeLabel.text = [self.data objectForKey:@"Name"];
+    
+    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    CBAMapViewCacheManager *mapViewCacheManager = delegate.mapViewCacheManager;
+    if ([mapViewCacheManager cachedImageExistsForStopID:stopID]) {
+        [self loadCachedImage];
+    } else {
+        [self loadMap];
+    }
+}
+
+- (void)loadCachedImage
+{
+    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    CBAMapViewCacheManager *mapViewCacheManager = delegate.mapViewCacheManager;
+    self.mapViewImage = [[UIImageView alloc] initWithImage:
+                         [mapViewCacheManager cachedImageForStopID:[self.data objectForKey:@"ID"]]];
+    self.mapViewImage.frame = self.mapView.frame;
+    self.mapViewImage.backgroundColor = [UIColor clearColor];
+    [self addSubview:self.mapViewImage];
+    [self.mapView removeFromSuperview];
+    self.mapView = nil;
+    isMapViewCacheLoaded = YES;
+}
+
+- (void)loadMap
+{
+    // get position
+    CLLocationDegrees latitude = [[self.data objectForKey:@"Lat"] doubleValue];
+    CLLocationDegrees longitude = [[self.data objectForKey:@"Long"] doubleValue];
+    CLLocationCoordinate2D position = CLLocationCoordinate2DMake(latitude, longitude);
+    [self.mapView setCenterCoordinate:position];
+    
+    // background color
+    NSString *hexColor = [self.data objectForKey:@"Color"];
+    UIColor *routeColor = [UIColor colorWithHexValue:hexColor];
+    
+    // marker
+//    GMSMarker *marker = [GMSMarker markerWithPosition:position];
+//    marker.title = [self.data objectForKey:@"Name"];
+//    marker.snippet = [NSString stringWithFormat:@"Route %@, Stop ID %@", self.data, [self.data objectForKey:@"ID"]];
+//    marker.map = self.mapView;
+//    marker.icon = [GMSMarker markerImageWithColor:routeColor];
     
     // polyline
-    GMSPolyline *route = [GMSPolyline polylineWithPath:[GMSPath pathFromEncodedPath:[data objectForKey:@"Polyline"]]];
-    route.strokeColor = routeColor;
-    route.strokeWidth = 5.0f;
-    route.map = self.mapView;
+    MKPolyline *route = [MKPolyline polylineWithEncodedString:[self.data objectForKey:@"Polyline"]];
+    [self.mapView addOverlay:route];
+//    GMSPolyline *route = [GMSPolyline polylineWithPath:[GMSPath pathFromEncodedPath:[self.data objectForKey:@"Polyline"]]];
+//    route.strokeColor = routeColor;
+//    route.strokeWidth = 5.0f;
+//    route.map = self.mapView;
 }
 
 # pragma mark - setup methods
@@ -174,6 +294,17 @@
     if (!self.isFullScreen) {
         self.isFullScreen = YES;
         
+        // replace screenshot with mapview
+        if (isMapViewCacheLoaded) {
+            self.mapView = [MKMapView new];
+            self.mapView.frame = self.mapViewImage.frame;
+            [self addSubview:self.mapView];
+            [self.mapViewImage removeFromSuperview];
+            self.mapViewImage = nil;
+            [self loadMap];
+        }
+        self.mapView.showsUserLocation = YES;
+        
         // save previous frames
         self.defaultViewFrame = [self convertRect:self.bounds toView:nil];
         self.defaultMapViewFrame = self.mapView.frame;
@@ -183,7 +314,7 @@
         
         self.frame = CGRectMake(self.defaultViewFrame.origin.x, self.defaultViewFrame.origin.y - 20,
                                 self.defaultViewFrame.size.width, self.defaultViewFrame.size.height);
-        self.mapView.frame = CGRectMake(self.defaultMapViewFrame.origin.x, self.defaultMapViewFrame.origin.y - 20,
+        self.mapView.frame = CGRectMake(self.defaultMapViewFrame.origin.x, self.defaultMapViewFrame.origin.y,
                                         self.defaultMapViewFrame.size.width, self.defaultMapViewFrame.size.height);
         
         // animate map to full screen
@@ -195,19 +326,20 @@
                 self.mapView.frame = [[UIScreen mainScreen] bounds];
             } completion:^(BOOL finished) {
                 // zoom in
-                GMSCameraUpdate *zoomIn = [GMSCameraUpdate zoomBy:ZOOM_AMOUNT];
-                [self.mapView animateWithCameraUpdate:zoomIn];
-                [self.mapView animateToViewingAngle:FULL_SCREEN_VIEWING_ANGLE];
+//                GMSCameraUpdate *zoomIn = [GMSCameraUpdate zoomBy:ZOOM_AMOUNT];
+//                [self.mapView animateWithCameraUpdate:zoomIn];
+//                [self.mapView animateToViewingAngle:FULL_SCREEN_VIEWING_ANGLE];
                 // [self.mapView animateToBearing:[[self.data objectForKey:@"Bearing"] doubleValue]];
                 
                 // set up panel
                 [self setupPanelViewController];
+                
                 // animate panel in
                 [self animatePanelIn];
                 
                 // enable user interaction
-                self.mapView.settings.scrollGestures = YES;
-                self.mapView.settings.zoomGestures = YES;
+//                self.mapView.settings.scrollGestures = YES;
+//                self.mapView.settings.zoomGestures = YES;
             }];
         });
     }
@@ -216,17 +348,18 @@
 - (void)animateFromFullScreen
 {
     // disable user interaction
-    self.mapView.settings.scrollGestures = NO;
-    self.mapView.settings.zoomGestures = NO;
+//    self.mapView.settings.scrollGestures = NO;
+//    self.mapView.settings.zoomGestures = NO;
     
     // reset zoom and viewing angle
     CLLocationDegrees latitude = [[self.data objectForKey:@"Lat"] doubleValue];
     CLLocationDegrees longitude = [[self.data objectForKey:@"Long"] doubleValue];
     CLLocationCoordinate2D position = CLLocationCoordinate2DMake(latitude, longitude);
-    [self.mapView animateToZoom:DEFAULT_ZOOM_LEVEL];
-    [self.mapView animateToViewingAngle:DEFAULT_VIEWING_ANGLE];
-    [self.mapView animateToLocation:position];
-    [self.mapView animateToBearing:0.0f];
+//    [self.mapView animateToZoom:DEFAULT_ZOOM_LEVEL];
+//    [self.mapView animateToViewingAngle:DEFAULT_VIEWING_ANGLE];
+//    [self.mapView animateToLocation:position];
+    //    [self.mapView animateToBearing:0.0f];
+    self.mapView.showsUserLocation = NO;
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [UIView animateWithDuration:ANIMATION_TIME animations:^{

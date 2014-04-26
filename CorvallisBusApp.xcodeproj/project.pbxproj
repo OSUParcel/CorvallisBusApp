@@ -23,6 +23,8 @@
 		5E9D88381903379F00C41F1A /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9D88371903379F00C41F1A /* UIColor+Hex.m */; };
 		5E9D8842190344B000C41F1A /* CBAScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9D8840190344B000C41F1A /* CBAScheduleViewController.m */; };
 		5E9D8843190344B000C41F1A /* CBAScheduleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E9D8841190344B000C41F1A /* CBAScheduleViewController.xib */; };
+		5E9EC785190C3DCC0064AC25 /* CBAMapViewCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9EC784190C3DCC0064AC25 /* CBAMapViewCacheManager.m */; };
+		5E9EC787190C4E450064AC25 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9EC786190C4E450064AC25 /* MapKit.framework */; };
 		5ECD7E7E1900DB81002AE274 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ECD7E7D1900DB81002AE274 /* Foundation.framework */; };
 		5ECD7E801900DB81002AE274 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ECD7E7F1900DB81002AE274 /* CoreGraphics.framework */; };
 		5ECD7E821900DB81002AE274 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ECD7E811900DB81002AE274 /* UIKit.framework */; };
@@ -81,6 +83,9 @@
 		5E9D883F190344B000C41F1A /* CBAScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAScheduleViewController.h; sourceTree = "<group>"; };
 		5E9D8840190344B000C41F1A /* CBAScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAScheduleViewController.m; sourceTree = "<group>"; };
 		5E9D8841190344B000C41F1A /* CBAScheduleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBAScheduleViewController.xib; sourceTree = "<group>"; };
+		5E9EC783190C3DCC0064AC25 /* CBAMapViewCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAMapViewCacheManager.h; sourceTree = "<group>"; };
+		5E9EC784190C3DCC0064AC25 /* CBAMapViewCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAMapViewCacheManager.m; sourceTree = "<group>"; };
+		5E9EC786190C4E450064AC25 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		5ECD7E7A1900DB81002AE274 /* CorBus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CorBus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ECD7E7D1900DB81002AE274 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5ECD7E7F1900DB81002AE274 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -114,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E9EC787190C4E450064AC25 /* MapKit.framework in Frameworks */,
 				5ECD7E801900DB81002AE274 /* CoreGraphics.framework in Frameworks */,
 				5ECD7E821900DB81002AE274 /* UIKit.framework in Frameworks */,
 				5ECD7E7E1900DB81002AE274 /* Foundation.framework in Frameworks */,
@@ -253,6 +259,15 @@
 			name = "Schedule View Controller";
 			sourceTree = "<group>";
 		};
+		5E9EC782190C3DB00064AC25 /* Map View Cache Manager */ = {
+			isa = PBXGroup;
+			children = (
+				5E9EC783190C3DCC0064AC25 /* CBAMapViewCacheManager.h */,
+				5E9EC784190C3DCC0064AC25 /* CBAMapViewCacheManager.m */,
+			);
+			name = "Map View Cache Manager";
+			sourceTree = "<group>";
+		};
 		5ECD7E711900DB81002AE274 = {
 			isa = PBXGroup;
 			children = (
@@ -276,6 +291,7 @@
 		5ECD7E7C1900DB81002AE274 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5E9EC786190C4E450064AC25 /* MapKit.framework */,
 				5ECD7E7D1900DB81002AE274 /* Foundation.framework */,
 				5ECD7E7F1900DB81002AE274 /* CoreGraphics.framework */,
 				5ECD7E811900DB81002AE274 /* UIKit.framework */,
@@ -356,6 +372,7 @@
 		5ED32E661900E26A00692D18 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5E9EC782190C3DB00064AC25 /* Map View Cache Manager */,
 				5E9D883019032A6000C41F1A /* Arrivals */,
 				5E9D882C19032A5500C41F1A /* Stops */,
 				5E9D882819032A4700C41F1A /* Routes */,
@@ -537,6 +554,7 @@
 				5E9D8842190344B000C41F1A /* CBAScheduleViewController.m in Sources */,
 				5ECD7E8E1900DB81002AE274 /* AppDelegate.m in Sources */,
 				5ECD7E8A1900DB81002AE274 /* main.m in Sources */,
+				5E9EC785190C3DCC0064AC25 /* CBAMapViewCacheManager.m in Sources */,
 				5E9D883319032A6800C41F1A /* Arrivals.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
