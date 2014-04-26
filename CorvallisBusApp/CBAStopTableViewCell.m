@@ -270,6 +270,9 @@
 
 - (void)loadMap
 {
+    isMapLoaded = NO;
+    isAnnotationAdded = NO;
+    
     // get position
     CLLocationDegrees latitude = [[self.data objectForKey:@"Lat"] doubleValue];
     CLLocationDegrees longitude = [[self.data objectForKey:@"Long"] doubleValue];
