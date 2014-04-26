@@ -12,9 +12,9 @@
 
 @property (strong, nonatomic) NSMutableDictionary *mapViewCache;
 
-- (UIImage*)cachedImageForStopID:(NSString*)stopID;
-- (BOOL)cachedImageExistsForStopID:(NSString*)stopID;
-- (void)cacheImage:(UIImage*)mapViewImage forStopID:(NSString*)stopID;
+- (UIImage*)cachedImageForStopID:(NSString*)stopID andRoute:(NSString*)route;
+- (BOOL)cachedImageExistsForStopID:(NSString*)stopID andRoute:(NSString*)route;
+- (void)cacheImage:(UIImage*)mapViewImage forStopID:(NSString*)stopID andRoute:(NSString*)route;
 
 - (void)loadSavedCache;
 - (void)saveCache;

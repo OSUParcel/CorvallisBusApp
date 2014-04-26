@@ -21,23 +21,26 @@
     return self;
 }
 
-- (UIImage*)cachedImageForStopID:(NSString*)stopID
+- (UIImage*)cachedImageForStopID:(NSString*)stopID andRoute:(NSString*)route
 {
-    NSLog(@"loading cached image for stop id %@", stopID);
-    NSData *imageData = [self.mapViewCache objectForKey:stopID];
+    NSLog(@"loading cached image for stop id %@ and route %@", stopID, route);
+    NSString *key = [NSString stringWithFormat:@"%@-%@", stopID, route];
+    NSData *imageData = [self.mapViewCache objectForKey:key];
     return [UIImage imageWithData:imageData];
 }
 
-- (BOOL)cachedImageExistsForStopID:(NSString*)stopID
+- (BOOL)cachedImageExistsForStopID:(NSString*)stopID andRoute:(NSString*)route
 {
-    return [self.mapViewCache objectForKey:stopID] != nil;
+    NSString *key = [NSString stringWithFormat:@"%@-%@", stopID, route];
+    return [self.mapViewCache objectForKey:key] != nil;
 }
 
-- (void)cacheImage:(UIImage*)mapViewImage forStopID:(NSString*)stopID
+- (void)cacheImage:(UIImage*)mapViewImage forStopID:(NSString*)stopID andRoute:(NSString*)route
 {
-    NSLog(@"caching image for stop id %@", stopID);
+    NSLog(@"caching image for stop id %@ and route %@", stopID, route);
     NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(mapViewImage)];
-    [self.mapViewCache setObject:imageData forKey:stopID];
+    NSString *key = [NSString stringWithFormat:@"%@-%@", stopID, route];
+    [self.mapViewCache setObject:imageData forKey:key];
 }
 
 # pragma mark - core data functions

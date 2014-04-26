@@ -9,8 +9,6 @@
 #import "AppDelegate.h"
 #import "CBAMainViewController.h"
 
-#import <GoogleMaps/GoogleMaps.h>
-
 @implementation AppDelegate
 
 @synthesize mainViewController;
@@ -23,9 +21,6 @@
     
     // init map view cache manager
     self.mapViewCacheManager = [CBAMapViewCacheManager new];
-    
-    // Google Maps setup
-    [GMSServices provideAPIKey:@"AIzaSyDVnyXmX168uYG4XdVFb1VWnGPQQ-UudSQ"];
     
     // root view controller
     self.mainViewController = [[CBAMainViewController alloc] initWithNibName:@"CBAMainViewController" bundle:nil];

@@ -83,6 +83,8 @@
 @implementation CBAStopTableViewCell {
     CAGradientLayer *gradientLayer;
     BOOL isMapViewCacheLoaded;
+    BOOL isMapLoaded;
+    BOOL isAnnotationAdded;
 }
 
 @synthesize tapGestureRecognizer, fullScreenWindow, panelViewController, mapViewImage;
@@ -106,6 +108,8 @@
     self.arrivalTimeView.shimmering = YES;
     
     isMapViewCacheLoaded = NO;
+    isMapLoaded = NO;
+    isAnnotationAdded = NO;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -140,12 +144,8 @@
 - (void)mapViewDidFinishRenderingMap:(MKMapView *)mapView fullyRendered:(BOOL)fullyRendered
 {
     if (fullyRendered) {
-        AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-        CBAMapViewCacheManager *mapViewCacheManager = delegate.mapViewCacheManager;
-        if (![mapViewCacheManager cachedImageExistsForStopID:[self.data objectForKey:@"ID"]]) {
-            [mapViewCacheManager cacheImage:[self getMapImage] forStopID:[self.data objectForKey:@"ID"]];
-            [self loadCachedImage];
-        }
+        isMapLoaded = YES;
+        [self cacheMapImage];
     }
 }
 
@@ -167,12 +167,19 @@
 
 - (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)annotationViews
 {
-    for (MKAnnotationView *annView in annotationViews) {
-        CGRect endFrame = annView.frame;
-        annView.frame = CGRectOffset(endFrame, 0, -500);
-        [UIView animateWithDuration:0.5f animations:^{
-            annView.frame = endFrame;
-        }];
+    isAnnotationAdded = YES;
+    [self cacheMapImage];
+}
+
+- (void)cacheMapImage
+{
+    if (isAnnotationAdded && isMapLoaded) {
+        AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+        CBAMapViewCacheManager *mapViewCacheManager = delegate.mapViewCacheManager;
+        if (![mapViewCacheManager cachedImageExistsForStopID:[self.data objectForKey:@"ID"] andRoute:[self.data objectForKey:@"Route"]]) {
+            [mapViewCacheManager cacheImage:[self getMapImage] forStopID:[self.data objectForKey:@"ID"] andRoute:[self.data objectForKey:@"Route"]];
+            [self loadCachedImage];
+        }
     }
 }
 
@@ -240,7 +247,7 @@
     
     AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     CBAMapViewCacheManager *mapViewCacheManager = delegate.mapViewCacheManager;
-    if ([mapViewCacheManager cachedImageExistsForStopID:stopID]) {
+    if ([mapViewCacheManager cachedImageExistsForStopID:stopID andRoute:[self.data objectForKey:@"Route"]]) {
         [self loadCachedImage];
     } else {
         [self loadMap];
@@ -252,7 +259,7 @@
     AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     CBAMapViewCacheManager *mapViewCacheManager = delegate.mapViewCacheManager;
     self.mapViewImage = [[UIImageView alloc] initWithImage:
-                         [mapViewCacheManager cachedImageForStopID:[self.data objectForKey:@"ID"]]];
+                         [mapViewCacheManager cachedImageForStopID:[self.data objectForKey:@"ID"] andRoute:[self.data objectForKey:@"Route"]]];
     self.mapViewImage.frame = self.mapView.frame;
     self.mapViewImage.backgroundColor = [UIColor clearColor];
     [self addSubview:self.mapViewImage];
