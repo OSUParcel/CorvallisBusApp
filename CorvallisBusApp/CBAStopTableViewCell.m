@@ -7,14 +7,18 @@
 //
 
 #define ANIMATION_TIME 0.5f
-#define DEFAULT_ZOOM_LEVEL 16.0f
-#define DEFAULT_VIEWING_ANGLE 90.0f
-#define ZOOM_AMOUNT 3.0f
-#define FULL_SCREEN_VIEWING_ANGLE 45.0f
+#define DEFAULT_DELTA 0.002f
+#define FULLSCREEN_DELTA 0.001f
+#define CAMERA_PITCH 65.0f
+#define CAMERA_HEADING 0.0f
+#define CAMERA_ALTITUDE 500.0f
 
 #import "CBAStopTableViewCell.h"
 #import "UIColor+Hex.h"
 #import "AppDelegate.h"
+#import "CBAStopAnnotation.h"
+
+# pragma mark - polyline category
 
 @implementation MKPolyline (MKPolyline_EncodedString)
 
@@ -95,6 +99,7 @@
     self.isFullScreen = NO;
     self.mapView.showsUserLocation = NO;
     self.mapView.delegate = self;
+    self.mapView.userInteractionEnabled = NO;
     
     // shimmer setup
     self.arrivalTimeView.contentView = self.arrivalTimeLabel;
@@ -134,12 +139,27 @@
 
 - (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView
 {
-    NSLog(@"finish");
     AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     CBAMapViewCacheManager *mapViewCacheManager = delegate.mapViewCacheManager;
     if (![mapViewCacheManager cachedImageExistsForStopID:[self.data objectForKey:@"ID"]]) {
-        [mapViewCacheManager cacheImage:[self getMapImage] forStopID:[self.data objectForKey:@"ID"]];
-        [self loadCachedImage];
+//        [mapViewCacheManager cacheImage:[self getMapImage] forStopID:[self.data objectForKey:@"ID"]];
+//        [self loadCachedImage];
+    }
+}
+
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
+{
+    if ([overlay isKindOfClass:[MKPolyline class]]) {
+        MKPolyline *route = overlay;
+        MKPolylineRenderer *routeRenderer = [[MKPolylineRenderer alloc] initWithPolyline:route];
+        NSString *hexColor = [self.data objectForKey:@"Color"];
+        UIColor *routeColor = [UIColor colorWithHexValue:hexColor];
+        routeRenderer.strokeColor = routeColor;
+        routeRenderer.lineWidth = 5.0f;
+        return routeRenderer;
+    }
+    else {
+        return nil;
     }
 }
 
@@ -234,26 +254,29 @@
     CLLocationDegrees latitude = [[self.data objectForKey:@"Lat"] doubleValue];
     CLLocationDegrees longitude = [[self.data objectForKey:@"Long"] doubleValue];
     CLLocationCoordinate2D position = CLLocationCoordinate2DMake(latitude, longitude);
-    [self.mapView setCenterCoordinate:position];
+    
+    // camera setup
+    MKMapCamera *camera = [MKMapCamera new];
+    camera.pitch = 0.0f;
+    camera.altitude = CAMERA_ALTITUDE;
+    camera.heading = CAMERA_HEADING;
+    camera.centerCoordinate = position;
+    [self.mapView setCamera:camera animated:NO];
     
     // background color
-    NSString *hexColor = [self.data objectForKey:@"Color"];
-    UIColor *routeColor = [UIColor colorWithHexValue:hexColor];
+//    NSString *hexColor = [self.data objectForKey:@"Color"];
+//    UIColor *routeColor = [UIColor colorWithHexValue:hexColor];
     
     // marker
-//    GMSMarker *marker = [GMSMarker markerWithPosition:position];
-//    marker.title = [self.data objectForKey:@"Name"];
-//    marker.snippet = [NSString stringWithFormat:@"Route %@, Stop ID %@", self.data, [self.data objectForKey:@"ID"]];
-//    marker.map = self.mapView;
-//    marker.icon = [GMSMarker markerImageWithColor:routeColor];
+    CBAStopAnnotation *marker = [CBAStopAnnotation new];
+    marker.title = [self.data objectForKey:@"Name"];
+    marker.subtitle = [NSString stringWithFormat:@"Route %@, Stop ID %@", [self.data objectForKey:@"Route"], [self.data objectForKey:@"ID"]];
+    marker.coordinate = position;
+    [self.mapView addAnnotation:marker];
     
     // polyline
     MKPolyline *route = [MKPolyline polylineWithEncodedString:[self.data objectForKey:@"Polyline"]];
     [self.mapView addOverlay:route];
-//    GMSPolyline *route = [GMSPolyline polylineWithPath:[GMSPath pathFromEncodedPath:[self.data objectForKey:@"Polyline"]]];
-//    route.strokeColor = routeColor;
-//    route.strokeWidth = 5.0f;
-//    route.map = self.mapView;
 }
 
 # pragma mark - setup methods
@@ -304,6 +327,7 @@
             [self loadMap];
         }
         self.mapView.showsUserLocation = YES;
+        self.mapView.showsBuildings = YES;
         
         // save previous frames
         self.defaultViewFrame = [self convertRect:self.bounds toView:nil];
@@ -324,12 +348,18 @@
                 self.fullScreenWindow.frame = [[UIScreen mainScreen] bounds];
                 self.frame = [[UIScreen mainScreen] bounds];
                 self.mapView.frame = [[UIScreen mainScreen] bounds];
-            } completion:^(BOOL finished) {
-                // zoom in
-//                GMSCameraUpdate *zoomIn = [GMSCameraUpdate zoomBy:ZOOM_AMOUNT];
-//                [self.mapView animateWithCameraUpdate:zoomIn];
-//                [self.mapView animateToViewingAngle:FULL_SCREEN_VIEWING_ANGLE];
-                // [self.mapView animateToBearing:[[self.data objectForKey:@"Bearing"] doubleValue]];
+            } completion:^(BOOL finished) {    // get position
+                CLLocationDegrees latitude = [[self.data objectForKey:@"Lat"] doubleValue];
+                CLLocationDegrees longitude = [[self.data objectForKey:@"Long"] doubleValue];
+                CLLocationCoordinate2D position = CLLocationCoordinate2DMake(latitude, longitude);
+                
+                // camera setup
+                MKMapCamera *camera = [MKMapCamera new];
+                camera.pitch = CAMERA_PITCH;
+                camera.altitude = CAMERA_ALTITUDE - 200.0f;
+                camera.heading = CAMERA_HEADING;
+                camera.centerCoordinate = position;
+                [self.mapView setCamera:camera animated:YES];
                 
                 // set up panel
                 [self setupPanelViewController];
@@ -338,8 +368,7 @@
                 [self animatePanelIn];
                 
                 // enable user interaction
-//                self.mapView.settings.scrollGestures = YES;
-//                self.mapView.settings.zoomGestures = YES;
+                self.mapView.userInteractionEnabled = YES;
             }];
         });
     }
@@ -348,20 +377,21 @@
 - (void)animateFromFullScreen
 {
     // disable user interaction
-//    self.mapView.settings.scrollGestures = NO;
-//    self.mapView.settings.zoomGestures = NO;
-    
-    // reset zoom and viewing angle
-    CLLocationDegrees latitude = [[self.data objectForKey:@"Lat"] doubleValue];
-    CLLocationDegrees longitude = [[self.data objectForKey:@"Long"] doubleValue];
-    CLLocationCoordinate2D position = CLLocationCoordinate2DMake(latitude, longitude);
-//    [self.mapView animateToZoom:DEFAULT_ZOOM_LEVEL];
-//    [self.mapView animateToViewingAngle:DEFAULT_VIEWING_ANGLE];
-//    [self.mapView animateToLocation:position];
-    //    [self.mapView animateToBearing:0.0f];
-    self.mapView.showsUserLocation = NO;
+    self.mapView.userInteractionEnabled = NO;
+    self.mapView.showsBuildings = NO;
     
     dispatch_async(dispatch_get_main_queue(), ^{
+        // reset zoom and viewing angle
+        CLLocationDegrees latitude = [[self.data objectForKey:@"Lat"] doubleValue];
+        CLLocationDegrees longitude = [[self.data objectForKey:@"Long"] doubleValue];
+        CLLocationCoordinate2D position = CLLocationCoordinate2DMake(latitude, longitude);
+        MKMapCamera *camera = [MKMapCamera new];
+        camera.pitch = CAMERA_PITCH;
+        camera.altitude = CAMERA_ALTITUDE;
+        camera.heading = CAMERA_HEADING;
+        camera.centerCoordinate = position;
+        [self.mapView setCamera:camera animated:YES];
+        
         [UIView animateWithDuration:ANIMATION_TIME animations:^{
             self.fullScreenWindow.frame = [[UIScreen mainScreen] bounds];
             self.frame = self.defaultViewFrame;

@@ -25,6 +25,7 @@
 		5E9D8843190344B000C41F1A /* CBAScheduleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E9D8841190344B000C41F1A /* CBAScheduleViewController.xib */; };
 		5E9EC785190C3DCC0064AC25 /* CBAMapViewCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9EC784190C3DCC0064AC25 /* CBAMapViewCacheManager.m */; };
 		5E9EC787190C4E450064AC25 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9EC786190C4E450064AC25 /* MapKit.framework */; };
+		5E9EC78B190C5D640064AC25 /* CBAStopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9EC78A190C5D640064AC25 /* CBAStopAnnotation.m */; };
 		5ECD7E7E1900DB81002AE274 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ECD7E7D1900DB81002AE274 /* Foundation.framework */; };
 		5ECD7E801900DB81002AE274 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ECD7E7F1900DB81002AE274 /* CoreGraphics.framework */; };
 		5ECD7E821900DB81002AE274 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ECD7E811900DB81002AE274 /* UIKit.framework */; };
@@ -86,6 +87,8 @@
 		5E9EC783190C3DCC0064AC25 /* CBAMapViewCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAMapViewCacheManager.h; sourceTree = "<group>"; };
 		5E9EC784190C3DCC0064AC25 /* CBAMapViewCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAMapViewCacheManager.m; sourceTree = "<group>"; };
 		5E9EC786190C4E450064AC25 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		5E9EC789190C5D640064AC25 /* CBAStopAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAStopAnnotation.h; sourceTree = "<group>"; };
+		5E9EC78A190C5D640064AC25 /* CBAStopAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAStopAnnotation.m; sourceTree = "<group>"; };
 		5ECD7E7A1900DB81002AE274 /* CorBus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CorBus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ECD7E7D1900DB81002AE274 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5ECD7E7F1900DB81002AE274 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -170,6 +173,7 @@
 		5E2C19E91902ED2500199075 /* Stop Table View Cell */ = {
 			isa = PBXGroup;
 			children = (
+				5E9EC788190C5D4D0064AC25 /* Stop Annotation */,
 				5E2C19EA1902ED4600199075 /* CBAStopTableViewCell.h */,
 				5E2C19EB1902ED4600199075 /* CBAStopTableViewCell.m */,
 				5E2C19EC1902ED4600199075 /* CBAStopTableViewCell.xib */,
@@ -266,6 +270,15 @@
 				5E9EC784190C3DCC0064AC25 /* CBAMapViewCacheManager.m */,
 			);
 			name = "Map View Cache Manager";
+			sourceTree = "<group>";
+		};
+		5E9EC788190C5D4D0064AC25 /* Stop Annotation */ = {
+			isa = PBXGroup;
+			children = (
+				5E9EC789190C5D640064AC25 /* CBAStopAnnotation.h */,
+				5E9EC78A190C5D640064AC25 /* CBAStopAnnotation.m */,
+			);
+			name = "Stop Annotation";
 			sourceTree = "<group>";
 		};
 		5ECD7E711900DB81002AE274 = {
@@ -554,6 +567,7 @@
 				5E9D8842190344B000C41F1A /* CBAScheduleViewController.m in Sources */,
 				5ECD7E8E1900DB81002AE274 /* AppDelegate.m in Sources */,
 				5ECD7E8A1900DB81002AE274 /* main.m in Sources */,
+				5E9EC78B190C5D640064AC25 /* CBAStopAnnotation.m in Sources */,
 				5E9EC785190C3DCC0064AC25 /* CBAMapViewCacheManager.m in Sources */,
 				5E9D883319032A6800C41F1A /* Arrivals.m in Sources */,
 			);
