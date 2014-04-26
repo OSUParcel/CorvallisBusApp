@@ -137,13 +137,15 @@
 
 # pragma mark - map view delegate
 
-- (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView
+- (void)mapViewDidFinishRenderingMap:(MKMapView *)mapView fullyRendered:(BOOL)fullyRendered
 {
-    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    CBAMapViewCacheManager *mapViewCacheManager = delegate.mapViewCacheManager;
-    if (![mapViewCacheManager cachedImageExistsForStopID:[self.data objectForKey:@"ID"]]) {
-//        [mapViewCacheManager cacheImage:[self getMapImage] forStopID:[self.data objectForKey:@"ID"]];
-//        [self loadCachedImage];
+    if (fullyRendered) {
+        AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+        CBAMapViewCacheManager *mapViewCacheManager = delegate.mapViewCacheManager;
+        if (![mapViewCacheManager cachedImageExistsForStopID:[self.data objectForKey:@"ID"]]) {
+            [mapViewCacheManager cacheImage:[self getMapImage] forStopID:[self.data objectForKey:@"ID"]];
+            [self loadCachedImage];
+        }
     }
 }
 
@@ -160,6 +162,17 @@
     }
     else {
         return nil;
+    }
+}
+
+- (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)annotationViews
+{
+    for (MKAnnotationView *annView in annotationViews) {
+        CGRect endFrame = annView.frame;
+        annView.frame = CGRectOffset(endFrame, 0, -500);
+        [UIView animateWithDuration:0.5f animations:^{
+            annView.frame = endFrame;
+        }];
     }
 }
 
@@ -320,6 +333,7 @@
         // replace screenshot with mapview
         if (isMapViewCacheLoaded) {
             self.mapView = [MKMapView new];
+            self.mapView.delegate = self;
             self.mapView.frame = self.mapViewImage.frame;
             [self addSubview:self.mapView];
             [self.mapViewImage removeFromSuperview];
@@ -357,7 +371,7 @@
                 MKMapCamera *camera = [MKMapCamera new];
                 camera.pitch = CAMERA_PITCH;
                 camera.altitude = CAMERA_ALTITUDE - 200.0f;
-                camera.heading = CAMERA_HEADING;
+                camera.heading = [[self.data objectForKey:@"Bearing"] doubleValue] + 90.0f;
                 camera.centerCoordinate = position;
                 [self.mapView setCamera:camera animated:YES];
                 
