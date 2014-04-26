@@ -13,6 +13,8 @@
 #define CAMERA_HEADING 0.0f
 #define CAMERA_ALTITUDE 500.0f
 
+#define CACHING 1
+
 #import "CBAStopTableViewCell.h"
 #import "UIColor+Hex.h"
 #import "AppDelegate.h"
@@ -173,6 +175,7 @@
 
 - (void)cacheMapImage
 {
+#if CACHING
     if (isAnnotationAdded && isMapLoaded) {
         AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
         CBAMapViewCacheManager *mapViewCacheManager = delegate.mapViewCacheManager;
@@ -181,6 +184,7 @@
             [self loadCachedImage];
         }
     }
+#endif
 }
 
 # pragma mark - load data
