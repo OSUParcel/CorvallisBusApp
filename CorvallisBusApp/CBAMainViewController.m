@@ -15,7 +15,17 @@
 #import "AppDelegate.h"
 #import "BusData.h"
 
+#define SCALE 0.80f
+#define ANIMATION_TIME 0.5f
+
 @interface CBAMainViewController ()
+{
+    CGRect defaultStopsTableViewFrame;
+    CGRect centerStopsTableViewFrame;
+    CGRect leftStopsTableViewFrame;
+    CGRect rightStopsTableViewFrame;
+    BOOL stopsTableViewIsShowing;
+}
 
 @property (nonatomic) BOOL isRefreshing;
 
@@ -30,7 +40,7 @@
 
 @synthesize arrivals;
 
-@synthesize stopsTableView, aboutViewController, aboutNavigationController;
+@synthesize stopsTableView, aboutViewController, aboutNavigationController, routeListViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -58,6 +68,9 @@
     self.statusBarBackgroundView.layer.shadowOffset = CGSizeMake(0, 0);
     self.statusBarBackgroundView.layer.shadowRadius = 3;
     self.statusBarBackgroundView.layer.shadowOpacity = 0.5;
+    self.stopsTableView.layer.shadowOffset = CGSizeMake(0, 0);
+    self.stopsTableView.layer.shadowRadius = 3;
+    self.stopsTableView.layer.shadowOpacity = 0.5;
     
     // location
     locationManager = [[CLLocationManager alloc] init];
@@ -78,6 +91,28 @@
     AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     self.depthView.windowForScreenshot = delegate.window;
     
+    // route list view controller
+    self.routeListViewController = [[CBARouteListViewController alloc] initWithNibName:@"CBARouteListViewController" bundle:nil];
+    self.routeListViewController.view.transform = CGAffineTransformMakeScale(SCALE, SCALE);
+    [self.view addSubview:self.routeListViewController.view];
+    [self.view sendSubviewToBack:self.routeListViewController.view];
+    
+    // pan gesture recognizer
+    self.panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
+    self.panGestureRecognizer.minimumNumberOfTouches = 1;
+    self.panGestureRecognizer.maximumNumberOfTouches = 1;
+    [self.view addGestureRecognizer:self.panGestureRecognizer];
+    defaultStopsTableViewFrame = self.stopsTableView.frame;
+    
+    // frames
+    centerStopsTableViewFrame = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
+    leftStopsTableViewFrame = CGRectMake(-1 * [[UIScreen mainScreen] bounds].size.width, 0,
+                                         [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
+    rightStopsTableViewFrame = CGRectMake([[UIScreen mainScreen] bounds].size.width, 0,
+                                          [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
+    self.stopsTableView.frame = centerStopsTableViewFrame;
+    stopsTableViewIsShowing = YES;
+    
     // load data
     [self loadData];
 }
@@ -90,6 +125,73 @@
 
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleDefault;
+}
+
+# pragma mark - pan gesture recognizer
+
+- (void)pan:(UIPanGestureRecognizer *)recognizer
+{
+    CGPoint velocity = [recognizer velocityInView:self.view];
+    CGPoint translatedPoint = [recognizer translationInView:self.view];
+    if ([recognizer state] == UIGestureRecognizerStateBegan) {
+        defaultStopsTableViewFrame = self.stopsTableView.frame;
+        if (stopsTableViewIsShowing) {
+            self.routeListViewController.view.alpha = 0.0f;
+            self.routeListViewController.view.transform = CGAffineTransformMakeScale(SCALE, SCALE);
+        } else {
+            self.routeListViewController.view.alpha = 1.0f;
+            self.routeListViewController.view.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+        }
+    } else if ([recognizer state] == UIGestureRecognizerStateChanged) {
+        CGRect frame = defaultStopsTableViewFrame;
+        frame.origin.x += translatedPoint.x;
+        if (frame.origin.x > 0) {
+            frame.origin.x = 0;
+        }
+        self.stopsTableView.frame = frame;
+        if (stopsTableViewIsShowing) {
+            self.routeListViewController.view.alpha = (-1 * translatedPoint.x / leftStopsTableViewFrame.size.width);
+        } else {
+            self.routeListViewController.view.alpha = 1 - (translatedPoint.x / centerStopsTableViewFrame.size.width);
+        }
+        CGFloat scale = self.routeListViewController.view.alpha * (1.0f - SCALE) + SCALE;
+        self.routeListViewController.view.transform = CGAffineTransformMakeScale(scale, scale);
+    } else if ([recognizer state] == UIGestureRecognizerStateEnded) {
+        if (velocity.x > 0) {
+            [self showStopsTableView];
+        } else if (velocity.x < 0) {
+            [self hideStopsTableView];
+        } else {
+            CGFloat halfScreenWidth = [UIScreen mainScreen].bounds.size.width/2;
+            if (fabsf(translatedPoint.x) >= halfScreenWidth) {
+                [self hideStopsTableView];
+            } else {
+                [self showStopsTableView];
+            }
+        }
+    }
+}
+
+- (void)showStopsTableView
+{
+    NSLog(@"wat");
+    [UIView animateWithDuration:ANIMATION_TIME animations:^{
+        self.stopsTableView.frame = centerStopsTableViewFrame;
+        self.routeListViewController.view.alpha = 0.0f;
+        self.routeListViewController.view.transform = CGAffineTransformMakeScale(SCALE, SCALE);
+        stopsTableViewIsShowing = YES;
+    }];
+}
+
+- (void)hideStopsTableView
+{
+    [UIView animateWithDuration:ANIMATION_TIME animations:^{
+        // TODO - find why this aint being set
+        self.stopsTableView.frame = leftStopsTableViewFrame;
+        self.routeListViewController.view.alpha = 1.0f;
+        self.routeListViewController.view.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+        stopsTableViewIsShowing = NO;
+    }];
 }
 
 # pragma mark - abous us view methods

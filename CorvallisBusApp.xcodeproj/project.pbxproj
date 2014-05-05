@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E1166191916FF9500934240 /* CBARouteListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1166171916FF9500934240 /* CBARouteListViewController.m */; };
+		5E11661A1916FF9500934240 /* CBARouteListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E1166181916FF9500934240 /* CBARouteListViewController.xib */; };
 		5E237E871903495E00D9C6CF /* CWDepthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E237E861903495E00D9C6CF /* CWDepthView.m */; };
 		5E237E891904413E00D9C6CF /* CBAMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E237E881904413E00D9C6CF /* CBAMainViewController.m */; };
 		5E237E8F190447F300D9C6CF /* CBAAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E237E8D190447F300D9C6CF /* CBAAboutViewController.m */; };
@@ -57,6 +59,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5E1166161916FF9500934240 /* CBARouteListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBARouteListViewController.h; sourceTree = "<group>"; };
+		5E1166171916FF9500934240 /* CBARouteListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBARouteListViewController.m; sourceTree = "<group>"; };
+		5E1166181916FF9500934240 /* CBARouteListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBARouteListViewController.xib; sourceTree = "<group>"; };
 		5E237E851903495E00D9C6CF /* CWDepthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWDepthView.h; sourceTree = "<group>"; };
 		5E237E861903495E00D9C6CF /* CWDepthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWDepthView.m; sourceTree = "<group>"; };
 		5E237E881904413E00D9C6CF /* CBAMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAMainViewController.m; sourceTree = "<group>"; };
@@ -143,6 +148,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E1166151916FF8200934240 /* Route List View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5E1166161916FF9500934240 /* CBARouteListViewController.h */,
+				5E1166171916FF9500934240 /* CBARouteListViewController.m */,
+				5E1166181916FF9500934240 /* CBARouteListViewController.xib */,
+			);
+			name = "Route List View Controller";
+			sourceTree = "<group>";
+		};
 		5E237E841903495E00D9C6CF /* CWDepthView */ = {
 			isa = PBXGroup;
 			children = (
@@ -362,6 +377,7 @@
 		5ED32E5F1900E0B000692D18 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5E1166151916FF8200934240 /* Route List View Controller */,
 				5E9D5754190460C700321A6B /* About Navigation Controller */,
 				5EFCB4B419045362006038D7 /* Legal View Controller */,
 				5E237E8B190447E500D9C6CF /* About View Controller */,
@@ -499,6 +515,7 @@
 				5E9D575D19046A8300321A6B /* CBAContractViewController.xib in Resources */,
 				5EEABBF41902FBF10031A884 /* CBAFullMapPanelViewController.xib in Resources */,
 				5EFCB4B91904536B006038D7 /* CBALegalViewController.xib in Resources */,
+				5E11661A1916FF9500934240 /* CBARouteListViewController.xib in Resources */,
 				5ECD7E901900DB81002AE274 /* Images.xcassets in Resources */,
 				5ED32E651900E0D200692D18 /* CBAMainViewController.xib in Resources */,
 			);
@@ -553,6 +570,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E237E891904413E00D9C6CF /* CBAMainViewController.m in Sources */,
+				5E1166191916FF9500934240 /* CBARouteListViewController.m in Sources */,
 				5E9D882719032A4400C41F1A /* BusData.m in Sources */,
 				5E9D88381903379F00C41F1A /* UIColor+Hex.m in Sources */,
 				5E237E871903495E00D9C6CF /* CWDepthView.m in Sources */,

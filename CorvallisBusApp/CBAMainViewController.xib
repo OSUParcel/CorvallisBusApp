@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="w2H-Cc-uCV">
+                <tableView opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" id="w2H-Cc-uCV">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -24,26 +24,13 @@
                     <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </tableView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Bg-lN-E0c">
+                <view contentMode="scaleToFill" id="1Bg-lN-E0c">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="20" id="KGK-PG-BkN"/>
-                        <constraint firstAttribute="width" constant="320" id="fkl-fN-NTN"/>
-                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
-            <constraints>
-                <constraint firstAttribute="bottom" secondItem="w2H-Cc-uCV" secondAttribute="bottom" id="92L-Qz-sWh"/>
-                <constraint firstAttribute="trailing" secondItem="w2H-Cc-uCV" secondAttribute="trailing" id="AYD-Is-0l2"/>
-                <constraint firstItem="1Bg-lN-E0c" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="DqJ-h6-1f2"/>
-                <constraint firstItem="w2H-Cc-uCV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Pu9-zh-qaQ"/>
-                <constraint firstAttribute="trailing" secondItem="1Bg-lN-E0c" secondAttribute="trailing" id="aXA-71-aNT"/>
-                <constraint firstItem="1Bg-lN-E0c" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="kha-N5-Qwr"/>
-                <constraint firstItem="w2H-Cc-uCV" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="tnp-R7-Mfc"/>
-            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
