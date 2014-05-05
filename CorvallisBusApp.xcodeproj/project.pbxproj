@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5E1166191916FF9500934240 /* CBARouteListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1166171916FF9500934240 /* CBARouteListViewController.m */; };
 		5E11661A1916FF9500934240 /* CBARouteListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E1166181916FF9500934240 /* CBARouteListViewController.xib */; };
+		5E11661E1917345D00934240 /* CBARouteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E11661D1917345D00934240 /* CBARouteCell.m */; };
+		5E1166201917346C00934240 /* CBARouteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E11661F1917346C00934240 /* CBARouteCell.xib */; };
 		5E237E871903495E00D9C6CF /* CWDepthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E237E861903495E00D9C6CF /* CWDepthView.m */; };
 		5E237E891904413E00D9C6CF /* CBAMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E237E881904413E00D9C6CF /* CBAMainViewController.m */; };
 		5E237E8F190447F300D9C6CF /* CBAAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E237E8D190447F300D9C6CF /* CBAAboutViewController.m */; };
@@ -62,6 +64,9 @@
 		5E1166161916FF9500934240 /* CBARouteListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBARouteListViewController.h; sourceTree = "<group>"; };
 		5E1166171916FF9500934240 /* CBARouteListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBARouteListViewController.m; sourceTree = "<group>"; };
 		5E1166181916FF9500934240 /* CBARouteListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBARouteListViewController.xib; sourceTree = "<group>"; };
+		5E11661C1917345D00934240 /* CBARouteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBARouteCell.h; sourceTree = "<group>"; };
+		5E11661D1917345D00934240 /* CBARouteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBARouteCell.m; sourceTree = "<group>"; };
+		5E11661F1917346C00934240 /* CBARouteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBARouteCell.xib; sourceTree = "<group>"; };
 		5E237E851903495E00D9C6CF /* CWDepthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWDepthView.h; sourceTree = "<group>"; };
 		5E237E861903495E00D9C6CF /* CWDepthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWDepthView.m; sourceTree = "<group>"; };
 		5E237E881904413E00D9C6CF /* CBAMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAMainViewController.m; sourceTree = "<group>"; };
@@ -158,6 +163,16 @@
 			name = "Route List View Controller";
 			sourceTree = "<group>";
 		};
+		5E11661B191733DF00934240 /* Route Cell */ = {
+			isa = PBXGroup;
+			children = (
+				5E11661C1917345D00934240 /* CBARouteCell.h */,
+				5E11661D1917345D00934240 /* CBARouteCell.m */,
+				5E11661F1917346C00934240 /* CBARouteCell.xib */,
+			);
+			name = "Route Cell";
+			sourceTree = "<group>";
+		};
 		5E237E841903495E00D9C6CF /* CWDepthView */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +195,7 @@
 		5E2C19E81902ED1F00199075 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5E11661B191733DF00934240 /* Route Cell */,
 				5E2C19E91902ED2500199075 /* Stop Table View Cell */,
 			);
 			name = Views;
@@ -514,6 +530,7 @@
 				5E9D8843190344B000C41F1A /* CBAScheduleViewController.xib in Resources */,
 				5E9D575D19046A8300321A6B /* CBAContractViewController.xib in Resources */,
 				5EEABBF41902FBF10031A884 /* CBAFullMapPanelViewController.xib in Resources */,
+				5E1166201917346C00934240 /* CBARouteCell.xib in Resources */,
 				5EFCB4B91904536B006038D7 /* CBALegalViewController.xib in Resources */,
 				5E11661A1916FF9500934240 /* CBARouteListViewController.xib in Resources */,
 				5ECD7E901900DB81002AE274 /* Images.xcassets in Resources */,
@@ -575,6 +592,7 @@
 				5E9D88381903379F00C41F1A /* UIColor+Hex.m in Sources */,
 				5E237E871903495E00D9C6CF /* CWDepthView.m in Sources */,
 				5E2C19ED1902ED4600199075 /* CBAStopTableViewCell.m in Sources */,
+				5E11661E1917345D00934240 /* CBARouteCell.m in Sources */,
 				5EEABBF31902FBF10031A884 /* CBAFullMapPanelViewController.m in Sources */,
 				5E9D882F19032A5B00C41F1A /* Stops.m in Sources */,
 				5E9D5757190460DD00321A6B /* CBAAboutNavigationViewController.m in Sources */,

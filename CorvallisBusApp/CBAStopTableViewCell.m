@@ -223,8 +223,8 @@
     CGFloat brightness;
     CGFloat alpha;
     [routeColor getHue:&hue saturation:&saturation brightness:&brightness alpha:&alpha];
-    if (brightness < 0.50f) {
-        brightness = 0.50f;
+    if (brightness > 0.70f) {
+        brightness = 0.70f;
     }
     routeColor = [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:alpha];
     

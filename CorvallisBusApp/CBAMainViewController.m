@@ -15,7 +15,7 @@
 #import "AppDelegate.h"
 #import "BusData.h"
 
-#define SCALE 0.80f
+#define SCALE 0.70f
 #define ANIMATION_TIME 0.5f
 
 @interface CBAMainViewController ()
@@ -174,7 +174,6 @@
 
 - (void)showStopsTableView
 {
-    NSLog(@"wat");
     [UIView animateWithDuration:ANIMATION_TIME animations:^{
         self.stopsTableView.frame = centerStopsTableViewFrame;
         self.routeListViewController.view.alpha = 0.0f;

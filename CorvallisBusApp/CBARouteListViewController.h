@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CBARouteListViewController : UIViewController
+@interface CBARouteListViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UICollectionView *routeListView;
+
+@property (strong, nonatomic) NSArray *routes;
 
 @end
