@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FBShimmeringView.h>
 
 @interface CBARouteCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *routeNameLabel;
+@property (weak, nonatomic) IBOutlet FBShimmeringView *shimmeringView;
 
 @property (strong, nonatomic) NSDictionary *data;
 

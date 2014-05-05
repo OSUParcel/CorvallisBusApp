@@ -30,6 +30,11 @@
     return self;
 }
 
+- (void)awakeFromNib
+{
+    self.shimmeringView.contentView = self.routeNameLabel;
+    self.shimmeringView.shimmering = YES;
+}
 
 - (void)setRoute:(NSDictionary *)route
 {
