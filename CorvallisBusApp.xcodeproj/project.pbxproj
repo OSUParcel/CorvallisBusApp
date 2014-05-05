@@ -11,6 +11,7 @@
 		5E11661A1916FF9500934240 /* CBARouteListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E1166181916FF9500934240 /* CBARouteListViewController.xib */; };
 		5E11661E1917345D00934240 /* CBARouteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E11661D1917345D00934240 /* CBARouteCell.m */; };
 		5E1166201917346C00934240 /* CBARouteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E11661F1917346C00934240 /* CBARouteCell.xib */; };
+		5E1166241917461700934240 /* route.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E1166231917461700934240 /* route.png */; };
 		5E237E871903495E00D9C6CF /* CWDepthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E237E861903495E00D9C6CF /* CWDepthView.m */; };
 		5E237E891904413E00D9C6CF /* CBAMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E237E881904413E00D9C6CF /* CBAMainViewController.m */; };
 		5E237E8F190447F300D9C6CF /* CBAAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E237E8D190447F300D9C6CF /* CBAAboutViewController.m */; };
@@ -67,6 +68,7 @@
 		5E11661C1917345D00934240 /* CBARouteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBARouteCell.h; sourceTree = "<group>"; };
 		5E11661D1917345D00934240 /* CBARouteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBARouteCell.m; sourceTree = "<group>"; };
 		5E11661F1917346C00934240 /* CBARouteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBARouteCell.xib; sourceTree = "<group>"; };
+		5E1166231917461700934240 /* route.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = route.png; path = Images/route.png; sourceTree = SOURCE_ROOT; };
 		5E237E851903495E00D9C6CF /* CWDepthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWDepthView.h; sourceTree = "<group>"; };
 		5E237E861903495E00D9C6CF /* CWDepthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWDepthView.m; sourceTree = "<group>"; };
 		5E237E881904413E00D9C6CF /* CBAMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAMainViewController.m; sourceTree = "<group>"; };
@@ -348,6 +350,7 @@
 		5ECD7E831900DB81002AE274 /* CorvallisBusApp */ = {
 			isa = PBXGroup;
 			children = (
+				5E1166231917461700934240 /* route.png */,
 				5ECD7E8F1900DB81002AE274 /* Images.xcassets */,
 				5ECD7E8C1900DB81002AE274 /* AppDelegate.h */,
 				5ECD7E8D1900DB81002AE274 /* AppDelegate.m */,
@@ -527,6 +530,7 @@
 				5E237E90190447F300D9C6CF /* CBAAboutViewController.xib in Resources */,
 				5E2C19EE1902ED4600199075 /* CBAStopTableViewCell.xib in Resources */,
 				5ECD7E881900DB81002AE274 /* InfoPlist.strings in Resources */,
+				5E1166241917461700934240 /* route.png in Resources */,
 				5E9D8843190344B000C41F1A /* CBAScheduleViewController.xib in Resources */,
 				5E9D575D19046A8300321A6B /* CBAContractViewController.xib in Resources */,
 				5EEABBF41902FBF10031A884 /* CBAFullMapPanelViewController.xib in Resources */,

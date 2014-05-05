@@ -10,31 +10,41 @@
             <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RXh-9U-TPl">
+                    <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ygn-dy-qt6" customClass="FBShimmeringView">
                     <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NAME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LCd-Tb-BuW">
-                    <rect key="frame" x="17" y="51" width="127" height="58"/>
+                    <rect key="frame" x="14" y="50" width="132" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="50"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="50"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="RXh-9U-TPl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="B82-cJ-yrp"/>
                 <constraint firstAttribute="centerY" secondItem="LCd-Tb-BuW" secondAttribute="centerY" constant="0.5" id="FFK-oc-B0x"/>
                 <constraint firstItem="Ygn-dy-qt6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="OfX-fi-Wog"/>
+                <constraint firstItem="RXh-9U-TPl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="REf-6l-erA"/>
                 <constraint firstAttribute="centerX" secondItem="LCd-Tb-BuW" secondAttribute="centerX" id="Uyx-Ho-mQN"/>
                 <constraint firstAttribute="trailing" secondItem="Ygn-dy-qt6" secondAttribute="trailing" id="XAE-QD-JWK"/>
+                <constraint firstAttribute="bottom" secondItem="RXh-9U-TPl" secondAttribute="bottom" id="XmS-lA-sbg"/>
+                <constraint firstAttribute="trailing" secondItem="RXh-9U-TPl" secondAttribute="trailing" id="oUg-jx-oFb"/>
                 <constraint firstItem="Ygn-dy-qt6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="rdt-eE-6hq"/>
                 <constraint firstAttribute="bottom" secondItem="Ygn-dy-qt6" secondAttribute="bottom" id="zVD-F6-QIw"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="imageView" destination="RXh-9U-TPl" id="quv-5r-kGu"/>
                 <outlet property="routeNameLabel" destination="LCd-Tb-BuW" id="IrN-Tq-fVr"/>
                 <outlet property="shimmeringView" destination="Ygn-dy-qt6" id="xzR-tv-Ik5"/>
             </connections>

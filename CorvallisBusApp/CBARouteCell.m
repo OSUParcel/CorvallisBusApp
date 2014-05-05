@@ -8,10 +8,14 @@
 
 #import "CBARouteCell.h"
 #import "UIColor+Hex.h"
+#import "AppDelegate.h"
 
 @implementation CBARouteCell
+{
+    NSArray *defaultSublayers;
+}
 
-@synthesize data;
+@synthesize data, gradientLayer;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -26,6 +30,7 @@
             return nil;
         }
         self = [arrayOfViews objectAtIndex:0];
+        defaultSublayers = [self.layer.sublayers copy];
     }
     return self;
 }
@@ -33,13 +38,15 @@
 - (void)awakeFromNib
 {
     self.shimmeringView.contentView = self.routeNameLabel;
-    self.shimmeringView.shimmering = YES;
+    self.shimmeringView.shimmering = NO;
 }
 
 - (void)setRoute:(NSDictionary *)route
 {
     self.data = route;
-
+    
+    self.imageView.alpha = 0.0f;
+    
     self.routeNameLabel.text = [self.data objectForKey:@"Name"];
     
     // background color
@@ -52,14 +59,32 @@
     CGFloat brightness;
     CGFloat alpha;
     [routeColor getHue:&hue saturation:&saturation brightness:&brightness alpha:&alpha];
-    if (brightness > 0.70f) {
-        brightness = 0.70f;
+    if (brightness > 0.80f) {
+        brightness = 0.80f;
     }
     routeColor = [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:alpha];
     
     // set color
-    self.backgroundColor = routeColor;
+    // self.backgroundColor = routeColor;
+    
+    // gradient
+    self.backgroundColor = [UIColor clearColor];
+    self.gradientLayer = [UIColor getGradientForColor:routeColor andFrame:self.bounds];
+    self.layer.sublayers = defaultSublayers;
+    [self.layer insertSublayer:self.gradientLayer atIndex:0];
+}
 
+- (void)loadDefault
+{
+    self.backgroundColor = [UIColor clearColor];
+    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    UIColor *myTintColor = delegate.window.tintColor;
+    self.gradientLayer = [UIColor getGradientForColor:myTintColor andFrame:self.bounds];
+    self.layer.sublayers = defaultSublayers;
+    [self.layer insertSublayer:self.gradientLayer atIndex:0];
+    self.routeNameLabel.text = @"";
+    self.imageView.image = [UIImage imageNamed:@"route.png"];
+    self.imageView.alpha = 1.0f;
 }
 
 

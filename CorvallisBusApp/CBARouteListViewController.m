@@ -66,7 +66,11 @@
     static NSString *cellIdentifier = @"CBARouteCell";
     
     CBARouteCell *cell = (CBARouteCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    [cell setRoute:[self.routes objectAtIndex:indexPath.row]];
+    if (indexPath.row == [self.routes count]) {
+        [cell loadDefault];
+    } else {
+        [cell setRoute:[self.routes objectAtIndex:indexPath.row]];
+    }
     
     // Return the cell
     return cell;
@@ -79,7 +83,10 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [self.routes count];
+    if ([self.routes count] % 2 == 0) {
+        return [self.routes count];
+    }
+    return [self.routes count] + 1;
 }
 
 @end

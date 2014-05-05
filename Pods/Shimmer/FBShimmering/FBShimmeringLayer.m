@@ -153,7 +153,7 @@ static CAAnimation *shimmer_slide_finish(CAAnimation *a)
     // default configuration
     _shimmeringPauseDuration = 0.4;
     _shimmeringSpeed = 230.0;
-    _shimmeringOpacity = 0.5;
+    _shimmeringOpacity = 0.65;
     _shimmeringBeginFadeDuration = 0.1;
     _shimmeringEndFadeDuration = 0.3;
   }
