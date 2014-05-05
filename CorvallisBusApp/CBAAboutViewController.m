@@ -96,6 +96,8 @@
 
 - (IBAction)russellBarnesButtonPressed:(UIButton *)sender
 {
+    [[UIApplication sharedApplication]
+     openURL:[NSURL URLWithString:@"https://github.com/russellbarnes"]];
 }
 
 - (IBAction)legalButtonPressed:(UIButton *)sender
