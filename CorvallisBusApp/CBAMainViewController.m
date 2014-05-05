@@ -220,6 +220,7 @@
     if (!self.isRefreshing) {
         self.isRefreshing = YES;
         BusData *busData = [BusData new];
+        // TODO - fix location updates
 //        self.arrivals = (NSMutableArray*)[busData loadArrivalsForLatitude:locationManager.location.coordinate.latitude
 //                                                                Longitude:locationManager.location.coordinate.longitude];
         self.arrivals = (NSMutableArray*)[busData loadArrivalsForLatitude:44.5675577

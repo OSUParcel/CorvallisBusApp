@@ -101,7 +101,7 @@
     
     // map view setup
     self.isFullScreen = NO;
-    self.mapView.showsUserLocation = NO;
+    self.mapView.showsUserLocation = YES;
     self.mapView.delegate = self;
     self.mapView.userInteractionEnabled = NO;
     
