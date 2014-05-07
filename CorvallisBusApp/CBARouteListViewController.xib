@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CBARouteListViewController">
             <connections>
+                <outlet property="mapView" destination="7u9-N5-csy" id="RrU-1V-oXr"/>
                 <outlet property="routeListView" destination="SEc-rf-T2n" id="JPt-Wd-EmS"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -15,6 +16,10 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7u9-N5-csy">
+                    <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </mapView>
                 <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="SEc-rf-T2n">
                     <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -31,9 +36,13 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="SEc-rf-T2n" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="19A-4h-33m"/>
+                <constraint firstAttribute="bottom" secondItem="7u9-N5-csy" secondAttribute="bottom" id="74X-eq-i3s"/>
+                <constraint firstItem="7u9-N5-csy" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="L1Z-iR-S5y"/>
                 <constraint firstItem="SEc-rf-T2n" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="PkY-Nw-Yop"/>
                 <constraint firstAttribute="trailing" secondItem="SEc-rf-T2n" secondAttribute="trailing" id="S3X-wp-c6d"/>
+                <constraint firstItem="7u9-N5-csy" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="bu2-Xb-MuK"/>
                 <constraint firstAttribute="bottom" secondItem="SEc-rf-T2n" secondAttribute="bottom" id="nxh-Cc-HWP"/>
+                <constraint firstAttribute="trailing" secondItem="7u9-N5-csy" secondAttribute="trailing" id="x79-H9-hrd"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

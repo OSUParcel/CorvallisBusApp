@@ -46,7 +46,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)routeTapped:(UITapGestureRecognizer*)sender
+- (void)routeTapped:(UITapGestureRecognizer*)recognizer
 {
     self.scheduleViewController = [[CBAScheduleViewController alloc] initWithNibName:@"CBAScheduleViewController" bundle:nil];
     CGFloat width = DEPTH_VIEW_SCALE * [[UIScreen mainScreen] bounds].size.width;

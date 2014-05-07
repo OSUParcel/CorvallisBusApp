@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
 @interface CBARouteListViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *routeListView;
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
+@property (strong, nonatomic) CBARouteListViewController *routeListViewController;
 @property (strong, nonatomic) NSArray *routes;
 
 @end
