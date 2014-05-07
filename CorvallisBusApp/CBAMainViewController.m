@@ -63,6 +63,8 @@
     // set top inset
     [self.stopsTableView setContentInset:UIEdgeInsetsMake(20, 0, 0, 0)];
     
+    self.stopsTableView.backgroundColor = [UIColor blackColor];
+    
     // status bar
     [self setNeedsStatusBarAppearanceUpdate];
     self.statusBarBackgroundView.layer.shadowOffset = CGSizeMake(0, 0);
@@ -156,6 +158,11 @@
         } else {
             self.routeListViewController.view.alpha = 1 - (translatedPoint.x / centerStopsTableViewFrame.size.width);
         }
+        if (self.statusBarBackgroundView.frame.origin.x != 0) {
+            [UIView animateWithDuration:0.5f animations:^{
+                self.statusBarBackgroundView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 20);
+            }];
+        }
         CGFloat scale = self.routeListViewController.view.alpha * (1.0f - SCALE) + SCALE;
         self.routeListViewController.view.transform = CGAffineTransformMakeScale(scale, scale);
     } else if ([recognizer state] == UIGestureRecognizerStateEnded) {
@@ -180,6 +187,7 @@
         self.stopsTableView.frame = centerStopsTableViewFrame;
         self.routeListViewController.view.alpha = 0.0f;
         self.routeListViewController.view.transform = CGAffineTransformMakeScale(SCALE, SCALE);
+        self.statusBarBackgroundView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 20);
         stopsTableViewIsShowing = YES;
     }];
 }
@@ -191,6 +199,7 @@
         self.stopsTableView.frame = leftStopsTableViewFrame;
         self.routeListViewController.view.alpha = 1.0f;
         self.routeListViewController.view.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+        self.statusBarBackgroundView.frame = CGRectMake(0, -500, [UIScreen mainScreen].bounds.size.width, 20);
         stopsTableViewIsShowing = NO;
     }];
 }

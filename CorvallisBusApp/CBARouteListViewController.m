@@ -120,6 +120,9 @@
     CGRect frame = [[UIScreen mainScreen] applicationFrame];
     frame.size.height -= 50;
     self.mapView.frame = frame;
+    self.statusBarView = [UIView new];
+    self.statusBarView.frame = CGRectMake(0, -500, [[UIScreen mainScreen] bounds].size.width, 20);
+    [self.view addSubview:self.statusBarView];
     
     [self setupPanelViewController];
     [self loadData];
@@ -208,7 +211,11 @@
     
     self.routeListView.backgroundColor = [UIColor clearColor];
     
+    self.statusBarView.backgroundColor = routeColor;
+    [self.view bringSubviewToFront:self.statusBarView];
+    
     [UIView animateWithDuration:ANIMATION_TIME animations:^{
+        self.statusBarView.frame = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 20);
         self.mapView.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
         self.mapView.alpha = 1.0f;
         self.panelViewController.view.frame = CGRectMake(0, [[UIScreen mainScreen] bounds].size.height - 50,
@@ -250,6 +257,7 @@
         self.panelViewController.view.frame = CGRectMake(0, [[UIScreen mainScreen] bounds].size.height + 500,
                                                          self.panelViewController.view.frame.size.width, self.panelViewController.view.frame.size.height);
         self.mapView.transform = CGAffineTransformMakeScale(0.0f, 0.0f);
+        self.statusBarView.frame = CGRectMake(0, -500, [[UIScreen mainScreen] bounds].size.width, 20);
     } completion:^(BOOL finished) {
         self.routeListView.backgroundColor = [UIColor whiteColor];
     }];
