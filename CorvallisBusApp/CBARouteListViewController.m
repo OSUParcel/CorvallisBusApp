@@ -12,8 +12,71 @@
 #import "UIColor+Hex.h"
 
 #include <stdlib.h>
-
 #define ANIMATION_TIME 0.5f
+#define FULLSCREEN_DELTA 0.001f
+#define CAMERA_PITCH 65.0f
+#define CAMERA_HEADING 0.0f
+#define CAMERA_ALTITUDE 20000.0f
+
+@implementation MKPolyline (MKPolyline_EncodedString)
+
++ (MKPolyline *)polylineWithEncodedString:(NSString *)encodedString {
+    const char *bytes = [encodedString UTF8String];
+    NSUInteger length = [encodedString lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
+    NSUInteger idx = 0;
+    
+    NSUInteger count = length / 4;
+    CLLocationCoordinate2D *coords = calloc(count, sizeof(CLLocationCoordinate2D));
+    NSUInteger coordIdx = 0;
+    
+    float latitude = 0;
+    float longitude = 0;
+    while (idx < length) {
+        char byte = 0;
+        int res = 0;
+        char shift = 0;
+        
+        do {
+            byte = bytes[idx++] - 63;
+            res |= (byte & 0x1F) << shift;
+            shift += 5;
+        } while (byte >= 0x20);
+        
+        float deltaLat = ((res & 1) ? ~(res >> 1) : (res >> 1));
+        latitude += deltaLat;
+        
+        shift = 0;
+        res = 0;
+        
+        do {
+            byte = bytes[idx++] - 0x3F;
+            res |= (byte & 0x1F) << shift;
+            shift += 5;
+        } while (byte >= 0x20);
+        
+        float deltaLon = ((res & 1) ? ~(res >> 1) : (res >> 1));
+        longitude += deltaLon;
+        
+        float finalLat = latitude * 1E-5;
+        float finalLon = longitude * 1E-5;
+        
+        CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(finalLat, finalLon);
+        coords[coordIdx++] = coord;
+        
+        if (coordIdx == count) {
+            NSUInteger newCount = count + 10;
+            coords = realloc(coords, newCount * sizeof(CLLocationCoordinate2D));
+            count = newCount;
+        }
+    }
+    
+    MKPolyline *polyline = [MKPolyline polylineWithCoordinates:coords count:coordIdx];
+    free(coords);
+    
+    return polyline;
+}
+
+@end
 
 @interface CBARouteListViewController ()
 
@@ -21,7 +84,7 @@
 
 @implementation CBARouteListViewController
 
-@synthesize panelViewController, movedCellFrames, movedCells;
+@synthesize routes, panelViewController, currentRoute, movedCells, movedCellFrames;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -49,6 +112,9 @@
     [flowLayout setMinimumLineSpacing:0.0f];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     [self.routeListView setCollectionViewLayout:flowLayout];
+    
+    self.mapView.delegate = self;
+    self.mapView.showsUserLocation = YES;
     
     [self setupPanelViewController];
     [self loadData];
@@ -101,8 +167,11 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.currentRoute = [self.routes objectAtIndex:indexPath.row];
-    [self animateCellsOut];
+    if (indexPath.row != [self.routes count]) {
+        self.currentRoute = [self.routes objectAtIndex:indexPath.row];
+        [self setupMapView];
+        [self animateCellsOut];
+    }
 }
 
 # pragma mark - animation
@@ -160,7 +229,7 @@
             } else {
                 x += [[UIScreen mainScreen] bounds].size.width;
             }
-            cell.frame = CGRectMake(x, cell.frame.origin.y, cell.frame.size.width, cell.frame.size.height);
+            cell.frame = CGRectMake(x, arc4random() % (NSInteger) [[UIScreen mainScreen] bounds].size.height, cell.frame.size.width, cell.frame.size.height);
         }];
     }
 }
@@ -188,6 +257,43 @@
         
         }];
         count++;
+    }
+}
+
+- (void)setupMapView
+{
+    
+    CLLocationCoordinate2D position = CLLocationCoordinate2DMake(44.5629724f, -123.282835365);
+    
+    // camera setup
+    MKMapCamera *camera = [MKMapCamera new];
+    camera.pitch = 0.0f;
+    camera.altitude = CAMERA_ALTITUDE;
+    camera.heading = CAMERA_HEADING;
+    camera.centerCoordinate = position;
+    [self.mapView setCamera:camera animated:NO];
+    
+    // route line
+    [self.mapView removeOverlays:self.mapView.overlays];
+    MKPolyline *route = [MKPolyline polylineWithEncodedString:[self.currentRoute objectForKey:@"Polyline"]];
+    [self.mapView addOverlay:route];
+}
+
+# pragma mark - map view delegate
+
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
+{
+    if ([overlay isKindOfClass:[MKPolyline class]]) {
+        MKPolyline *route = overlay;
+        MKPolylineRenderer *routeRenderer = [[MKPolylineRenderer alloc] initWithPolyline:route];
+        NSString *hexColor = [self.currentRoute objectForKey:@"Color"];
+        UIColor *routeColor = [UIColor colorWithHexValue:hexColor];
+        routeRenderer.strokeColor = routeColor;
+        routeRenderer.lineWidth = 5.0f;
+        return routeRenderer;
+    }
+    else {
+        return nil;
     }
 }
 

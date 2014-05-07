@@ -10,7 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "CBAFullMapPanelViewController.h"
 
-@interface CBARouteListViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface CBARouteListViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, MKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *routeListView;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
