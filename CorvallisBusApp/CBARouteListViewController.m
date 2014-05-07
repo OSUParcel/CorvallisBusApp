@@ -117,6 +117,7 @@
     self.mapView.showsUserLocation = YES;
     
     self.routeListView.frame = [[UIScreen mainScreen] applicationFrame];
+    self.routeListView.backgroundColor = [UIColor blackColor];
     CGRect frame = [[UIScreen mainScreen] applicationFrame];
     frame.size.height -= 50;
     self.mapView.frame = frame;
@@ -260,7 +261,7 @@
         self.mapView.transform = CGAffineTransformMakeScale(0.0f, 0.0f);
         self.statusBarView.frame = CGRectMake(0, -500, [[UIScreen mainScreen] bounds].size.width, 20);
     } completion:^(BOOL finished) {
-        self.routeListView.backgroundColor = [UIColor whiteColor];
+        self.routeListView.backgroundColor = [UIColor blackColor];
     }];
     
     NSUInteger count = 0;
@@ -277,21 +278,20 @@
 
 - (void)setupMapView
 {
-    
-    CLLocationCoordinate2D position = CLLocationCoordinate2DMake(44.5629724f, -123.282835365);
-    
-    // camera setup
-    MKMapCamera *camera = [MKMapCamera new];
-    camera.pitch = 0.0f;
-    camera.altitude = CAMERA_ALTITUDE;
-    camera.heading = CAMERA_HEADING;
-    camera.centerCoordinate = position;
-    [self.mapView setCamera:camera animated:NO];
-    
     // route line
     [self.mapView removeOverlays:self.mapView.overlays];
     MKPolyline *route = [MKPolyline polylineWithEncodedString:[self.currentRoute objectForKey:@"Polyline"]];
     [self.mapView addOverlay:route];
+    
+    // region
+    MKPolygon* polygon = [MKPolygon polygonWithPoints:route.points count:route.pointCount];
+    [self.mapView setRegion:MKCoordinateRegionForMapRect([polygon boundingMapRect]) animated:NO];
+    
+    // zoom out a bit
+    MKMapCamera *camera = [MKMapCamera new];
+    camera = self.mapView.camera;
+    camera.altitude = self.mapView.camera.altitude + 1000;
+    [self.mapView setCamera:camera animated:NO];
 }
 
 # pragma mark - map view delegate
