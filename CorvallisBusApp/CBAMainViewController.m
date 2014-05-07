@@ -15,7 +15,7 @@
 #import "AppDelegate.h"
 #import "BusData.h"
 
-#define SCALE 0.20f
+#define SCALE 0.70f
 #define ANIMATION_TIME 0.5f
 
 @interface CBAMainViewController ()
@@ -92,6 +92,7 @@
     self.depthView = [CWDepthView new];
     AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     self.depthView.windowForScreenshot = delegate.window;
+    self.refreshControl.tintColor = delegate.window.tintColor;
     
     // route list view controller
     self.routeListViewController = [[CBARouteListViewController alloc] initWithNibName:@"CBARouteListViewController" bundle:nil];

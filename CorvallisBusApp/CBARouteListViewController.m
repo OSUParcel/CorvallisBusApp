@@ -203,8 +203,12 @@
     self.mapView.alpha = 0.0f;
     
     [self.view bringSubviewToFront:self.panelViewController.view];
+    
     NSString *hexColor = [self.currentRoute objectForKey:@"Color"];
     UIColor *routeColor = [UIColor colorWithHexValue:hexColor];
+    
+    self.mapView.tintColor = routeColor;
+
     self.panelViewController.view.backgroundColor = routeColor;
     self.panelViewController.arrivalTimeLabel.text = [NSString stringWithFormat:@"Route %@", [self.currentRoute objectForKey:@"Name"]];
     self.panelViewController.stop = [self.currentRoute objectForKey:@"ID"];
