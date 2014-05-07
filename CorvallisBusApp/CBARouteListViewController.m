@@ -9,16 +9,19 @@
 #import "CBARouteListViewController.h"
 #import "CBARouteCell.h"
 #import "Routes.h"
+#import "UIColor+Hex.h"
 
 #include <stdlib.h>
 
-@interface CBARouteListViewController () {
-    BOOL isMapShowing;
-}
+#define ANIMATION_TIME 0.5f
+
+@interface CBARouteListViewController ()
 
 @end
 
 @implementation CBARouteListViewController
+
+@synthesize panelViewController, movedCellFrames, movedCells;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,7 +50,7 @@
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     [self.routeListView setCollectionViewLayout:flowLayout];
     
-    isMapShowing = NO;
+    [self setupPanelViewController];
     [self loadData];
 }
 
@@ -98,24 +101,55 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    isMapShowing = !isMapShowing;
+    self.currentRoute = [self.routes objectAtIndex:indexPath.row];
     [self animateCellsOut];
 }
 
 # pragma mark - animation
 
+- (void)setupPanelViewController
+{
+    self.panelViewController = [[CBAFullMapPanelViewController alloc] initWithNibName:@"CBAFullMapPanelViewController" bundle:nil];
+    self.panelViewController.view.frame = CGRectMake(0, [[UIScreen mainScreen] bounds].size.height + 500,
+                                                     self.panelViewController.view.frame.size.width, self.panelViewController.view.frame.size.height);
+    [self.panelViewController.dismissButton addTarget:self action:@selector(animateCellsIn) forControlEvents:UIControlEventTouchUpInside];
+    self.panelViewController.arrivalTimeLabel.text = @"";
+    self.panelViewController.routeLabel.text = @"";
+    self.panelViewController.routeLabel.userInteractionEnabled = NO;
+    [self.view addSubview:self.panelViewController.view];
+}
+
 - (void)animateCellsOut
 {
     self.mapView.transform = CGAffineTransformMakeScale(0.0f, 0.0f);
     self.mapView.alpha = 0.0f;
-    [UIView animateWithDuration:0.5f animations:^{
+    
+    [self.view bringSubviewToFront:self.panelViewController.view];
+    NSString *hexColor = [self.currentRoute objectForKey:@"Color"];
+    UIColor *routeColor = [UIColor colorWithHexValue:hexColor];
+    self.panelViewController.view.backgroundColor = routeColor;
+    self.panelViewController.stop = [self.currentRoute objectForKey:@"ID"];
+    self.panelViewController.routeName = [self.currentRoute objectForKey:@"Name"];
+    
+    self.routeListView.backgroundColor = [UIColor clearColor];
+    
+    [UIView animateWithDuration:ANIMATION_TIME animations:^{
         self.mapView.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
         self.mapView.alpha = 1.0f;
+        self.panelViewController.view.frame = CGRectMake(0, [[UIScreen mainScreen] bounds].size.height - 50,
+                                                         self.panelViewController.view.frame.size.width, self.panelViewController.view.frame.size.height);
+    } completion:^(BOOL finished) {
+        CGRect frame = self.routeListView.frame;
+        frame.origin.x  = -1000.0f;
+        self.routeListView.frame = frame;
     }];
-    self.routeListView.backgroundColor = [UIColor clearColor];
+    movedCells = [NSMutableArray new];
+    movedCellFrames = [NSMutableArray new];
     for (CBARouteCell *cell in self.routeListView.visibleCells) {
         cell.layer.shadowRadius = 0.0f;
-        [UIView animateWithDuration:0.5f animations:^{
+        [UIView animateWithDuration:ANIMATION_TIME animations:^{
+            [movedCells addObject:cell];
+            [movedCellFrames addObject:[NSValue valueWithCGRect:cell.frame]];
             cell.layer.shadowColor = [[UIColor blackColor] CGColor];
             cell.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
             cell.layer.shadowOpacity = 0.5f;
@@ -129,17 +163,32 @@
             cell.frame = CGRectMake(x, cell.frame.origin.y, cell.frame.size.width, cell.frame.size.height);
         }];
     }
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        CGRect frame = self.routeListView.frame;
-        frame.origin.x  = -1000.0f;
-        self.routeListView.frame = frame;
-        
-    });
 }
 
 - (void)animateCellsIn
 {
+    CGRect frame = self.routeListView.frame;
+    frame.origin.x  = 0.0f;
+    self.routeListView.frame = frame;
 
+    [UIView animateWithDuration:ANIMATION_TIME animations:^{
+        self.panelViewController.view.frame = CGRectMake(0, [[UIScreen mainScreen] bounds].size.height + 500,
+                                                         self.panelViewController.view.frame.size.width, self.panelViewController.view.frame.size.height);
+        self.mapView.transform = CGAffineTransformMakeScale(0.0f, 0.0f);
+    } completion:^(BOOL finished) {
+        self.routeListView.backgroundColor = [UIColor whiteColor];
+    }];
+    
+    NSUInteger count = 0;
+    for (CBARouteCell *cell in self.movedCells) {
+        [UIView animateWithDuration:ANIMATION_TIME animations:^{
+            cell.frame = [[self.movedCellFrames objectAtIndex:count] CGRectValue];
+            cell.layer.shadowRadius = 0.0f;
+        } completion:^(BOOL finished) {
+        
+        }];
+        count++;
+    }
 }
 
 @end
