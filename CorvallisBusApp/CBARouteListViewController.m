@@ -16,7 +16,7 @@
 #define FULLSCREEN_DELTA 0.001f
 #define CAMERA_PITCH 65.0f
 #define CAMERA_HEADING 0.0f
-#define CAMERA_ALTITUDE 20000.0f
+#define CAMERA_ALTITUDE 25000.0f
 
 @implementation MKPolyline (MKPolyline_EncodedString)
 
@@ -84,7 +84,7 @@
 
 @implementation CBARouteListViewController
 
-@synthesize routes, panelViewController, currentRoute, movedCells, movedCellFrames;
+@synthesize routes, panelViewController, currentRoute, movedCells, movedCellFrames, statusBarView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -115,6 +115,11 @@
     
     self.mapView.delegate = self;
     self.mapView.showsUserLocation = YES;
+    
+    self.routeListView.frame = [[UIScreen mainScreen] applicationFrame];
+    CGRect frame = [[UIScreen mainScreen] applicationFrame];
+    frame.size.height -= 50;
+    self.mapView.frame = frame;
     
     [self setupPanelViewController];
     [self loadData];
@@ -197,6 +202,7 @@
     NSString *hexColor = [self.currentRoute objectForKey:@"Color"];
     UIColor *routeColor = [UIColor colorWithHexValue:hexColor];
     self.panelViewController.view.backgroundColor = routeColor;
+    self.panelViewController.arrivalTimeLabel.text = [NSString stringWithFormat:@"Route %@", [self.currentRoute objectForKey:@"Name"]];
     self.panelViewController.stop = [self.currentRoute objectForKey:@"ID"];
     self.panelViewController.routeName = [self.currentRoute objectForKey:@"Name"];
     

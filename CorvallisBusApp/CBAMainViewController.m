@@ -15,7 +15,7 @@
 #import "AppDelegate.h"
 #import "BusData.h"
 
-#define SCALE 0.70f
+#define SCALE 0.20f
 #define ANIMATION_TIME 0.5f
 
 @interface CBAMainViewController ()

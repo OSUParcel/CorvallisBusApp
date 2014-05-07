@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) NSArray *routes;
 @property (strong, nonatomic) CBAFullMapPanelViewController *panelViewController;
+@property (strong, nonatomic) UIView *statusBarView;
 @property (strong, nonatomic) NSDictionary *currentRoute;
 @property (strong, nonatomic) NSMutableArray *movedCells;
 @property (strong, nonatomic) NSMutableArray *movedCellFrames;
