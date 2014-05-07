@@ -13,7 +13,7 @@
 #define CAMERA_HEADING 0.0f
 #define CAMERA_ALTITUDE 500.0f
 
-#define CACHING 1
+#define CACHING 0
 
 #import "CBAStopTableViewCell.h"
 #import "UIColor+Hex.h"
@@ -21,6 +21,19 @@
 #import "CBAStopAnnotation.h"
 
 # pragma mark - polyline category
+
+@interface CBAStopTableRootViewController : UIViewController
+
+@end
+
+@implementation CBAStopTableRootViewController
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
+@end
 
 @implementation MKPolyline (MKPolyline_EncodedString)
 
@@ -217,17 +230,6 @@
     NSString *hexColor = [self.data objectForKey:@"Color"];
     UIColor *routeColor = [UIColor colorWithHexValue:hexColor];
     
-    // correct color if it is too bright
-    CGFloat hue;
-    CGFloat saturation;
-    CGFloat brightness;
-    CGFloat alpha;
-    [routeColor getHue:&hue saturation:&saturation brightness:&brightness alpha:&alpha];
-    if (brightness > 0.70f) {
-        brightness = 0.70f;
-    }
-    routeColor = [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:alpha];
-    
     // set color
     self.backgroundColor = routeColor;
     
@@ -314,7 +316,7 @@
     self.fullScreenWindow.backgroundColor = [UIColor clearColor];
     self.fullScreenWindow.userInteractionEnabled = YES;
     self.fullScreenWindow.windowLevel = UIWindowLevelNormal;
-    self.fullScreenWindow.rootViewController = [UIViewController new];
+    self.fullScreenWindow.rootViewController = [CBAStopTableRootViewController new];
     [self.fullScreenWindow.rootViewController.view addSubview:self];
     [self.fullScreenWindow makeKeyAndVisible];
     AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
@@ -343,6 +345,8 @@
 {
     if (!self.isFullScreen) {
         self.isFullScreen = YES;
+        
+        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
         
         // replace screenshot with mapview
         if (isMapViewCacheLoaded) {
@@ -375,11 +379,13 @@
             [UIView animateWithDuration:ANIMATION_TIME animations:^{
                 self.fullScreenWindow.frame = [[UIScreen mainScreen] bounds];
                 self.frame = [[UIScreen mainScreen] bounds];
-                self.mapView.frame = [[UIScreen mainScreen] bounds];
+                self.mapView.frame = [[UIScreen mainScreen] applicationFrame];
             } completion:^(BOOL finished) {    // get position
                 CLLocationDegrees latitude = [[self.data objectForKey:@"Lat"] doubleValue];
                 CLLocationDegrees longitude = [[self.data objectForKey:@"Long"] doubleValue];
                 CLLocationCoordinate2D position = CLLocationCoordinate2DMake(latitude, longitude);
+                
+                [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
                 
                 // camera setup
                 MKMapCamera *camera = [MKMapCamera new];
@@ -408,6 +414,8 @@
     self.mapView.userInteractionEnabled = NO;
     self.mapView.showsBuildings = NO;
     
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         // reset zoom and viewing angle
         CLLocationDegrees latitude = [[self.data objectForKey:@"Lat"] doubleValue];
@@ -433,6 +441,7 @@
             NSIndexPath* rowToReload = [NSIndexPath indexPathForRow:self.rowIndex inSection:0];
             NSArray* rowsToReload = [NSArray arrayWithObjects:rowToReload, nil];
             [delegate.mainViewController.stopsTableView reloadRowsAtIndexPaths:rowsToReload withRowAnimation:UITableViewRowAnimationNone];
+            [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
         }];
     });
 }

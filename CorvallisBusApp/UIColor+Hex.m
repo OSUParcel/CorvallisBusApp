@@ -45,10 +45,22 @@
         return defaultResult;
     }
     
-    return [UIColor colorWithRed:components[0]
-                           green:components[1]
-                            blue:components[2]
-                           alpha:1.0];
+    UIColor *routeColor = [UIColor colorWithRed:components[0]
+                                          green:components[1]
+                                           blue:components[2]
+                                          alpha:1.0];
+    // correct color if it is too bright
+    CGFloat hue;
+    CGFloat saturation;
+    CGFloat brightness;
+    CGFloat alpha;
+    [routeColor getHue:&hue saturation:&saturation brightness:&brightness alpha:&alpha];
+    if (brightness > 0.75f) {
+        brightness = 0.75f;
+    }
+    routeColor = [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:alpha];
+   
+    return routeColor;
 }
 
 +(UIColor *)darkerColorForColor:(UIColor *)c

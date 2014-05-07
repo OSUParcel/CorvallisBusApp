@@ -112,6 +112,7 @@
                                           [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
     self.stopsTableView.frame = centerStopsTableViewFrame;
     stopsTableViewIsShowing = YES;
+    self.routeListViewController.view.alpha = 0.0f;
     
     // load data
     [self loadData];
@@ -123,8 +124,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle{
-    return UIStatusBarStyleDefault;
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 # pragma mark - pan gesture recognizer

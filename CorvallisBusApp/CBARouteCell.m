@@ -53,17 +53,6 @@
     NSString *hexColor = [self.data objectForKey:@"Color"];
     UIColor *routeColor = [UIColor colorWithHexValue:hexColor];
     
-    // correct color if it is too bright
-    CGFloat hue;
-    CGFloat saturation;
-    CGFloat brightness;
-    CGFloat alpha;
-    [routeColor getHue:&hue saturation:&saturation brightness:&brightness alpha:&alpha];
-    if (brightness > 0.80f) {
-        brightness = 0.80f;
-    }
-    routeColor = [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:alpha];
-    
     // set color
     // self.backgroundColor = routeColor;
     
