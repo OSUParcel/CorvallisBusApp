@@ -214,6 +214,7 @@
     self.statusBarView.backgroundColor = routeColor;
     [self.view bringSubviewToFront:self.statusBarView];
     
+    self.statusBarView.frame = CGRectMake(0, -100, [[UIScreen mainScreen] bounds].size.width, 20);
     [UIView animateWithDuration:ANIMATION_TIME animations:^{
         self.statusBarView.frame = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 20);
         self.mapView.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
