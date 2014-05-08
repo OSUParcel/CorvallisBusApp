@@ -19,6 +19,7 @@
 #import "UIColor+Hex.h"
 #import "AppDelegate.h"
 #import "CBAStopAnnotation.h"
+#import "UIImage+UIImage_Replace.h"
 
 # pragma mark - polyline category
 
@@ -209,9 +210,6 @@
     self.arrivalTimeLabel.text = NSLocalizedString(message, nil);
     self.arrivalTimeLabel.textAlignment = NSTextAlignmentCenter;
     self.backgroundColor = [UIColor grayColor];
-//    self.backgroundColor = [UIColor clearColor];
-//    gradientLayer = [UIColor getGradientForColor:[UIColor grayColor] andFrame:self.bounds];
-//    [self.layer insertSublayer:gradientLayer atIndex:0];
     [self.mapView removeFromSuperview];
 }
 
@@ -232,11 +230,7 @@
     
     // set color
     self.backgroundColor = routeColor;
-    
-    // gradient
-    //    self.backgroundColor = [UIColor clearColor];
-    //    gradientLayer = [UIColor getGradientForColor:routeColor andFrame:self.frame];
-    //    [self.layer insertSublayer:gradientLayer atIndex:0];
+    self.mapView.tintColor = routeColor;
     
     // distance
     CGFloat distance = [[self.data objectForKey:@"Distance"] doubleValue] * 0.000621371;
@@ -292,10 +286,6 @@
     camera.centerCoordinate = position;
     [self.mapView setCamera:camera animated:NO];
     
-    // background color
-//    NSString *hexColor = [self.data objectForKey:@"Color"];
-//    UIColor *routeColor = [UIColor colorWithHexValue:hexColor];
-    
     // marker
     CBAStopAnnotation *marker = [CBAStopAnnotation new];
     marker.title = [self.data objectForKey:@"Name"];
@@ -306,6 +296,33 @@
     // polyline
     MKPolyline *route = [MKPolyline polylineWithEncodedString:[self.data objectForKey:@"Polyline"]];
     [self.mapView addOverlay:route];
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+    if ([[annotation title] isEqualToString:@"Current Location"]) {
+        return nil;
+    }
+    
+    MKAnnotationView *annView = [[MKAnnotationView alloc ] initWithAnnotation:annotation reuseIdentifier:@"currentloc"];
+    NSString *hexColor = [self.data objectForKey:@"Color"];
+    UIColor *routeColor = [UIColor colorWithHexValue:hexColor];
+    UIImage *icon = [[UIImage imageNamed:@"stop.png"] imageTintedWithColor:routeColor];
+    
+    UIImage *backgroundImage = [UIImage imageNamed:@"stop_back.png"];
+    
+    UIGraphicsBeginImageContext(backgroundImage.size);
+    [backgroundImage drawInRect:CGRectMake(0, 0, backgroundImage.size.width, backgroundImage.size.height)];
+    [icon drawInRect:CGRectMake(0, 0, icon.size.width, icon.size.height)];
+    UIImage *result = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    annView.image = result;
+//    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+//    [infoButton addTarget:self action:@selector(animateFromFullScreen)
+//         forControlEvents:UIControlEventTouchUpInside];
+//    annView.rightCalloutAccessoryView = infoButton;
+//    annView.canShowCallout = YES;
+    return annView;
 }
 
 # pragma mark - setup methods

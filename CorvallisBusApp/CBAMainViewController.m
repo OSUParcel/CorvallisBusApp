@@ -92,7 +92,7 @@
     self.depthView = [CWDepthView new];
     AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     self.depthView.windowForScreenshot = delegate.window;
-    self.refreshControl.tintColor = delegate.window.tintColor;
+    self.refreshControl.tintColor = [UIColor whiteColor];
     
     // route list view controller
     self.routeListViewController = [[CBARouteListViewController alloc] initWithNibName:@"CBARouteListViewController" bundle:nil];

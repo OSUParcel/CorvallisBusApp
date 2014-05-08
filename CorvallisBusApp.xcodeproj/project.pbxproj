@@ -18,6 +18,9 @@
 		5E237E90190447F300D9C6CF /* CBAAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E237E8E190447F300D9C6CF /* CBAAboutViewController.xib */; };
 		5E2C19ED1902ED4600199075 /* CBAStopTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E2C19EB1902ED4600199075 /* CBAStopTableViewCell.m */; };
 		5E2C19EE1902ED4600199075 /* CBAStopTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E2C19EC1902ED4600199075 /* CBAStopTableViewCell.xib */; };
+		5E56E36E191B347E000E32A4 /* UIImage+UIImage_Replace.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E56E36D191B347E000E32A4 /* UIImage+UIImage_Replace.m */; };
+		5E56E372191B38E1000E32A4 /* stop_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E56E371191B38E1000E32A4 /* stop_back@2x.png */; };
+		5E56E374191B3CF3000E32A4 /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E56E373191B3CF3000E32A4 /* stop.png */; };
 		5E9D5757190460DD00321A6B /* CBAAboutNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9D5756190460DD00321A6B /* CBAAboutNavigationViewController.m */; };
 		5E9D575C19046A8300321A6B /* CBAContractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9D575A19046A8300321A6B /* CBAContractViewController.m */; };
 		5E9D575D19046A8300321A6B /* CBAContractViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E9D575B19046A8300321A6B /* CBAContractViewController.xib */; };
@@ -78,6 +81,10 @@
 		5E2C19EA1902ED4600199075 /* CBAStopTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAStopTableViewCell.h; sourceTree = "<group>"; };
 		5E2C19EB1902ED4600199075 /* CBAStopTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAStopTableViewCell.m; sourceTree = "<group>"; };
 		5E2C19EC1902ED4600199075 /* CBAStopTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBAStopTableViewCell.xib; sourceTree = "<group>"; };
+		5E56E36C191B347E000E32A4 /* UIImage+UIImage_Replace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+UIImage_Replace.h"; sourceTree = "<group>"; };
+		5E56E36D191B347E000E32A4 /* UIImage+UIImage_Replace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+UIImage_Replace.m"; sourceTree = "<group>"; };
+		5E56E371191B38E1000E32A4 /* stop_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "stop_back@2x.png"; path = "Images/stop_back@2x.png"; sourceTree = SOURCE_ROOT; };
+		5E56E373191B3CF3000E32A4 /* stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stop.png; path = Images/stop.png; sourceTree = SOURCE_ROOT; };
 		5E9D5755190460DD00321A6B /* CBAAboutNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAAboutNavigationViewController.h; sourceTree = "<group>"; };
 		5E9D5756190460DD00321A6B /* CBAAboutNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAAboutNavigationViewController.m; sourceTree = "<group>"; };
 		5E9D575919046A8300321A6B /* CBAContractViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAContractViewController.h; sourceTree = "<group>"; };
@@ -214,6 +221,15 @@
 			name = "Stop Table View Cell";
 			sourceTree = "<group>";
 		};
+		5E56E36B191B346C000E32A4 /* UIImage+Replace */ = {
+			isa = PBXGroup;
+			children = (
+				5E56E36C191B347E000E32A4 /* UIImage+UIImage_Replace.h */,
+				5E56E36D191B347E000E32A4 /* UIImage+UIImage_Replace.m */,
+			);
+			name = "UIImage+Replace";
+			sourceTree = "<group>";
+		};
 		5E9D5754190460C700321A6B /* About Navigation Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,6 +288,7 @@
 		5E9D88341903378C00C41F1A /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				5E56E36B191B346C000E32A4 /* UIImage+Replace */,
 				5E9D88351903379200C41F1A /* UIColor+Hex */,
 			);
 			name = Categories;
@@ -351,6 +368,8 @@
 			isa = PBXGroup;
 			children = (
 				5E1166231917461700934240 /* route.png */,
+				5E56E373191B3CF3000E32A4 /* stop.png */,
+				5E56E371191B38E1000E32A4 /* stop_back@2x.png */,
 				5ECD7E8F1900DB81002AE274 /* Images.xcassets */,
 				5ECD7E8C1900DB81002AE274 /* AppDelegate.h */,
 				5ECD7E8D1900DB81002AE274 /* AppDelegate.m */,
@@ -530,6 +549,7 @@
 				5E237E90190447F300D9C6CF /* CBAAboutViewController.xib in Resources */,
 				5E2C19EE1902ED4600199075 /* CBAStopTableViewCell.xib in Resources */,
 				5ECD7E881900DB81002AE274 /* InfoPlist.strings in Resources */,
+				5E56E374191B3CF3000E32A4 /* stop.png in Resources */,
 				5E1166241917461700934240 /* route.png in Resources */,
 				5E9D8843190344B000C41F1A /* CBAScheduleViewController.xib in Resources */,
 				5E9D575D19046A8300321A6B /* CBAContractViewController.xib in Resources */,
@@ -539,6 +559,7 @@
 				5E11661A1916FF9500934240 /* CBARouteListViewController.xib in Resources */,
 				5ECD7E901900DB81002AE274 /* Images.xcassets in Resources */,
 				5ED32E651900E0D200692D18 /* CBAMainViewController.xib in Resources */,
+				5E56E372191B38E1000E32A4 /* stop_back@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,6 +611,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E56E36E191B347E000E32A4 /* UIImage+UIImage_Replace.m in Sources */,
 				5E237E891904413E00D9C6CF /* CBAMainViewController.m in Sources */,
 				5E1166191916FF9500934240 /* CBARouteListViewController.m in Sources */,
 				5E9D882719032A4400C41F1A /* BusData.m in Sources */,
