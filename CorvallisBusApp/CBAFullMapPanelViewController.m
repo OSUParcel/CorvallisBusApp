@@ -52,8 +52,8 @@
     CGFloat width = DEPTH_VIEW_SCALE * [[UIScreen mainScreen] bounds].size.width;
     CGFloat height = DEPTH_VIEW_SCALE * [[UIScreen mainScreen] bounds].size.height;
     self.scheduleViewController.view.frame = CGRectMake(([[UIScreen mainScreen] bounds].size.width - width)/2,
-                                                ([[UIScreen mainScreen] bounds].size.height - height)/2,
-                                                width, height);
+                                                        ([[UIScreen mainScreen] bounds].size.height - height)/2,
+                                                        width, height);
     self.depthView = [CWDepthView new];
     AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     self.depthView.windowForScreenshot = delegate.mapWindow;
