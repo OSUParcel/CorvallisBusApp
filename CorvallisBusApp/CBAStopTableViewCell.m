@@ -321,7 +321,7 @@
 //    [infoButton addTarget:self action:@selector(animateFromFullScreen)
 //         forControlEvents:UIControlEventTouchUpInside];
 //    annView.rightCalloutAccessoryView = infoButton;
-//    annView.canShowCallout = YES;
+    annView.canShowCallout = YES;
     return annView;
 }
 
