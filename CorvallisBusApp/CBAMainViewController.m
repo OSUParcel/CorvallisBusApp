@@ -23,7 +23,6 @@
     CGRect defaultStopsTableViewFrame;
     CGRect centerStopsTableViewFrame;
     CGRect leftStopsTableViewFrame;
-    CGRect rightStopsTableViewFrame;
     BOOL stopsTableViewIsShowing;
 }
 
@@ -60,16 +59,10 @@
     self.stopsTableView.dataSource = self;
     self.stopsTableView.delegate = self;
     
-    // set top inset
-    [self.stopsTableView setContentInset:UIEdgeInsetsMake(20, 0, 0, 0)];
-    
     self.stopsTableView.backgroundColor = [UIColor blackColor];
     
     // status bar
     [self setNeedsStatusBarAppearanceUpdate];
-    self.statusBarBackgroundView.layer.shadowOffset = CGSizeMake(0, 0);
-    self.statusBarBackgroundView.layer.shadowRadius = 3;
-    self.statusBarBackgroundView.layer.shadowOpacity = 0.5;
     self.stopsTableView.layer.shadowOffset = CGSizeMake(0, 0);
     self.stopsTableView.layer.shadowRadius = 3;
     self.stopsTableView.layer.shadowOpacity = 0.5;
@@ -105,16 +98,15 @@
     self.panGestureRecognizer.minimumNumberOfTouches = 1;
     self.panGestureRecognizer.maximumNumberOfTouches = 1;
     [self.view addGestureRecognizer:self.panGestureRecognizer];
-    defaultStopsTableViewFrame = self.stopsTableView.frame;
     
     // frames
-    centerStopsTableViewFrame = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
-    leftStopsTableViewFrame = CGRectMake(-1 * [[UIScreen mainScreen] bounds].size.width, 0,
-                                         [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
-    rightStopsTableViewFrame = CGRectMake([[UIScreen mainScreen] bounds].size.width, 0,
-                                          [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
+    centerStopsTableViewFrame = CGRectMake(0, 20, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] applicationFrame].size.height);
+    leftStopsTableViewFrame = CGRectMake(-1 * [[UIScreen mainScreen] bounds].size.width, 20,
+                                         [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] applicationFrame].size.height);
     self.stopsTableView.frame = centerStopsTableViewFrame;
+    defaultStopsTableViewFrame = self.stopsTableView.frame;
     stopsTableViewIsShowing = YES;
+    
     self.routeListViewController.view.alpha = 0.0f;
     
     // load data
@@ -159,11 +151,6 @@
         } else {
             self.routeListViewController.view.alpha = 1 - (translatedPoint.x / centerStopsTableViewFrame.size.width);
         }
-        if (self.statusBarBackgroundView.frame.origin.x != 0) {
-            [UIView animateWithDuration:0.5f animations:^{
-                self.statusBarBackgroundView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 20);
-            }];
-        }
         CGFloat scale = self.routeListViewController.view.alpha * (1.0f - SCALE) + SCALE;
         self.routeListViewController.view.transform = CGAffineTransformMakeScale(scale, scale);
     } else if ([recognizer state] == UIGestureRecognizerStateEnded) {
@@ -188,7 +175,6 @@
         self.stopsTableView.frame = centerStopsTableViewFrame;
         self.routeListViewController.view.alpha = 0.0f;
         self.routeListViewController.view.transform = CGAffineTransformMakeScale(SCALE, SCALE);
-        self.statusBarBackgroundView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 20);
         stopsTableViewIsShowing = YES;
     }];
 }
@@ -200,7 +186,6 @@
         self.stopsTableView.frame = leftStopsTableViewFrame;
         self.routeListViewController.view.alpha = 1.0f;
         self.routeListViewController.view.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
-        self.statusBarBackgroundView.frame = CGRectMake(0, -500, [UIScreen mainScreen].bounds.size.width, 20);
         stopsTableViewIsShowing = NO;
     }];
 }

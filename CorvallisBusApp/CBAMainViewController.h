@@ -22,8 +22,6 @@
 @property (strong, nonatomic) CBARouteListViewController *routeListViewController;
 @property (strong, nonatomic) UIPanGestureRecognizer *panGestureRecognizer;
 
-@property (weak, nonatomic) IBOutlet UIView *statusBarBackgroundView;
-
 - (void)loadData;
 - (void)dismissAboutView;
 
