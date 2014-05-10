@@ -54,4 +54,12 @@
     return arrivals;
 }
 
++(NSDictionary *)getArrivalForStop:(NSString*)stopID
+{
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObject:stopID forKey:@"ID"];
+    NSArray *array = [NSArray arrayWithObject:dictionary];
+    NSDictionary *result = [self getArrivalsForStops:array];
+    return [result objectForKey:stopID];
+}
+
 @end
