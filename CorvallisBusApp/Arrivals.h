@@ -11,6 +11,6 @@
 @interface Arrivals : NSObject
 
 +(NSDictionary *)getArrivalsForStops:(NSArray *)stops;
-+(NSDictionary *)getArrivalForStop:(NSString*)stopID;
++(NSArray *)getArrivalForStop:(NSString*)stopID;
 
 @end
