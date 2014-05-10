@@ -60,9 +60,7 @@
     NSDictionary *dictionary = [NSDictionary dictionaryWithObject:stopID forKey:@"ID"];
     NSArray *array = [NSArray arrayWithObject:dictionary];
     NSDictionary *result = [self getArrivalsForStops:array];
-    NSLog(@"arrivals: %@", result);
-    NSLog(@"arrivals for stop id %@: %@", stopID, [result objectForKey:stopID]);
-    return [result objectForKey:stopID];
+    return [result objectForKey:[NSString stringWithFormat:@"%@", stopID]];
 }
 
 @end

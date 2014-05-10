@@ -88,7 +88,7 @@
 {
     NSArray *arrivals = [Arrivals getArrivalForStop:stop];
     
-    NSLog(@"Arrivals for stop: %@", arrivals);
+    // NSLog(@"Arrivals for stop: %@", arrivals);
     
     NSMutableArray *schedule = [[NSMutableArray alloc] init];
     
