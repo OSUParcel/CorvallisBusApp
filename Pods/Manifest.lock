@@ -1,13 +1,10 @@
 PODS:
-  - Google-Maps-iOS-SDK (1.7.2)
   - Shimmer (1.0.1)
 
 DEPENDENCIES:
-  - Google-Maps-iOS-SDK (~> 1.7.2)
   - Shimmer (~> 1.0.1)
 
 SPEC CHECKSUMS:
-  Google-Maps-iOS-SDK: 14de93ec6d63ac83655a5029e3e7788c5ba70900
   Shimmer: a1b92685f04ae7363e655f636a41a276dbb1507e
 
 COCOAPODS: 0.32.1

@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
-#import <GoogleMaps/GoogleMaps.h>
+
+#import "CBARouteListViewController.h"
 
 @interface CBAMainViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate> {
     CLLocationManager *locationManager;
@@ -17,7 +18,9 @@
 @property (strong, nonatomic) NSMutableArray *arrivals;
 
 @property (strong, nonatomic) IBOutlet UITableView *stopsTableView;
-@property (weak, nonatomic) IBOutlet UIView *statusBarBackgroundView;
+
+@property (strong, nonatomic) CBARouteListViewController *routeListViewController;
+@property (strong, nonatomic) UIPanGestureRecognizer *panGestureRecognizer;
 
 - (void)loadData;
 - (void)dismissAboutView;

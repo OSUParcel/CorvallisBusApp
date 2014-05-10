@@ -7,17 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <GoogleMaps/GoogleMaps.h>
 #import <FBShimmeringView.h>
+#import <MapKit/MapKit.h>
 
 #import "CBAFullMapPanelViewController.h"
 
-@interface CBAStopTableViewCell : UITableViewCell
+@interface CBAStopTableViewCell : UITableViewCell <MKMapViewDelegate>
 
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
 @property (strong, nonatomic) UIWindow *fullScreenWindow;
 @property (strong, nonatomic) CBAFullMapPanelViewController *panelViewController;
 @property (strong, nonatomic) NSDictionary *data;
+@property (strong, nonatomic) UIImageView *mapViewImage;
 
 @property (nonatomic) CGRect defaultViewFrame;
 @property (nonatomic) CGRect defaultMapViewFrame;
@@ -25,8 +26,8 @@
 @property (nonatomic) NSInteger rowIndex;
 
 @property (strong, nonatomic) IBOutlet UIView *backgroundView;
-@property (strong, nonatomic) IBOutlet GMSMapView *mapView;
 @property (weak, nonatomic) IBOutlet FBShimmeringView *arrivalTimeView;
+@property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UILabel *arrivalTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *routeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;

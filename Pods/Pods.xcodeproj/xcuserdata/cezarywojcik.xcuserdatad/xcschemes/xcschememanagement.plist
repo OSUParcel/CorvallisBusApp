@@ -4,11 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-Google-Maps-iOS-SDK.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-Shimmer.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +17,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>359A3612E8924D1098A33BE5</key>
+		<key>1110FEF40C7A415180EB9E4C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B15FDBDD004B4260A4F52B79</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B57D711FE4F249D19AAD6E81</key>
+		<key>91704E2D69284A629DC769B7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -9,8 +9,6 @@
 #import "AppDelegate.h"
 #import "CBAMainViewController.h"
 
-#import <GoogleMaps/GoogleMaps.h>
-
 @implementation AppDelegate
 
 @synthesize mainViewController;
@@ -21,8 +19,8 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     
-    // Google Maps setup
-    [GMSServices provideAPIKey:@"AIzaSyDVnyXmX168uYG4XdVFb1VWnGPQQ-UudSQ"];
+    // init map view cache manager
+    self.mapViewCacheManager = [CBAMapViewCacheManager new];
     
     // root view controller
     self.mainViewController = [[CBAMainViewController alloc] initWithNibName:@"CBAMainViewController" bundle:nil];

@@ -7,12 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E1166191916FF9500934240 /* CBARouteListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1166171916FF9500934240 /* CBARouteListViewController.m */; };
+		5E11661A1916FF9500934240 /* CBARouteListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E1166181916FF9500934240 /* CBARouteListViewController.xib */; };
+		5E11661E1917345D00934240 /* CBARouteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E11661D1917345D00934240 /* CBARouteCell.m */; };
+		5E1166201917346C00934240 /* CBARouteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E11661F1917346C00934240 /* CBARouteCell.xib */; };
+		5E1166241917461700934240 /* route.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E1166231917461700934240 /* route.png */; };
 		5E237E871903495E00D9C6CF /* CWDepthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E237E861903495E00D9C6CF /* CWDepthView.m */; };
 		5E237E891904413E00D9C6CF /* CBAMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E237E881904413E00D9C6CF /* CBAMainViewController.m */; };
 		5E237E8F190447F300D9C6CF /* CBAAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E237E8D190447F300D9C6CF /* CBAAboutViewController.m */; };
 		5E237E90190447F300D9C6CF /* CBAAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E237E8E190447F300D9C6CF /* CBAAboutViewController.xib */; };
 		5E2C19ED1902ED4600199075 /* CBAStopTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E2C19EB1902ED4600199075 /* CBAStopTableViewCell.m */; };
 		5E2C19EE1902ED4600199075 /* CBAStopTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E2C19EC1902ED4600199075 /* CBAStopTableViewCell.xib */; };
+		5E56E36E191B347E000E32A4 /* UIImage+UIImage_Replace.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E56E36D191B347E000E32A4 /* UIImage+UIImage_Replace.m */; };
+		5E56E372191B38E1000E32A4 /* stop_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E56E371191B38E1000E32A4 /* stop_back@2x.png */; };
+		5E929ABD191B6872009AAAF8 /* stop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E929ABC191B6872009AAAF8 /* stop@2x.png */; };
 		5E9D5757190460DD00321A6B /* CBAAboutNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9D5756190460DD00321A6B /* CBAAboutNavigationViewController.m */; };
 		5E9D575C19046A8300321A6B /* CBAContractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9D575A19046A8300321A6B /* CBAContractViewController.m */; };
 		5E9D575D19046A8300321A6B /* CBAContractViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E9D575B19046A8300321A6B /* CBAContractViewController.xib */; };
@@ -23,6 +31,9 @@
 		5E9D88381903379F00C41F1A /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9D88371903379F00C41F1A /* UIColor+Hex.m */; };
 		5E9D8842190344B000C41F1A /* CBAScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9D8840190344B000C41F1A /* CBAScheduleViewController.m */; };
 		5E9D8843190344B000C41F1A /* CBAScheduleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E9D8841190344B000C41F1A /* CBAScheduleViewController.xib */; };
+		5E9EC785190C3DCC0064AC25 /* CBAMapViewCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9EC784190C3DCC0064AC25 /* CBAMapViewCacheManager.m */; };
+		5E9EC787190C4E450064AC25 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9EC786190C4E450064AC25 /* MapKit.framework */; };
+		5E9EC78B190C5D640064AC25 /* CBAStopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9EC78A190C5D640064AC25 /* CBAStopAnnotation.m */; };
 		5ECD7E7E1900DB81002AE274 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ECD7E7D1900DB81002AE274 /* Foundation.framework */; };
 		5ECD7E801900DB81002AE274 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ECD7E7F1900DB81002AE274 /* CoreGraphics.framework */; };
 		5ECD7E821900DB81002AE274 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ECD7E811900DB81002AE274 /* UIKit.framework */; };
@@ -54,6 +65,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5E1166161916FF9500934240 /* CBARouteListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBARouteListViewController.h; sourceTree = "<group>"; };
+		5E1166171916FF9500934240 /* CBARouteListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBARouteListViewController.m; sourceTree = "<group>"; };
+		5E1166181916FF9500934240 /* CBARouteListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBARouteListViewController.xib; sourceTree = "<group>"; };
+		5E11661C1917345D00934240 /* CBARouteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBARouteCell.h; sourceTree = "<group>"; };
+		5E11661D1917345D00934240 /* CBARouteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBARouteCell.m; sourceTree = "<group>"; };
+		5E11661F1917346C00934240 /* CBARouteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBARouteCell.xib; sourceTree = "<group>"; };
+		5E1166231917461700934240 /* route.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = route.png; path = Images/route.png; sourceTree = SOURCE_ROOT; };
 		5E237E851903495E00D9C6CF /* CWDepthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWDepthView.h; sourceTree = "<group>"; };
 		5E237E861903495E00D9C6CF /* CWDepthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWDepthView.m; sourceTree = "<group>"; };
 		5E237E881904413E00D9C6CF /* CBAMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAMainViewController.m; sourceTree = "<group>"; };
@@ -63,6 +81,10 @@
 		5E2C19EA1902ED4600199075 /* CBAStopTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAStopTableViewCell.h; sourceTree = "<group>"; };
 		5E2C19EB1902ED4600199075 /* CBAStopTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAStopTableViewCell.m; sourceTree = "<group>"; };
 		5E2C19EC1902ED4600199075 /* CBAStopTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBAStopTableViewCell.xib; sourceTree = "<group>"; };
+		5E56E36C191B347E000E32A4 /* UIImage+UIImage_Replace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+UIImage_Replace.h"; sourceTree = "<group>"; };
+		5E56E36D191B347E000E32A4 /* UIImage+UIImage_Replace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+UIImage_Replace.m"; sourceTree = "<group>"; };
+		5E56E371191B38E1000E32A4 /* stop_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "stop_back@2x.png"; path = "Images/stop_back@2x.png"; sourceTree = SOURCE_ROOT; };
+		5E929ABC191B6872009AAAF8 /* stop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "stop@2x.png"; path = "Images/stop@2x.png"; sourceTree = SOURCE_ROOT; };
 		5E9D5755190460DD00321A6B /* CBAAboutNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAAboutNavigationViewController.h; sourceTree = "<group>"; };
 		5E9D5756190460DD00321A6B /* CBAAboutNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAAboutNavigationViewController.m; sourceTree = "<group>"; };
 		5E9D575919046A8300321A6B /* CBAContractViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAContractViewController.h; sourceTree = "<group>"; };
@@ -81,6 +103,11 @@
 		5E9D883F190344B000C41F1A /* CBAScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAScheduleViewController.h; sourceTree = "<group>"; };
 		5E9D8840190344B000C41F1A /* CBAScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAScheduleViewController.m; sourceTree = "<group>"; };
 		5E9D8841190344B000C41F1A /* CBAScheduleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBAScheduleViewController.xib; sourceTree = "<group>"; };
+		5E9EC783190C3DCC0064AC25 /* CBAMapViewCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAMapViewCacheManager.h; sourceTree = "<group>"; };
+		5E9EC784190C3DCC0064AC25 /* CBAMapViewCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAMapViewCacheManager.m; sourceTree = "<group>"; };
+		5E9EC786190C4E450064AC25 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		5E9EC789190C5D640064AC25 /* CBAStopAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAStopAnnotation.h; sourceTree = "<group>"; };
+		5E9EC78A190C5D640064AC25 /* CBAStopAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAStopAnnotation.m; sourceTree = "<group>"; };
 		5ECD7E7A1900DB81002AE274 /* CorBus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CorBus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ECD7E7D1900DB81002AE274 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5ECD7E7F1900DB81002AE274 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -114,6 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E9EC787190C4E450064AC25 /* MapKit.framework in Frameworks */,
 				5ECD7E801900DB81002AE274 /* CoreGraphics.framework in Frameworks */,
 				5ECD7E821900DB81002AE274 /* UIKit.framework in Frameworks */,
 				5ECD7E7E1900DB81002AE274 /* Foundation.framework in Frameworks */,
@@ -134,6 +162,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E1166151916FF8200934240 /* Route List View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5E1166161916FF9500934240 /* CBARouteListViewController.h */,
+				5E1166171916FF9500934240 /* CBARouteListViewController.m */,
+				5E1166181916FF9500934240 /* CBARouteListViewController.xib */,
+			);
+			name = "Route List View Controller";
+			sourceTree = "<group>";
+		};
+		5E11661B191733DF00934240 /* Route Cell */ = {
+			isa = PBXGroup;
+			children = (
+				5E11661C1917345D00934240 /* CBARouteCell.h */,
+				5E11661D1917345D00934240 /* CBARouteCell.m */,
+				5E11661F1917346C00934240 /* CBARouteCell.xib */,
+			);
+			name = "Route Cell";
+			sourceTree = "<group>";
+		};
 		5E237E841903495E00D9C6CF /* CWDepthView */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +204,7 @@
 		5E2C19E81902ED1F00199075 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5E11661B191733DF00934240 /* Route Cell */,
 				5E2C19E91902ED2500199075 /* Stop Table View Cell */,
 			);
 			name = Views;
@@ -164,11 +213,21 @@
 		5E2C19E91902ED2500199075 /* Stop Table View Cell */ = {
 			isa = PBXGroup;
 			children = (
+				5E9EC788190C5D4D0064AC25 /* Stop Annotation */,
 				5E2C19EA1902ED4600199075 /* CBAStopTableViewCell.h */,
 				5E2C19EB1902ED4600199075 /* CBAStopTableViewCell.m */,
 				5E2C19EC1902ED4600199075 /* CBAStopTableViewCell.xib */,
 			);
 			name = "Stop Table View Cell";
+			sourceTree = "<group>";
+		};
+		5E56E36B191B346C000E32A4 /* UIImage+Replace */ = {
+			isa = PBXGroup;
+			children = (
+				5E56E36C191B347E000E32A4 /* UIImage+UIImage_Replace.h */,
+				5E56E36D191B347E000E32A4 /* UIImage+UIImage_Replace.m */,
+			);
+			name = "UIImage+Replace";
 			sourceTree = "<group>";
 		};
 		5E9D5754190460C700321A6B /* About Navigation Controller */ = {
@@ -229,6 +288,7 @@
 		5E9D88341903378C00C41F1A /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				5E56E36B191B346C000E32A4 /* UIImage+Replace */,
 				5E9D88351903379200C41F1A /* UIColor+Hex */,
 			);
 			name = Categories;
@@ -251,6 +311,24 @@
 				5E9D8841190344B000C41F1A /* CBAScheduleViewController.xib */,
 			);
 			name = "Schedule View Controller";
+			sourceTree = "<group>";
+		};
+		5E9EC782190C3DB00064AC25 /* Map View Cache Manager */ = {
+			isa = PBXGroup;
+			children = (
+				5E9EC783190C3DCC0064AC25 /* CBAMapViewCacheManager.h */,
+				5E9EC784190C3DCC0064AC25 /* CBAMapViewCacheManager.m */,
+			);
+			name = "Map View Cache Manager";
+			sourceTree = "<group>";
+		};
+		5E9EC788190C5D4D0064AC25 /* Stop Annotation */ = {
+			isa = PBXGroup;
+			children = (
+				5E9EC789190C5D640064AC25 /* CBAStopAnnotation.h */,
+				5E9EC78A190C5D640064AC25 /* CBAStopAnnotation.m */,
+			);
+			name = "Stop Annotation";
 			sourceTree = "<group>";
 		};
 		5ECD7E711900DB81002AE274 = {
@@ -276,6 +354,7 @@
 		5ECD7E7C1900DB81002AE274 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5E9EC786190C4E450064AC25 /* MapKit.framework */,
 				5ECD7E7D1900DB81002AE274 /* Foundation.framework */,
 				5ECD7E7F1900DB81002AE274 /* CoreGraphics.framework */,
 				5ECD7E811900DB81002AE274 /* UIKit.framework */,
@@ -288,6 +367,9 @@
 		5ECD7E831900DB81002AE274 /* CorvallisBusApp */ = {
 			isa = PBXGroup;
 			children = (
+				5E1166231917461700934240 /* route.png */,
+				5E929ABC191B6872009AAAF8 /* stop@2x.png */,
+				5E56E371191B38E1000E32A4 /* stop_back@2x.png */,
 				5ECD7E8F1900DB81002AE274 /* Images.xcassets */,
 				5ECD7E8C1900DB81002AE274 /* AppDelegate.h */,
 				5ECD7E8D1900DB81002AE274 /* AppDelegate.m */,
@@ -333,6 +415,7 @@
 		5ED32E5F1900E0B000692D18 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5E1166151916FF8200934240 /* Route List View Controller */,
 				5E9D5754190460C700321A6B /* About Navigation Controller */,
 				5EFCB4B419045362006038D7 /* Legal View Controller */,
 				5E237E8B190447E500D9C6CF /* About View Controller */,
@@ -356,6 +439,7 @@
 		5ED32E661900E26A00692D18 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5E9EC782190C3DB00064AC25 /* Map View Cache Manager */,
 				5E9D883019032A6000C41F1A /* Arrivals */,
 				5E9D882C19032A5500C41F1A /* Stops */,
 				5E9D882819032A4700C41F1A /* Routes */,
@@ -465,12 +549,17 @@
 				5E237E90190447F300D9C6CF /* CBAAboutViewController.xib in Resources */,
 				5E2C19EE1902ED4600199075 /* CBAStopTableViewCell.xib in Resources */,
 				5ECD7E881900DB81002AE274 /* InfoPlist.strings in Resources */,
+				5E1166241917461700934240 /* route.png in Resources */,
 				5E9D8843190344B000C41F1A /* CBAScheduleViewController.xib in Resources */,
 				5E9D575D19046A8300321A6B /* CBAContractViewController.xib in Resources */,
+				5E929ABD191B6872009AAAF8 /* stop@2x.png in Resources */,
 				5EEABBF41902FBF10031A884 /* CBAFullMapPanelViewController.xib in Resources */,
+				5E1166201917346C00934240 /* CBARouteCell.xib in Resources */,
 				5EFCB4B91904536B006038D7 /* CBALegalViewController.xib in Resources */,
+				5E11661A1916FF9500934240 /* CBARouteListViewController.xib in Resources */,
 				5ECD7E901900DB81002AE274 /* Images.xcassets in Resources */,
 				5ED32E651900E0D200692D18 /* CBAMainViewController.xib in Resources */,
+				5E56E372191B38E1000E32A4 /* stop_back@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,11 +611,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E56E36E191B347E000E32A4 /* UIImage+UIImage_Replace.m in Sources */,
 				5E237E891904413E00D9C6CF /* CBAMainViewController.m in Sources */,
+				5E1166191916FF9500934240 /* CBARouteListViewController.m in Sources */,
 				5E9D882719032A4400C41F1A /* BusData.m in Sources */,
 				5E9D88381903379F00C41F1A /* UIColor+Hex.m in Sources */,
 				5E237E871903495E00D9C6CF /* CWDepthView.m in Sources */,
 				5E2C19ED1902ED4600199075 /* CBAStopTableViewCell.m in Sources */,
+				5E11661E1917345D00934240 /* CBARouteCell.m in Sources */,
 				5EEABBF31902FBF10031A884 /* CBAFullMapPanelViewController.m in Sources */,
 				5E9D882F19032A5B00C41F1A /* Stops.m in Sources */,
 				5E9D5757190460DD00321A6B /* CBAAboutNavigationViewController.m in Sources */,
@@ -537,6 +629,8 @@
 				5E9D8842190344B000C41F1A /* CBAScheduleViewController.m in Sources */,
 				5ECD7E8E1900DB81002AE274 /* AppDelegate.m in Sources */,
 				5ECD7E8A1900DB81002AE274 /* main.m in Sources */,
+				5E9EC78B190C5D640064AC25 /* CBAStopAnnotation.m in Sources */,
+				5E9EC785190C3DCC0064AC25 /* CBAMapViewCacheManager.m in Sources */,
 				5E9D883319032A6800C41F1A /* Arrivals.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

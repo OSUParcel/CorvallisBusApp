@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "CBAMainViewController.h"
+#import "CBAMapViewCacheManager.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) CBAMapViewCacheManager *mapViewCacheManager;
 @property (weak, nonatomic) UIWindow *mapWindow;
 @property (weak, nonatomic) UIWindow *depthViewWindow;
 

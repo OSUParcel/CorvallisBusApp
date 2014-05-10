@@ -17,22 +17,22 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Corvallis Bus App" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="197" translatesAutoresizingMaskIntoConstraints="NO" id="T5z-ox-XY0">
-                    <rect key="frame" x="62" y="64" width="197" height="124"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CorBus" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="164" translatesAutoresizingMaskIntoConstraints="NO" id="T5z-ox-XY0">
+                    <rect key="frame" x="79" y="64" width="164" height="62"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="54"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created By:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YMv-e1-niG">
-                    <rect key="frame" x="119" y="228" width="84" height="21"/>
+                    <rect key="frame" x="119" y="166" width="84" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sVe-yj-Rvc">
-                    <rect key="frame" x="102" y="257" width="118" height="36"/>
+                    <rect key="frame" x="102" y="195" width="118" height="36"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
                     <state key="normal" title="Cezary Wojcik">
@@ -44,7 +44,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ex0-EM-vZJ">
-                    <rect key="frame" x="99" y="293" width="124" height="36"/>
+                    <rect key="frame" x="99" y="231" width="124" height="36"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
                     <state key="normal" title="Russell Barnes">
@@ -67,18 +67,40 @@
                         <action selector="legalButtonPressed:" destination="-1" eventType="touchUpInside" id="6Qx-PK-gnD"/>
                     </connections>
                 </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright 2014" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TwL-Xa-cz0">
-                    <rect key="frame" x="20" y="520" width="111" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright (c) 2014" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TwL-Xa-cz0">
+                    <rect key="frame" x="20" y="520" width="133" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Corvallis Bus App" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rcc-Ep-MQJ">
+                    <rect key="frame" x="82" y="122" width="157" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uur-NP-2lz">
+                    <rect key="frame" x="40" y="275" width="240" height="100"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="X8y-Yq-Hyl"/>
+                        <constraint firstAttribute="width" constant="240" id="jIh-xG-CHL"/>
+                    </constraints>
+                    <string key="text">CorBus was the winner of the Corvallis Bus App Hackathon, and has since been further developed to be a fully-featured Bus App. If you like this App, please leave a review on the App Store!</string>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
             </subviews>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="centerX" secondItem="sVe-yj-Rvc" secondAttribute="centerX" constant="-0.5" id="6dp-gr-cRY"/>
+                <constraint firstItem="uur-NP-2lz" firstAttribute="top" secondItem="Ex0-EM-vZJ" secondAttribute="bottom" constant="8" id="Dcu-6V-Ikn"/>
                 <constraint firstItem="TwL-Xa-cz0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="Jke-it-4JF"/>
+                <constraint firstItem="Rcc-Ep-MQJ" firstAttribute="top" secondItem="T5z-ox-XY0" secondAttribute="bottom" constant="-4" id="LOc-Ia-k9C"/>
                 <constraint firstItem="T5z-ox-XY0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="PqA-oC-lIx"/>
                 <constraint firstAttribute="trailing" secondItem="MGd-IN-Lgn" secondAttribute="trailing" constant="20" id="V5t-0S-8La"/>
                 <constraint firstAttribute="bottom" secondItem="TwL-Xa-cz0" secondAttribute="bottom" constant="27" id="VbG-UT-Vqq"/>
@@ -87,6 +109,8 @@
                 <constraint firstItem="sVe-yj-Rvc" firstAttribute="top" secondItem="YMv-e1-niG" secondAttribute="bottom" constant="8" id="fgb-5B-Luf"/>
                 <constraint firstItem="YMv-e1-niG" firstAttribute="top" secondItem="T5z-ox-XY0" secondAttribute="bottom" constant="40" id="g27-kL-gKg"/>
                 <constraint firstItem="Ex0-EM-vZJ" firstAttribute="top" secondItem="sVe-yj-Rvc" secondAttribute="bottom" id="leS-CV-gTJ"/>
+                <constraint firstAttribute="centerX" secondItem="Rcc-Ep-MQJ" secondAttribute="centerX" id="oUs-Ft-b9n"/>
+                <constraint firstAttribute="centerX" secondItem="uur-NP-2lz" secondAttribute="centerX" id="pnm-Tp-UYH"/>
                 <constraint firstAttribute="centerX" secondItem="Ex0-EM-vZJ" secondAttribute="centerX" constant="-0.5" id="rd9-2j-Erg"/>
                 <constraint firstAttribute="bottom" secondItem="MGd-IN-Lgn" secondAttribute="bottom" constant="20" id="z36-7N-Q2h"/>
             </constraints>

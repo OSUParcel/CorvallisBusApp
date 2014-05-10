@@ -40,20 +40,26 @@
     self.view.layer.shadowOpacity = 0.5;
 }
 
+- (void)hacks
+{
+    // this doesn't exist
+    self.view.frame = CGRectMake(0, 1000, [[UIScreen mainScreen] bounds].size.width, 50);
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (void)routeTapped:(UITapGestureRecognizer*)sender
+- (void)routeTapped:(UITapGestureRecognizer*)recognizer
 {
     self.scheduleViewController = [[CBAScheduleViewController alloc] initWithNibName:@"CBAScheduleViewController" bundle:nil];
     CGFloat width = DEPTH_VIEW_SCALE * [[UIScreen mainScreen] bounds].size.width;
     CGFloat height = DEPTH_VIEW_SCALE * [[UIScreen mainScreen] bounds].size.height;
     self.scheduleViewController.view.frame = CGRectMake(([[UIScreen mainScreen] bounds].size.width - width)/2,
-                                                ([[UIScreen mainScreen] bounds].size.height - height)/2,
-                                                width, height);
+                                                        ([[UIScreen mainScreen] bounds].size.height - height)/2,
+                                                        width, height);
     self.depthView = [CWDepthView new];
     AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     self.depthView.windowForScreenshot = delegate.mapWindow;

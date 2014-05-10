@@ -46,12 +46,21 @@
     arrivals = [NSJSONSerialization JSONObjectWithData:data
                                               options:NSJSONReadingAllowFragments
                                                 error:&jsonError];
+    
     if (jsonError != nil) {
         NSLog(@"JSON error while parsing routes from server");
         return nil;
     }
     
     return arrivals;
+}
+
++(NSArray *)getArrivalForStop:(NSString*)stopID
+{
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObject:stopID forKey:@"ID"];
+    NSArray *array = [NSArray arrayWithObject:dictionary];
+    NSDictionary *result = [self getArrivalsForStops:array];
+    return [result objectForKey:[NSString stringWithFormat:@"%@", stopID]];
 }
 
 @end

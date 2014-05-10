@@ -36,6 +36,11 @@
     self.tableView.backgroundColor = [UIColor clearColor];
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
@@ -68,7 +73,8 @@
 
 - (void)scheduleForStop:(NSString *)stop name:(NSString *)name
 {
-    BusData *bus = [[BusData alloc] init];
+    BusData *bus = [BusData new];
+//    NSLog(@"|%@|", stop);
     NSArray *schedule = [bus loadScheduleForStop:stop];
     self.schedule = schedule;
     self.routeNameLabel.text = name;

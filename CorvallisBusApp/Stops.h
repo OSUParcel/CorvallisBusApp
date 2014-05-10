@@ -15,5 +15,14 @@
 +(NSArray *)getStopsWithRadius:(int)radius lat:(float)lat lon:(float)lon;
 +(NSArray *)getStopsWithRadius:(int)radius lat:(float)lat lon:(float)lon withLimit:(int)limit;
 
+/*
+ Example:
+ NSArray *routes = [Routes getRoutes];
+ NSArray *stops = [Stops getStopsForRoute:[[routes objectAtIndex:i] objectForKey:@"Name"]];
+ 
+ NSLog(@"Route latitude: %@", [[stops objectAtIndex:0] objectForKey:@"Lat"]);
+ */
++(NSArray *)getStopsForRoute:(NSString *)route;
+
 @end
 
