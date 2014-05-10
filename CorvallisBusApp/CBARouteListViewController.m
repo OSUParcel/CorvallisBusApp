@@ -10,6 +10,7 @@
 #import "CBARouteCell.h"
 #import "Routes.h"
 #import "Stops.h"
+#import "UIImage+UIImage_Replace.h"
 #import "UIColor+Hex.h"
 #import "CBAStopAnnotation.h"
 
@@ -161,7 +162,6 @@
     }
     
     // add annotation
-    NSInteger count = 0;
     for (NSDictionary *stop in [self.stopsForRoute objectForKey:route]) {
         CBAStopAnnotation *marker = [CBAStopAnnotation new];
         marker.title = [stop objectForKey:@"Name"];
@@ -172,6 +172,28 @@
         marker.coordinate = position;
         [self.mapView addAnnotation:marker];
     }
+}
+
+- (MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id)annotation
+{
+    if ([annotation isKindOfClass:[MKUserLocation class]]) {
+        return nil;
+    }
+    MKPinAnnotationView *newAnnotation = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"annotation1"];
+    newAnnotation.pinColor = MKPinAnnotationColorRed;
+    newAnnotation.animatesDrop = YES;
+    newAnnotation.canShowCallout = YES;
+    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    [infoButton addTarget:self action:@selector(infoForStop)
+         forControlEvents:UIControlEventTouchUpInside];
+    newAnnotation.rightCalloutAccessoryView = infoButton;
+    [newAnnotation setSelected:YES animated:YES];
+    return newAnnotation;
+}
+
+- (void)infoForStop
+{
+    NSLog(@"woo!");
 }
 
 # pragma mark - collection view data source
@@ -238,7 +260,7 @@
     // clear annotations
     id userLocation = [self.mapView userLocation];
     NSMutableArray *pins = [[NSMutableArray alloc] initWithArray:[self.mapView annotations]];
-    if ( userLocation != nil ) {
+    if (userLocation != nil) {
         [pins removeObject:userLocation]; // avoid removing user location off the map
     }
     [self.mapView removeAnnotations:pins];
