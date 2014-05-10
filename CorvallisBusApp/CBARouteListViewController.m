@@ -9,7 +9,9 @@
 #import "CBARouteListViewController.h"
 #import "CBARouteCell.h"
 #import "Routes.h"
+#import "Stops.h"
 #import "UIColor+Hex.h"
+#import "CBAStopAnnotation.h"
 
 #include <stdlib.h>
 #define ANIMATION_TIME 0.5f
@@ -84,7 +86,7 @@
 
 @implementation CBARouteListViewController
 
-@synthesize routes, panelViewController, currentRoute, movedCells, movedCellFrames, statusBarView;
+@synthesize routes, panelViewController, currentRoute, movedCells, movedCellFrames, statusBarView, stopsForRoute;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -132,6 +134,7 @@
     }
     
     [self setupPanelViewController];
+    self.stopsForRoute = [NSMutableDictionary new];
     [self loadData];
 }
 
@@ -145,6 +148,30 @@
 {
     self.routes = [Routes getRoutes];
     [self.routeListView reloadData];
+}
+
+- (void)loadStopsForRoute:(NSString *)route
+{
+    if (self.stopsForRoute == nil) {
+        self.stopsForRoute = [NSMutableDictionary new];
+    }
+    if ([self.stopsForRoute objectForKey:route] == nil) {
+        NSArray *stops = [Stops getStopsForRoute:route];
+        [self.stopsForRoute setObject:stops forKey:route];
+    }
+    
+    // add annotation
+    NSInteger count = 0;
+    for (NSDictionary *stop in [self.stopsForRoute objectForKey:route]) {
+        CBAStopAnnotation *marker = [CBAStopAnnotation new];
+        marker.title = [stop objectForKey:@"Name"];
+        marker.subtitle = [NSString stringWithFormat:@"Route %@, Stop ID %@", route, [stop objectForKey:@"ID"]];
+        CLLocationDegrees latitude = [[stop objectForKey:@"Lat"] doubleValue];
+        CLLocationDegrees longitude = [[stop objectForKey:@"Long"] doubleValue];
+        CLLocationCoordinate2D position = CLLocationCoordinate2DMake(latitude, longitude);
+        marker.coordinate = position;
+        [self.mapView addAnnotation:marker];
+    }
 }
 
 # pragma mark - collection view data source
@@ -208,6 +235,15 @@
     self.mapView.transform = CGAffineTransformMakeScale(0.0f, 0.0f);
     self.mapView.alpha = 0.0f;
     
+    // clear annotations
+    id userLocation = [self.mapView userLocation];
+    NSMutableArray *pins = [[NSMutableArray alloc] initWithArray:[self.mapView annotations]];
+    if ( userLocation != nil ) {
+        [pins removeObject:userLocation]; // avoid removing user location off the map
+    }
+    [self.mapView removeAnnotations:pins];
+    pins = nil;
+    
     [self.view bringSubviewToFront:self.panelViewController.view];
     
     NSString *hexColor = [self.currentRoute objectForKey:@"Color"];
@@ -246,6 +282,7 @@
         CGRect frame = self.routeListView.frame;
         frame.origin.x  = -1000.0f;
         self.routeListView.frame = frame;
+        [self loadStopsForRoute:[self.currentRoute objectForKey:@"Name"]];
     }];
     movedCells = [NSMutableArray new];
     movedCellFrames = [NSMutableArray new];

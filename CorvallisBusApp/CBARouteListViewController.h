@@ -21,5 +21,6 @@
 @property (strong, nonatomic) NSDictionary *currentRoute;
 @property (strong, nonatomic) NSMutableArray *movedCells;
 @property (strong, nonatomic) NSMutableArray *movedCellFrames;
+@property (strong, nonatomic) NSMutableDictionary *stopsForRoute;
 
 @end

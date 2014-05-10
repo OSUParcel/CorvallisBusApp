@@ -22,7 +22,7 @@
 {
     UIImage *image;
     
-    UIGraphicsBeginImageContextWithOptions([self size], NO, 0.f);
+    UIGraphicsBeginImageContextWithOptions([self size], NO, 0.0f);
     
     CGRect rect = CGRectZero;
     rect.size = [self size];
