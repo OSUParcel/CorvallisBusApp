@@ -73,7 +73,7 @@
 
 - (void)scheduleForStop:(NSString *)stop name:(NSString *)name
 {
-    BusData *bus = [[BusData alloc] init];
+    BusData *bus = [BusData new];
     NSArray *schedule = [bus loadScheduleForStop:stop];
     self.schedule = schedule;
     self.routeNameLabel.text = name;

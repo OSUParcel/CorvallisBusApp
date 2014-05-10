@@ -13,6 +13,7 @@
 #import "UIImage+UIImage_Replace.h"
 #import "UIColor+Hex.h"
 #import "CBAStopAnnotation.h"
+#import "AppDelegate.h"
 
 #include <stdlib.h>
 #define ANIMATION_TIME 0.5f
@@ -24,12 +25,13 @@
 @interface StopInfoButton : UIButton
 
 @property (strong, nonatomic) NSString *stopID;
+@property (strong, nonatomic) NSString *name;
 
 @end
 
 @implementation StopInfoButton
 
-@synthesize stopID;
+@synthesize stopID, name;
 
 @end
 
@@ -99,7 +101,7 @@
 
 @implementation CBARouteListViewController
 
-@synthesize routes, panelViewController, currentRoute, movedCells, movedCellFrames, statusBarView, stopsForRoute;
+@synthesize routes, panelViewController, currentRoute, movedCells, movedCellFrames, statusBarView, stopsForRoute, scheduleViewController, depthView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -145,6 +147,10 @@
         self.routeListView.frame = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 460 + 128);
         self.mapView.frame = CGRectMake(0, 128, [[UIScreen mainScreen] bounds].size.width, 460 - 50);
     }
+    
+    self.depthView = [CWDepthView new];
+    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    self.depthView.windowForScreenshot = delegate.window;
     
     [self setupPanelViewController];
     self.stopsForRoute = [NSMutableDictionary new];
@@ -198,6 +204,7 @@
     newAnnotation.canShowCallout = YES;
     StopInfoButton *infoButton = [StopInfoButton buttonWithType:UIButtonTypeDetailDisclosure];
     infoButton.stopID = ((CBAStopAnnotation *)annotation).stopID;
+    infoButton.name = ((CBAStopAnnotation *)annotation).title;
     [infoButton addTarget:self action:@selector(infoForStop:)
          forControlEvents:UIControlEventTouchUpInside];
     newAnnotation.rightCalloutAccessoryView = infoButton;
@@ -207,7 +214,23 @@
 
 - (void)infoForStop:(StopInfoButton*)sender
 {
-    NSLog(@"woo, stuff: %@", sender.stopID);
+    NSString *stop = sender.stopID;
+    NSString *name = sender.name;
+    self.scheduleViewController = [[CBAScheduleViewController alloc] initWithNibName:@"CBAScheduleViewController" bundle:nil];
+    CGFloat width = DEPTH_VIEW_SCALE * [[UIScreen mainScreen] bounds].size.width;
+    CGFloat height = DEPTH_VIEW_SCALE * [[UIScreen mainScreen] bounds].size.height;
+    self.scheduleViewController.view.frame = CGRectMake(([[UIScreen mainScreen] bounds].size.width - width)/2,
+                                                        ([[UIScreen mainScreen] bounds].size.height - height)/2,
+                                                        width, height);
+    self.scheduleViewController.view.backgroundColor = [UIColor clearColor];
+    [self.depthView presentView:self.scheduleViewController.view];
+    [self.scheduleViewController scheduleForStop:stop name:name];
+    [self.scheduleViewController.dismissButton addTarget:self action:@selector(dismissScheduleView) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)dismissScheduleView
+{
+    [self.depthView dismissDepthViewWithCompletion:nil];
 }
 
 # pragma mark - collection view data source

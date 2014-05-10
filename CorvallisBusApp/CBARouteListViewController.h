@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "CBAFullMapPanelViewController.h"
+#import "CBAScheduleViewController.h"
+#import "CWDepthView.h"
 
 @interface CBARouteListViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, MKMapViewDelegate>
 
@@ -22,5 +24,7 @@
 @property (strong, nonatomic) NSMutableArray *movedCells;
 @property (strong, nonatomic) NSMutableArray *movedCellFrames;
 @property (strong, nonatomic) NSMutableDictionary *stopsForRoute;
+@property (strong, nonatomic) CBAScheduleViewController *scheduleViewController;
+@property (strong, nonatomic) CWDepthView *depthView;
 
 @end
