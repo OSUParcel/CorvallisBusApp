@@ -91,11 +91,11 @@
     
     NSDictionary *arrivals = [Arrivals getArrivalsForStops:stopArr];
     
-    //NSLog(@"Arrivals for stop: %@", [arrivals objectForKey:stop]);
+    NSLog(@"Arrivals for stop: %@", [arrivals objectForKey:stop]);
     
     NSMutableArray *schedule = [[NSMutableArray alloc] init];
     
-    for (int i = 0; i < [arrivals count]; i++) {
+    for (int i = 0; i < [[arrivals objectForKey:stop] count]; i++) {
         
         // Convert the strings to NSDates
         NSDateFormatter *dateFromServerFormatter;
@@ -119,6 +119,8 @@
                               nil];
         [schedule addObject:dict];
     }
+    NSLog(@"count: %lu", [schedule count]);
+    NSLog(@"%@", schedule);
     return [NSArray arrayWithArray:schedule];
 }
 
