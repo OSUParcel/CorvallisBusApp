@@ -238,8 +238,8 @@
 - (void)checkForEmptyData
 {
     if ([self.arrivals count] == 0) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Oh no!"
-                                                            message:@"It looks like no bus routes near you were found."
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Better call a cab..."
+                                                            message:@"It looks like no bus routes near you were found. Check your internet connection and your calendar (No buses on Sundays!)."
                                                            delegate:nil
                                                   cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil];
