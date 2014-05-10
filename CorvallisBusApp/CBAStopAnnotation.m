@@ -10,6 +10,6 @@
 
 @implementation CBAStopAnnotation
 
-@synthesize title, subtitle, coordinate;
+@synthesize title, subtitle, coordinate, stopID;
 
 @end

@@ -21,6 +21,18 @@
 #define CAMERA_HEADING 0.0f
 #define CAMERA_ALTITUDE 25000.0f
 
+@interface StopInfoButton : UIButton
+
+@property (strong, nonatomic) NSString *stopID;
+
+@end
+
+@implementation StopInfoButton
+
+@synthesize stopID;
+
+@end
+
 @implementation MKPolyline (MKPolyline_EncodedString)
 
 + (MKPolyline *)polylineWithEncodedString:(NSString *)encodedString {
@@ -166,6 +178,7 @@
         CBAStopAnnotation *marker = [CBAStopAnnotation new];
         marker.title = [stop objectForKey:@"Name"];
         marker.subtitle = [NSString stringWithFormat:@"Route %@, Stop ID %@", route, [stop objectForKey:@"ID"]];
+        marker.stopID = [stop objectForKey:@"ID"];
         CLLocationDegrees latitude = [[stop objectForKey:@"Lat"] doubleValue];
         CLLocationDegrees longitude = [[stop objectForKey:@"Long"] doubleValue];
         CLLocationCoordinate2D position = CLLocationCoordinate2DMake(latitude, longitude);
@@ -183,17 +196,18 @@
     newAnnotation.pinColor = MKPinAnnotationColorRed;
     newAnnotation.animatesDrop = YES;
     newAnnotation.canShowCallout = YES;
-    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-    [infoButton addTarget:self action:@selector(infoForStop)
+    StopInfoButton *infoButton = [StopInfoButton buttonWithType:UIButtonTypeDetailDisclosure];
+    infoButton.stopID = ((CBAStopAnnotation *)annotation).stopID;
+    [infoButton addTarget:self action:@selector(infoForStop:)
          forControlEvents:UIControlEventTouchUpInside];
     newAnnotation.rightCalloutAccessoryView = infoButton;
     [newAnnotation setSelected:YES animated:YES];
     return newAnnotation;
 }
 
-- (void)infoForStop
+- (void)infoForStop:(StopInfoButton*)sender
 {
-    NSLog(@"woo!");
+    NSLog(@"woo, stuff: %@", sender.stopID);
 }
 
 # pragma mark - collection view data source
