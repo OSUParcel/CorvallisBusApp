@@ -104,6 +104,10 @@
     leftStopsTableViewFrame = CGRectMake(-1 * [[UIScreen mainScreen] bounds].size.width, 20,
                                          [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] applicationFrame].size.height);
     self.stopsTableView.frame = centerStopsTableViewFrame;
+    if ([[UIScreen mainScreen] bounds].size.height == 480) {
+        NSLog(@"height: %f", [[UIScreen mainScreen] bounds].size.height);
+        self.stopsTableView.frame = CGRectMake(0, 20, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] applicationFrame].size.height + 90);
+    }
     defaultStopsTableViewFrame = self.stopsTableView.frame;
     stopsTableViewIsShowing = YES;
     
