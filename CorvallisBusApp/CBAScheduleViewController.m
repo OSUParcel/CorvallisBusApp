@@ -79,6 +79,14 @@
     self.schedule = schedule;
     self.routeNameLabel.text = name;
     [self.tableView reloadData];
+    if ([self.schedule count] == 0) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"These aren't the stops you're looking for."
+                                                            message:@"Sadly, this stop doesn't have any scheduled stops anytime soon."
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    }
 }
 
 - (void)didReceiveMemoryWarning
