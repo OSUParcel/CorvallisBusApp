@@ -308,8 +308,21 @@
     NSString *hexColor = [self.data objectForKey:@"Color"];
     UIColor *routeColor = [UIColor colorWithHexValue:hexColor];
     UIImage *icon = [[UIImage imageNamed:@"stop.png"] imageTintedWithColor:routeColor];
-    
     UIImage *backgroundImage = [UIImage imageNamed:@"stop_back.png"];
+    
+    NSData *imageData = UIImagePNGRepresentation(icon);
+    CGDataProviderRef dataProvider = CGDataProviderCreateWithCFData((__bridge CFDataRef)imageData);
+    CGImageRef imageRef = CGImageCreateWithPNGDataProvider(dataProvider, NULL, NO, kCGRenderingIntentDefault);
+    icon = [UIImage imageWithCGImage:imageRef scale:[[UIScreen mainScreen] scale] orientation:UIImageOrientationUp];
+    CGDataProviderRelease(dataProvider);
+    CGImageRelease(imageRef);
+    
+    imageData = UIImagePNGRepresentation(backgroundImage);
+    dataProvider = CGDataProviderCreateWithCFData((__bridge CFDataRef)imageData);
+    imageRef = CGImageCreateWithPNGDataProvider(dataProvider, NULL, NO, kCGRenderingIntentDefault);
+    backgroundImage = [UIImage imageWithCGImage:imageRef scale:[[UIScreen mainScreen] scale] orientation:UIImageOrientationUp];
+    CGDataProviderRelease(dataProvider);
+    CGImageRelease(imageRef);
     
     UIGraphicsBeginImageContext(backgroundImage.size);
     [backgroundImage drawInRect:CGRectMake(0, 0, backgroundImage.size.width, backgroundImage.size.height)];
