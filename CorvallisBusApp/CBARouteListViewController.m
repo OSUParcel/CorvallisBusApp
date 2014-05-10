@@ -125,6 +125,12 @@
     self.statusBarView.frame = CGRectMake(0, -500, [[UIScreen mainScreen] bounds].size.width, 20);
     [self.view addSubview:self.statusBarView];
     
+    // hacks
+    if ([[UIScreen mainScreen] bounds].size.height == 480) {
+        self.routeListView.frame = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 460 + 128);
+        self.mapView.frame = CGRectMake(0, 128, [[UIScreen mainScreen] bounds].size.width, 460 - 50);
+    }
+    
     [self setupPanelViewController];
     [self loadData];
 }
@@ -213,6 +219,9 @@
     self.panelViewController.arrivalTimeLabel.text = [NSString stringWithFormat:@"Route %@", [self.currentRoute objectForKey:@"Name"]];
     self.panelViewController.stop = [self.currentRoute objectForKey:@"ID"];
     self.panelViewController.routeName = [self.currentRoute objectForKey:@"Name"];
+    if ([[UIScreen mainScreen] bounds].size.height == 480) {
+        [self.panelViewController hacks];
+    }
     
     self.routeListView.backgroundColor = [UIColor clearColor];
     
@@ -221,11 +230,18 @@
     
     self.statusBarView.frame = CGRectMake(0, -100, [[UIScreen mainScreen] bounds].size.width, 20);
     [UIView animateWithDuration:ANIMATION_TIME animations:^{
-        self.statusBarView.frame = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 20);
+        // hacks - avert eyes
+        if ([[UIScreen mainScreen] bounds].size.height == 480) {
+            self.statusBarView.frame = CGRectMake(0, -19, [[UIScreen mainScreen] bounds].size.width, 20);
+            self.panelViewController.view.frame = CGRectMake(0, [[UIScreen mainScreen] bounds].size.height - 50 - 19,
+                                                             self.panelViewController.view.frame.size.width, self.panelViewController.view.frame.size.height);
+        } else {
+            self.statusBarView.frame = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 20);
+            self.panelViewController.view.frame = CGRectMake(0, [[UIScreen mainScreen] bounds].size.height - 50,
+                                                             self.panelViewController.view.frame.size.width, self.panelViewController.view.frame.size.height);
+        }
         self.mapView.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
         self.mapView.alpha = 1.0f;
-        self.panelViewController.view.frame = CGRectMake(0, [[UIScreen mainScreen] bounds].size.height - 50,
-                                                         self.panelViewController.view.frame.size.width, self.panelViewController.view.frame.size.height);
     } completion:^(BOOL finished) {
         CGRect frame = self.routeListView.frame;
         frame.origin.x  = -1000.0f;

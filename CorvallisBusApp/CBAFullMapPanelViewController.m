@@ -40,6 +40,12 @@
     self.view.layer.shadowOpacity = 0.5;
 }
 
+- (void)hacks
+{
+    // this doesn't exist
+    self.view.frame = CGRectMake(0, 1000, [[UIScreen mainScreen] bounds].size.width, 50);
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

@@ -23,5 +23,6 @@
 @property (strong, nonatomic) NSString *routeName;
 
 - (void)routeTapped:(UITapGestureRecognizer*)sender;
+- (void)hacks;
 
 @end
