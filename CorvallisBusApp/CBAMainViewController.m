@@ -234,8 +234,6 @@
         self.isRefreshing = NO;
         [self.refreshControl endRefreshing];
         [self checkForEmptyData];
-        Mixpanel *mixpanel = [Mixpanel sharedInstance];
-        [mixpanel track:@"Main View Data Loaded"];
     }
 }
 
