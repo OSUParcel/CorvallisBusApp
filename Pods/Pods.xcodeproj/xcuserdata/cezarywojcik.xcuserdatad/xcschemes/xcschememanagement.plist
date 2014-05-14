@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-Mixpanel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Shimmer.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1110FEF40C7A415180EB9E4C</key>
+		<key>17074E8E67B54AE18E2F7000</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>91704E2D69284A629DC769B7</key>
+		<key>8E24227630374E3D9D885A56</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ACFFA14E0A9E40F4B99B21A9</key>
 		<dict>
 			<key>primary</key>
 			<true/>

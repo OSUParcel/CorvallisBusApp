@@ -15,6 +15,8 @@
 #import "AppDelegate.h"
 #import "BusData.h"
 
+#import <Mixpanel.h>
+
 #define SCALE 0.70f
 #define ANIMATION_TIME 0.5f
 
@@ -232,12 +234,16 @@
         self.isRefreshing = NO;
         [self.refreshControl endRefreshing];
         [self checkForEmptyData];
+        Mixpanel *mixpanel = [Mixpanel sharedInstance];
+        [mixpanel track:@"Main View Data Loaded"];
     }
 }
 
 - (void)checkForEmptyData
 {
     if ([self.arrivals count] == 0) {
+        Mixpanel *mixpanel = [Mixpanel sharedInstance];
+        [mixpanel track:@"No Routes Found"];
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Better call a cab..."
                                                             message:@"It looks like no bus routes near you were found. Check your internet connection and your calendar (No buses on Sundays!)."
                                                            delegate:nil

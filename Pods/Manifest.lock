@@ -1,10 +1,13 @@
 PODS:
+  - Mixpanel (2.3.6)
   - Shimmer (1.0.1)
 
 DEPENDENCIES:
+  - Mixpanel
   - Shimmer (~> 1.0.1)
 
 SPEC CHECKSUMS:
+  Mixpanel: b1c61efa748193777889dfe8b7f80471ceb95e97
   Shimmer: a1b92685f04ae7363e655f636a41a276dbb1507e
 
 COCOAPODS: 0.32.1

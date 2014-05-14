@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "CBAMainViewController.h"
+#import <Mixpanel.h>
 
 @implementation AppDelegate
 
@@ -19,6 +20,11 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     
+    // mixpanel setup
+    [Mixpanel sharedInstanceWithToken:@"68e752f717080094e1edef97bae717bd"];
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"Application Finished Launching"];
+    
     // init map view cache manager
     self.mapViewCacheManager = [CBAMapViewCacheManager new];
     
@@ -28,6 +34,7 @@
                                             green:194.0/255.0
                                              blue:0
                                             alpha:1.0];
+    
     self.window.rootViewController = self.mainViewController;
     
     [self.window makeKeyAndVisible];
@@ -50,6 +57,8 @@
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     [self.mainViewController loadData];
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"ApplicationDidEnterForeground" properties:@{}];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

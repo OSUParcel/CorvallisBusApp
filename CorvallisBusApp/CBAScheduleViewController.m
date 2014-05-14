@@ -8,6 +8,7 @@
 
 #import "CBAScheduleViewController.h"
 #import "BusData.h"
+#import <Mixpanel.h>
 
 @interface CBAScheduleViewController ()
 
@@ -74,7 +75,9 @@
 - (void)scheduleForStop:(NSString *)stop name:(NSString *)name
 {
     BusData *bus = [BusData new];
-//    NSLog(@"|%@|", stop);
+    NSDictionary *stopDict = [NSDictionary dictionaryWithObject:stop forKey:@"StopID"];
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"Stop ID Schedule View Opened" properties:stopDict];
     NSArray *schedule = [bus loadScheduleForStop:stop];
     self.schedule = schedule;
     self.routeNameLabel.text = name;

@@ -15,7 +15,10 @@
 #import "CBAStopAnnotation.h"
 #import "AppDelegate.h"
 
+#include <Mixpanel.h>
+
 #include <stdlib.h>
+
 #define ANIMATION_TIME 0.5f
 #define FULLSCREEN_DELTA 0.001f
 #define CAMERA_PITCH 65.0f
@@ -269,7 +272,10 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row != [self.routes count]) {
+        Mixpanel *mixpanel = [Mixpanel sharedInstance];
         self.currentRoute = [self.routes objectAtIndex:indexPath.row];
+        NSDictionary *routeDict = [NSDictionary dictionaryWithObject:[self.currentRoute objectForKey:@"Name"] forKey:@"Route Name"];
+        [mixpanel track:@"Route List View Route Selected" properties:routeDict];
         [self setupMapView];
         [self animateCellsOut];
     }
