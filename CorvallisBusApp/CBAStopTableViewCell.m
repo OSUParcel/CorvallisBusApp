@@ -311,17 +311,18 @@
     
     self.routeAnnotationLabel = [UILabel new];
     self.routeAnnotationLabel.textColor = routeColor;
-    self.routeAnnotationLabel.frame = CGRectMake(4, 4, 24, 24);
+    self.routeAnnotationLabel.frame = CGRectMake(4, 2, 24, 28);
     self.routeAnnotationLabel.text = [self.data objectForKey:@"Route"];
     self.routeAnnotationLabel.textAlignment = NSTextAlignmentCenter;
     self.routeAnnotationLabel.adjustsFontSizeToFitWidth = YES;
     self.routeAnnotationLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
+    [self.routeAnnotationLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:20.0f]];
     
     UIView *routeAnnotationView = [UIView new];
     routeAnnotationView.frame = CGRectMake(-16, -16, 32, 32);
     routeAnnotationView.backgroundColor = [UIColor whiteColor];
     routeAnnotationView.layer.borderColor = routeColor.CGColor;
-    routeAnnotationView.layer.borderWidth = 3.0f;
+    routeAnnotationView.layer.borderWidth = 2.0f;
     [routeAnnotationView addSubview:self.routeAnnotationLabel];
     
     [annView addSubview:routeAnnotationView];
