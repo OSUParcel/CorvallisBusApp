@@ -76,6 +76,14 @@
                                 
                                 @"THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.", @"contract",
                                 nil]];
+    [self.legalItems addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+                                @"Privacy Policy", @"name",
+                                @"CorBus Privacy Policy\n\n"
+                                
+                                @"CorBus collects information about App Usage that helps us improve the functionality of the app. This information includes, but is not limited to iOS version, screen size, carrier, app version, and country.\n\n"
+                                
+                                @"No personal information is collected.", @"contract",
+                                nil]];
     [self.tableView reloadData];
 }
 

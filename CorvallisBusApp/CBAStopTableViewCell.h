@@ -19,6 +19,7 @@
 @property (strong, nonatomic) CBAFullMapPanelViewController *panelViewController;
 @property (strong, nonatomic) NSDictionary *data;
 @property (strong, nonatomic) UIImageView *mapViewImage;
+@property (strong, nonatomic) UILabel *routeAnnotationLabel;
 
 @property (nonatomic) CGRect defaultViewFrame;
 @property (nonatomic) CGRect defaultMapViewFrame;

@@ -20,6 +20,7 @@
 #import "AppDelegate.h"
 #import "CBAStopAnnotation.h"
 #import "UIImage+UIImage_Replace.h"
+#import <QuartzCore/QuartzCore.h>
 
 # pragma mark - polyline category
 
@@ -103,7 +104,7 @@
     BOOL isAnnotationAdded;
 }
 
-@synthesize tapGestureRecognizer, fullScreenWindow, panelViewController, mapViewImage;
+@synthesize tapGestureRecognizer, fullScreenWindow, panelViewController, mapViewImage, routeAnnotationLabel;
 
 @synthesize isFullScreen, defaultViewFrame, defaultMapViewFrame, rowIndex;
 
@@ -307,33 +308,29 @@
     MKAnnotationView *annView = [[MKAnnotationView alloc ] initWithAnnotation:annotation reuseIdentifier:@"currentloc"];
     NSString *hexColor = [self.data objectForKey:@"Color"];
     UIColor *routeColor = [UIColor colorWithHexValue:hexColor];
-    UIImage *icon = [[UIImage imageNamed:@"stop.png"] imageTintedWithColor:routeColor];
-    UIImage *backgroundImage = [UIImage imageNamed:@"stop_back.png"];
     
-    NSData *imageData = UIImagePNGRepresentation(icon);
-    CGDataProviderRef dataProvider = CGDataProviderCreateWithCFData((__bridge CFDataRef)imageData);
-    CGImageRef imageRef = CGImageCreateWithPNGDataProvider(dataProvider, NULL, NO, kCGRenderingIntentDefault);
-    icon = [UIImage imageWithCGImage:imageRef scale:[[UIScreen mainScreen] scale] orientation:UIImageOrientationUp];
-    CGDataProviderRelease(dataProvider);
-    CGImageRelease(imageRef);
+    self.routeAnnotationLabel = [UILabel new];
+    self.routeAnnotationLabel.textColor = routeColor;
+    self.routeAnnotationLabel.frame = CGRectMake(4, 4, 24, 24);
+    self.routeAnnotationLabel.text = [self.data objectForKey:@"Route"];
+    self.routeAnnotationLabel.textAlignment = NSTextAlignmentCenter;
+    self.routeAnnotationLabel.adjustsFontSizeToFitWidth = YES;
+    self.routeAnnotationLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
     
-    imageData = UIImagePNGRepresentation(backgroundImage);
-    dataProvider = CGDataProviderCreateWithCFData((__bridge CFDataRef)imageData);
-    imageRef = CGImageCreateWithPNGDataProvider(dataProvider, NULL, NO, kCGRenderingIntentDefault);
-    backgroundImage = [UIImage imageWithCGImage:imageRef scale:[[UIScreen mainScreen] scale] orientation:UIImageOrientationUp];
-    CGDataProviderRelease(dataProvider);
-    CGImageRelease(imageRef);
+    UIView *routeAnnotationView = [UIView new];
+    routeAnnotationView.frame = CGRectMake(-16, -16, 32, 32);
+    routeAnnotationView.backgroundColor = [UIColor whiteColor];
+    routeAnnotationView.layer.borderColor = routeColor.CGColor;
+    routeAnnotationView.layer.borderWidth = 3.0f;
+    [routeAnnotationView addSubview:self.routeAnnotationLabel];
     
-    UIGraphicsBeginImageContext(backgroundImage.size);
-    [backgroundImage drawInRect:CGRectMake(0, 0, backgroundImage.size.width, backgroundImage.size.height)];
-    [icon drawInRect:CGRectMake(0, 0, icon.size.width, icon.size.height)];
-    UIImage *result = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    annView.image = result;
+    [annView addSubview:routeAnnotationView];
+    
 //    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
 //    [infoButton addTarget:self action:@selector(animateFromFullScreen)
 //         forControlEvents:UIControlEventTouchUpInside];
 //    annView.rightCalloutAccessoryView = infoButton;
+    
     annView.canShowCallout = YES;
     return annView;
 }
@@ -481,6 +478,9 @@
     [UIView animateWithDuration:ANIMATION_TIME animations:^{
         self.panelViewController.view.frame = CGRectMake(0, [[UIScreen mainScreen] bounds].size.height - self.panelViewController.view.frame.size.height,
                                                          self.panelViewController.view.frame.size.width, self.panelViewController.view.frame.size.height);
+        CGRect mapViewFrame = [[UIScreen mainScreen] applicationFrame];
+        mapViewFrame.size.height -= 50;
+        self.mapView.frame = mapViewFrame;
     }];
 }
 @end

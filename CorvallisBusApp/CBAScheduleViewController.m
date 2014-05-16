@@ -60,7 +60,12 @@
         NSDate *date2 = [[self.schedule objectAtIndex:indexPath.row] objectForKey:@"Scheduled"];
         NSString *scheduled = [dateFormatter stringFromDate:date2];
         
-        cell.textLabel.text = [NSString stringWithFormat:@"Scheduled: %@, Expected: %@", scheduled, expected];
+        if ([scheduled isEqualToString:expected]) {
+            cell.textLabel.text = [NSString stringWithFormat:@"Scheduled: %@", scheduled];
+        } else {
+            cell.textLabel.text = [NSString stringWithFormat:@"Scheduled: %@, Expected: %@", scheduled, expected];
+        }
+        
         cell.textLabel.textColor = [UIColor whiteColor];
         cell.textLabel.font = [UIFont systemFontOfSize:12];
     }

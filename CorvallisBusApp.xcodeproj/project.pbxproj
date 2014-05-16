@@ -19,8 +19,6 @@
 		5E2C19ED1902ED4600199075 /* CBAStopTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E2C19EB1902ED4600199075 /* CBAStopTableViewCell.m */; };
 		5E2C19EE1902ED4600199075 /* CBAStopTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E2C19EC1902ED4600199075 /* CBAStopTableViewCell.xib */; };
 		5E56E36E191B347E000E32A4 /* UIImage+UIImage_Replace.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E56E36D191B347E000E32A4 /* UIImage+UIImage_Replace.m */; };
-		5E56E372191B38E1000E32A4 /* stop_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E56E371191B38E1000E32A4 /* stop_back@2x.png */; };
-		5E929ABD191B6872009AAAF8 /* stop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E929ABC191B6872009AAAF8 /* stop@2x.png */; };
 		5E9D5757190460DD00321A6B /* CBAAboutNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9D5756190460DD00321A6B /* CBAAboutNavigationViewController.m */; };
 		5E9D575C19046A8300321A6B /* CBAContractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9D575A19046A8300321A6B /* CBAContractViewController.m */; };
 		5E9D575D19046A8300321A6B /* CBAContractViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E9D575B19046A8300321A6B /* CBAContractViewController.xib */; };
@@ -83,8 +81,6 @@
 		5E2C19EC1902ED4600199075 /* CBAStopTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBAStopTableViewCell.xib; sourceTree = "<group>"; };
 		5E56E36C191B347E000E32A4 /* UIImage+UIImage_Replace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+UIImage_Replace.h"; sourceTree = "<group>"; };
 		5E56E36D191B347E000E32A4 /* UIImage+UIImage_Replace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+UIImage_Replace.m"; sourceTree = "<group>"; };
-		5E56E371191B38E1000E32A4 /* stop_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "stop_back@2x.png"; path = "Images/stop_back@2x.png"; sourceTree = SOURCE_ROOT; };
-		5E929ABC191B6872009AAAF8 /* stop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "stop@2x.png"; path = "Images/stop@2x.png"; sourceTree = SOURCE_ROOT; };
 		5E9D5755190460DD00321A6B /* CBAAboutNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAAboutNavigationViewController.h; sourceTree = "<group>"; };
 		5E9D5756190460DD00321A6B /* CBAAboutNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAAboutNavigationViewController.m; sourceTree = "<group>"; };
 		5E9D575919046A8300321A6B /* CBAContractViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAContractViewController.h; sourceTree = "<group>"; };
@@ -368,8 +364,6 @@
 			isa = PBXGroup;
 			children = (
 				5E1166231917461700934240 /* route.png */,
-				5E929ABC191B6872009AAAF8 /* stop@2x.png */,
-				5E56E371191B38E1000E32A4 /* stop_back@2x.png */,
 				5ECD7E8F1900DB81002AE274 /* Images.xcassets */,
 				5ECD7E8C1900DB81002AE274 /* AppDelegate.h */,
 				5ECD7E8D1900DB81002AE274 /* AppDelegate.m */,
@@ -552,14 +546,12 @@
 				5E1166241917461700934240 /* route.png in Resources */,
 				5E9D8843190344B000C41F1A /* CBAScheduleViewController.xib in Resources */,
 				5E9D575D19046A8300321A6B /* CBAContractViewController.xib in Resources */,
-				5E929ABD191B6872009AAAF8 /* stop@2x.png in Resources */,
 				5EEABBF41902FBF10031A884 /* CBAFullMapPanelViewController.xib in Resources */,
 				5E1166201917346C00934240 /* CBARouteCell.xib in Resources */,
 				5EFCB4B91904536B006038D7 /* CBALegalViewController.xib in Resources */,
 				5E11661A1916FF9500934240 /* CBARouteListViewController.xib in Resources */,
 				5ECD7E901900DB81002AE274 /* Images.xcassets in Resources */,
 				5ED32E651900E0D200692D18 /* CBAMainViewController.xib in Resources */,
-				5E56E372191B38E1000E32A4 /* stop_back@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
