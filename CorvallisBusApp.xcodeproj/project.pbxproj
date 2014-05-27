@@ -512,6 +512,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Corvallis Bus App";
 				TargetAttributes = {
+					5ECD7E791900DB81002AE274 = {
+						DevelopmentTeam = QMZH6X9D3C;
+					};
 					5ECD7E941900DB81002AE274 = {
 						TestTargetID = 5ECD7E791900DB81002AE274;
 					};
@@ -741,10 +744,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CorvallisBusApp/CorvallisBusApp-Prefix.pch";
 				INFOPLIST_FILE = "CorvallisBusApp/CorvallisBusApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = CorBus;
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -755,10 +762,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CorvallisBusApp/CorvallisBusApp-Prefix.pch";
 				INFOPLIST_FILE = "CorvallisBusApp/CorvallisBusApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = CorBus;
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
