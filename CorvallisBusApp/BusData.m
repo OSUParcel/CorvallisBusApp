@@ -17,9 +17,9 @@
 
 @implementation BusData
 
--(NSArray *)loadArrivalsForLatitude:(float)lat Longitude:(float)lon
+-(NSArray *)loadArrivalsForLatitude:(CGFloat)lat Longitude:(CGFloat)lon
 {
-    NSArray *stops = [Stops getStopsWithRadius:500 lat:lat lon:lon];
+    NSArray *stops = [Stops getStopsWithRadius:500 lat:lat lon:lon withLimit:18];
     NSDictionary *arrivals = [Arrivals getArrivalsForStops:stops];
     NSArray *routes = [Routes getRoutes];
     NSMutableArray *sortedStops = [[NSMutableArray alloc] init];
